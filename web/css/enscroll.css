@@ -1,0 +1,31 @@
+.scrollbox {    overflow: auto;    width: auto !important;    height: 122px;    padding: 10px;    padding-top: 0px;    padding-left: 0px;}
+.scrollbox1 {    overflow: auto;    height: 322px !important;    padding: 10px;    padding-top: 0px;    padding-left: 0px;     margin-top: 0;}
+.track3 {
+    width: 5px;
+    background: rgba(0, 0, 0, 0);
+    margin-right: 2px;
+    border-radius: 10px;
+    -webkit-transition: background 250ms linear;
+    transition: background 250ms linear;
+}
+
+.track3:hover,
+.track3.dragging {
+    /*background: #d9d9d9;
+    background: rgba(0, 0, 0, 0.15);*/
+}
+
+.handle3 {
+    width: 5px;
+    right: 0;
+    background: #bababa;
+    background: rgba(0, 0, 0, 0.4);
+    border-radius: 7px;
+    -webkit-transition: width 250ms;
+    transition: width 250ms;
+}
+
+.track3:hover .handle3,
+.track3.dragging .handle3 {
+    width: 5px;
+}
