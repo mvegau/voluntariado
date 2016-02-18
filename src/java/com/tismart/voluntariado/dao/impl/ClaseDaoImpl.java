@@ -5,10 +5,12 @@
  */
 package com.tismart.voluntariado.dao.impl;
 
+import com.tismart.voluntariado.dao.ClaseDao;
+
 /**
  *
  * @author manuel.vega
  */
-public class ClaseDaoImpl {
+public class ClaseDaoImpl implements ClaseDao{
     
 }
