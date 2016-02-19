@@ -5,10 +5,13 @@
  */
 package com.tismart.voluntariado.service;
 
+import java.sql.SQLException;
+
 /**
  *
  * @author manuel.vega
  */
-public interface ClaseService {
-    
+public interface UsuarioService {
+
+    public boolean validarUsuario(String username, String password) throws SQLException;
 }
