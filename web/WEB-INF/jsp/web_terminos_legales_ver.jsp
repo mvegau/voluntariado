@@ -47,7 +47,7 @@
             <section class="header-login hei-top">
                 <div class="container">
                     <div class="logo">
-                        <a href="?web_inicio"><img src="images/logo.png" /></a>
+                        <a href="index.htm"><img src="images/logo.png" /></a>
                     </div>
                     <div class="row">
                         <div class="col-xs-12 logindiv">
@@ -62,7 +62,7 @@
             </section>
             <section class="cont-white">
                 <div class="container icheck-container">
-                    <form>
+                    <form method="get" action="index.htm" modelAttribute="usuarioBean">
                         <div class="row">
                             <div class="col-xs-12 nopadding">
                                 <div class="contenido-de-terminos">
@@ -103,23 +103,25 @@
                             </div>
                             <div class="row btnform-2">
                                 <div class="col-xs-12 text-center">
-                                    <button class="btn btn-default btn-orange" type="button" onclick="parent.location = '?web_inicio'">FINALIZAR</button>
+                                    <!--button class="btn btn-default btn-orange" type="button" onclick="parent.location = '?web_inicio'">FINALIZAR</button-->
+                                    <button onClick="" class="btn btn-default btn-orange"  type="submit">FINALIZAR</button>
                                 </div>
                             </div>
                         </div>
                 </div>
                 </form>
+                <section class="footer-interno">
+                    <div class="container">
+                        <footer class="logindiv">
+                            <span class="small pull-right">© 2015 indeci</span>
+                        </footer>
+                    </div>
+                </section>
         </div>
 
-        <section class="footer-interno">
-            <div class="container">
-                <footer class="logindiv">
-                    <span class="small pull-right">© 2015 indeci</span>
-                </footer>
-            </div>
-        </section>
-    </section>
 
-</div>
-</body>
+
+
+
+    </body>
 </html>

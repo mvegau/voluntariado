@@ -48,7 +48,7 @@
             <section class="header-login-interno hei-top">
                 <div class="container">
                     <div class="logo">
-                        <a href="web_inicio.html"><img src="images/logo.png"/></a>
+                        <a href="web_inicio.htm"><img src="images/logo.png"/></a>
                     </div>
                     <div class="row">
                         <div class="col-xs-12">
@@ -60,18 +60,18 @@
                                 <div class="div-login text-center">
                                     <div class="cont-login">
                                         <span class="tit-login text-uppercase">JORGE POMA GARCÉS</span>
-                                        <a href="?web_inicio"><span class="close-sesion text-right">Cerrar Sesión</span></a>
+                                        <a href="index.htm"><span class="close-sesion text-right">Cerrar Sesión</span></a>
                                     </div>
                                 </div>
                             </div>
                             <div class="pull-right rlogin">
                                 <div class="tit-derecha-1 ina">
-                                    <a href="web_home_sespad.html" class="tab-a">
+                                    <a href="web_home_sespad.htm" class="tab-a">
                                         <span>SESPAD</span>
                                     </a>
                                 </div>
                                 <div class="tit-derecha-1">
-                                    <a href="web_home_sespad.html" class="tab-a">
+                                    <a href="web_home_sespad.htm" class="tab-a">
                                         <span>VER</span>
                                     </a>
                                 </div>

@@ -58,10 +58,11 @@
                             <div class="card card-container text-center divemail">
                                 <img src="images/logo2.png" class="img-responsive profile-img-card">
                                 <span class="twhite font-b">Ingrese su correo para recuperar contraseña</span>
-                                <form class="form-signin w-form">
+                                <form class="form-signin w-form" action="index.htm">
                                     <input type="email" autofocus="" required="" placeholder="Email" class="form-control" value="">
                                     <br>
-                                    <button type="submit" class="btn btn-lg btn-primary btn-block btn-signin font-b">ENVIAR</button>
+                                    <!--button type="submit" class="btn btn-lg btn-primary btn-block btn-signin font-b">ENVIAR</button-->
+                                    <button onClick="" class="btn btn-lg btn-primary btn-block btn-signin font-b" type="submit">ENVIAR</button>
                                 </form>
                             </div>
 

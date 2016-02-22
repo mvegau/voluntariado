@@ -25,11 +25,20 @@ public class LoginController {
 
     @Autowired
     UsuarioService usuarioService = new UsuarioService();
-    
+
     @RequestMapping(value = "/index", method = RequestMethod.GET)
     public ModelAndView desplegarLogin(HttpServletRequest request, HttpServletResponse response, Usuario usuario) {
         ModelAndView model = new ModelAndView("index");
         model.addObject("usuarioBean", usuario);
+        System.err.println("desplegarLogin");
+        return model;
+    }
+
+    @RequestMapping(value = "/web_home_ver", method = RequestMethod.GET)
+    public ModelAndView recargarInicio(HttpServletRequest request, HttpServletResponse response, Usuario usuario) {
+        ModelAndView model = new ModelAndView("web_home_ver");
+        model.addObject("usuarioBean", usuario);
+        System.err.println("recargarInicio");
         return model;
     }
 
@@ -38,7 +47,7 @@ public class LoginController {
         ModelAndView model = null;
         //model.addObject("message", "Datos incorrectos");
         try {
-            
+            System.err.println("ejecutarLogin");
             boolean isValidUser = usuarioService.validarUsuario(usuario.getUsername(), usuario.getPassword());
             if (isValidUser) {
                 //request.setAttribute("loggedInUser", loginBean.getUsername());
@@ -51,6 +60,14 @@ public class LoginController {
             e.printStackTrace();
         }
 
+        return model;
+    }
+
+    @RequestMapping(value = "/web_recuperar_contrasena", method = RequestMethod.GET)
+    public ModelAndView recuperarContrasenia(HttpServletRequest request, HttpServletResponse response, Usuario usuario) {
+        ModelAndView model = new ModelAndView("web_recuperar_contrasena");
+        model.addObject("usuarioBean", usuario);
+        System.err.println("recuperarContrasenia");
         return model;
     }
 }

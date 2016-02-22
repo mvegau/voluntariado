@@ -47,7 +47,7 @@
             <section class="header-login hei-top">
                 <div class="container">
                     <div class="logo">
-                        <a href="?web_inicio"><img src="images/logo.png" /></a>
+                        <a href="index.htm"><img src="images/logo.png" /></a>
                     </div>
                     <div class="row">
                         <div class="col-xs-12 logindiv">
@@ -316,10 +316,10 @@
                                 <div class="row btnform-2 div-actividades">
                                     <div class="col-xs-12 nopadding">
                                         <div class="pull-left top-right">
-                                            <a class="link-a" href="?web_registro_ver_1"> <span class="flecha"> <img src="images/slices2.png"><em>Anterior</em></span></a>
+                                            <a class="link-a" href="web_registro_ver_1.htm"> <span class="flecha"> <img src="images/slices2.png"><em>Anterior</em></span></a>
                                         </div>
                                         <div class="pull-right top-right">
-                                            <a class="link-a" href="?web_registro_ver_3"><span class="flecha-right"><em>Siguiente</em> <img src="images/slices1.png"></span></a>
+                                            <a class="link-a" href="web_registro_ver_3.htm"><span class="flecha-right"><em>Siguiente</em> <img src="images/slices1.png"></span></a>
                                         </div>
                                     </div>
                                 </div>

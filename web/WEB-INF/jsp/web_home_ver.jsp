@@ -47,7 +47,7 @@
             <section class="header-login-interno hei-top">
                 <div class="container">
                     <div class="logo">
-                        <a href="?web_inicio"><img src="images/logo.png" /></a>
+                        <a href="index.htm"><img src="images/logo.png" /></a>
                     </div>
                     <div class="row">
                         <div class="col-xs-12">
@@ -59,13 +59,13 @@
                                 <div class="div-login">
                                     <div class="cont-login pull-right">
                                         <span class="tit-login text-uppercase">JORGE POMA GARCÉS</span>
-                                        <a href="?web_inicio"><span class="close-sesion text-right">Cerrar Sesión</span></a>
+                                        <a href="index.htm"><span class="close-sesion text-right">Cerrar Sesión</span></a>
                                     </div>
                                 </div>
                             </div>
                             <div class="pull-right rlogin">
                                 <div class="tit-derecha-1">
-                                    <a href="?web_home_ver" class="tab-a">
+                                    <a href="web_home_ver.htm" class="tab-a">
                                         <span>VER</span>
                                     </a>
                                 </div>
@@ -345,7 +345,7 @@
                                             <td>Lima</td>
                                             <td>General</td>
                                             <td>
-                                                <a href="?web_detalles_ver_2" class="ver-detalle"></a>
+                                                <a href="web_detalles_ver_2.htm" class="ver-detalle"></a>
                                             </td>
                                             <td class="op-deshabilitar"><span class="habilitado">Deshabilitar</span></td>
                                         </tr>
@@ -361,7 +361,7 @@
                                             <td>Lima</td>
                                             <td>General</td>
                                             <td>
-                                                <a href="?web_detalles_ver_2" class="ver-detalle"></a>
+                                                <a href="web_detalles_ver_2.htm" class="ver-detalle"></a>
                                             </td>
                                             <td class="op-deshabilitar"><span class="habilitado">Deshabilitar</span></td>
                                         </tr>
@@ -377,7 +377,7 @@
                                             <td>Lima</td>
                                             <td>General</td>
                                             <td>
-                                                <a href="?web_detalles_ver_2" class="ver-detalle"></a>
+                                                <a href="web_detalles_ver_2.htm" class="ver-detalle"></a>
                                             </td>
                                             <td class="op-deshabilitar"><span class="habilitado">Deshabilitar</span></td>
                                         </tr>
@@ -393,7 +393,7 @@
                                             <td>Lima</td>
                                             <td>General</td>
                                             <td>
-                                                <a href="?web_detalles_ver_2" class="ver-detalle"></a>
+                                                <a href="web_detalles_ver_2.htm" class="ver-detalle"></a>
                                             </td>
                                             <td class="op-deshabilitar"><span class="habilitado">Deshabilitar</span></td>
                                         </tr>
@@ -409,7 +409,7 @@
                                             <td>Lima</td>
                                             <td>General</td>
                                             <td>
-                                                <a href="?web_detalles_ver_2" class="ver-detalle"></a>
+                                                <a href="web_detalles_ver_2.htm" class="ver-detalle"></a>
                                             </td>
                                             <td class="op-deshabilitar"><span class="habilitado">Deshabilitar</span></td>
                                         </tr>
@@ -425,7 +425,7 @@
                                             <td>Lima</td>
                                             <td>General</td>
                                             <td>
-                                                <a href="?web_detalles_ver_2" class="ver-detalle"></a>
+                                                <a href="web_detalles_ver_2.htm" class="ver-detalle"></a>
                                             </td>
                                             <td class="op-deshabilitar"><span class="habilitado">Deshabilitar</span></td>
                                         </tr>
@@ -441,7 +441,7 @@
                                             <td>Lima</td>
                                             <td>General</td>
                                             <td>
-                                                <a href="?web_detalles_ver_2" class="ver-detalle"></a>
+                                                <a href="web_detalles_ver_2.htm" class="ver-detalle"></a>
                                             </td>
                                             <td class="op-deshabilitar"><span class="habilitado">Deshabilitar</span></td>
                                         </tr>
@@ -457,7 +457,7 @@
                                             <td>Lima</td>
                                             <td>General</td>
                                             <td>
-                                                <a href="?web_detalles_ver_2" class="ver-detalle"></a>
+                                                <a href="web_detalles_ver_2.htm" class="ver-detalle"></a>
                                             </td>
                                             <td class="op-deshabilitar"><span class="habilitado">Deshabilitar</span></td>
                                         </tr>
@@ -473,7 +473,7 @@
                                             <td>Lima</td>
                                             <td>General</td>
                                             <td>
-                                                <a href="?web_detalles_ver_2" class="ver-detalle"></a>
+                                                <a href="web_detalles_ver_2.htm" class="ver-detalle"></a>
                                             </td>
                                             <td class="op-deshabilitar"><span class="habilitado">Deshabilitar</span></td>
                                         </tr>
@@ -485,7 +485,7 @@
                                 <div class="col-xs-12">
                                     <div class="pull-right top-right">
                                         <span class="paginado">
-                                            <em>1-20 de 50 </em><a href="?web_detalles_ver_2" class="link-a"><img src="images/slices1.png"></span></a>
+                                            <em>1-20 de 50 </em><a href="web_detalles_ver_2.htm" class="link-a"><img src="images/slices1.png"></span></a>
                                     </div>
                                 </div>
                             </div>
