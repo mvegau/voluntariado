@@ -5,15 +5,12 @@
        xmlns:p="http://www.springframework.org/schema/p"
        xmlns:aop="http://www.springframework.org/schema/aop"
        xmlns:tx="http://www.springframework.org/schema/tx"
-       xmlns:mvc="http://www.springframework.org/schema/mvc"
-       xmlns:context="http://www.springframework.org/schema/context"
-       xsi:schemaLocation="http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd 
-       http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
        http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.0.xsd
-       http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.0.xsd 
-       http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+       http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.0.xsd">
 
     <bean class="org.springframework.web.servlet.mvc.support.ControllerClassNameHandlerMapping"/>
+    <bean id="login" class="com.tismart.voluntariado.controller.LoginController"/>
 
     <!--
     Most controllers will use the ControllerClassNameHandlerMapping above, but
@@ -24,14 +21,16 @@
         <property name="mappings">
             <props>
                 <prop key="index.htm">indexController</prop>
+                <prop key="index.htm">login</prop>
+                <prop key="web_home_ver.htm">login</prop>
             </props>
         </property>
     </bean>
 
-    <!--bean id="viewResolver"
-    class="org.springframework.web.servlet.view.InternalResourceViewResolver"
-    p:prefix="/WEB-INF/jsp/"
-    p:suffix=".jsp" /-->
+    <bean id="viewResolver"
+          class="org.springframework.web.servlet.view.InternalResourceViewResolver"
+          p:prefix="/WEB-INF/jsp/"
+          p:suffix=".jsp" />
 
     <!--
     The index controller.
@@ -39,20 +38,5 @@
     <bean name="indexController"
           class="org.springframework.web.servlet.mvc.ParameterizableViewController"
           p:viewName="index" />
-    
-    <bean id="messageSource" class="org.springframework.context.support.ResourceBundleMessageSource">
-        <property name="basename" value="messages"/>
-    </bean>
 
-    <!-- Scans the classpath of this application for @Components to deploy as beans -->
-    <context:component-scan base-package="com.tismart.voluntariado.controller" />
-
-    <!-- Configures the @Controller programming model -->
-    <mvc:annotation-driven/>
-	
-    <bean id="viewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">
-        <property name="viewClass" value="org.springframework.web.servlet.view.JstlView"></property>
-        <property name="prefix" value="/WEB-INF/jsp/"></property>
-        <property name="suffix" value=""></property>        
-    </bean>
 </beans>

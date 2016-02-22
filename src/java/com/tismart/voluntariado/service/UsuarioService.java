@@ -5,13 +5,19 @@
  */
 package com.tismart.voluntariado.service;
 
-import java.sql.SQLException;
+import com.tismart.voluntariado.dao.UsuarioDao;
+import org.springframework.beans.factory.annotation.Autowired;
 
 /**
  *
  * @author manuel.vega
  */
-public interface UsuarioService {
+public class UsuarioService {
 
-    public boolean validarUsuario(String username, String password) throws SQLException;
+    @Autowired
+    UsuarioDao usuarioDao = new UsuarioDao();
+
+    public boolean validarUsuario(String username, String password) {
+        return usuarioDao.validarUsuario(username, password);
+    }
 }

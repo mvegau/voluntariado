@@ -5,12 +5,15 @@
  */
 package com.tismart.voluntariado.controller;
 
-import java.io.IOException;
-import javax.servlet.ServletException;
+import com.tismart.voluntariado.bean.Usuario;
+import com.tismart.voluntariado.service.UsuarioService;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 /**
@@ -20,19 +23,34 @@ import org.springframework.web.servlet.ModelAndView;
 @Controller
 public class LoginController {
 
-    @RequestMapping("/index.htm")
-    public ModelAndView handleRequest(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-
-        System.out.println("AAAAAAAAAAAAAAAAAAA");
-        return new ModelAndView("index");
-    }
+    @Autowired
+    UsuarioService usuarioService = new UsuarioService();
     
-    @RequestMapping("/masterpage.html?web_home_ver")
-    public ModelAndView handleRequest2(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
+    @RequestMapping(value = "/index", method = RequestMethod.GET)
+    public ModelAndView desplegarLogin(HttpServletRequest request, HttpServletResponse response, Usuario usuario) {
+        ModelAndView model = new ModelAndView("index");
+        model.addObject("usuarioBean", usuario);
+        return model;
+    }
 
-        System.out.println("BBBBBBBBBBBBBBBBBB");
-        return new ModelAndView("masterpage.html?web_home_ver");
+    @RequestMapping(value = "/web_home_ver", method = RequestMethod.POST)
+    public ModelAndView ejecutarLogin(HttpServletRequest request, HttpServletResponse response, @ModelAttribute("usuarioBean") Usuario usuario) {
+        ModelAndView model = null;
+        //model.addObject("message", "Datos incorrectos");
+        try {
+            
+            boolean isValidUser = usuarioService.validarUsuario(usuario.getUsername(), usuario.getPassword());
+            if (isValidUser) {
+                //request.setAttribute("loggedInUser", loginBean.getUsername());
+                model = new ModelAndView("web_home_ver");
+            } else {
+                model = new ModelAndView("index");
+                request.setAttribute("message", "Datos incorrectos");
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return model;
     }
 }
