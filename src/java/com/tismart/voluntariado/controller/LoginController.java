@@ -34,15 +34,7 @@ public class LoginController {
         return model;
     }
 
-    @RequestMapping(value = "/web_home_ver", method = RequestMethod.GET)
-    public ModelAndView recargarInicio(HttpServletRequest request, HttpServletResponse response, Usuario usuario) {
-        ModelAndView model = new ModelAndView("web_home_ver");
-        model.addObject("usuarioBean", usuario);
-        System.err.println("recargarInicio");
-        return model;
-    }
-
-    @RequestMapping(value = "/web_home_ver", method = RequestMethod.POST)
+    @RequestMapping(value = "/index", method = RequestMethod.POST)
     public ModelAndView ejecutarLogin(HttpServletRequest request, HttpServletResponse response, @ModelAttribute("usuarioBean") Usuario usuario) {
         ModelAndView model = null;
         //model.addObject("message", "Datos incorrectos");
@@ -50,7 +42,7 @@ public class LoginController {
             System.err.println("ejecutarLogin");
             boolean isValidUser = usuarioService.validarUsuario(usuario.getUsername(), usuario.getPassword());
             if (isValidUser) {
-                //request.setAttribute("loggedInUser", loginBean.getUsername());
+                //request.setAttribute("usuarioLog", usuario.getUsername());
                 model = new ModelAndView("web_home_ver");
             } else {
                 model = new ModelAndView("index");
@@ -60,6 +52,15 @@ public class LoginController {
             e.printStackTrace();
         }
 
+        return model;
+    }
+
+    @RequestMapping(value = "/web_home_ver", method = RequestMethod.GET)
+    public ModelAndView recargarHome(HttpServletRequest request, HttpServletResponse response, Usuario usuario) {
+        ModelAndView model = new ModelAndView("web_home_ver");
+        //request.setAttribute("usuarioLog", usuario.getUsername());
+        model.addObject("usuarioBean", usuario);
+        System.err.println("recargarHome");
         return model;
     }
 
