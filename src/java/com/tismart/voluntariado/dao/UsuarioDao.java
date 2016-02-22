@@ -5,6 +5,7 @@
  */
 package com.tismart.voluntariado.dao;
 
+import com.tismart.voluntariado.util.HibernateUtil;
 import java.util.List;
 import javax.annotation.Resource;
 import org.hibernate.Query;
@@ -29,22 +30,27 @@ public class UsuarioDao {
     }
 
     public boolean validarUsuario(String username, String password) {
-//        Session session = sessionFactory.openSession();
-//        boolean userFound = false;
-//        //Query using Hibernate Query Language
-//        String SQL_QUERY = " from Users as o where o.userName=? and o.userPassword=?";
-//        Query query = session.createQuery(SQL_QUERY);
-//        query.setParameter(0, username);
-//        query.setParameter(1, password);
-//        List list = query.list();
-//
-//        if ((list != null) && (list.size() > 0)) {
-//            userFound = true;
-//        }
-//
-//        session.close();
-//        return userFound;
-        return true;
+        Session session = HibernateUtil.getSessionFactory().openSession();
+        boolean userFound = false;
+        //Query using Hibernate Query Language
+        System.out.println("dfdfdfdffffffffffffffffffff");
+        String SQL_QUERY = " from VolUsuario as o where o.nombre=? and o.password=?";
+          System.out.println("dfdfdfdffffffffffffffffffff");
+        Query query = session.createQuery(SQL_QUERY);
+        System.out.println("dfdfdfdffffffffffffffffffff");
+        query.setParameter(0, username);
+        query.setParameter(1, password);
+          System.out.println("dfdfdfdffffffffffffffffffff");
+        List list = query.list();
+        System.out.print("username "+ username);
+        System.out.print("password "+ password);
+        System.out.print("list "+ list);
+        if ((list != null) && (list.size() > 0)) {
+            userFound = true;
+        }
+
+        session.close();
+        return userFound;
     }
 
 }

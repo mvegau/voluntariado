@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 22-feb-2016 9:49:07 by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="com.tismart.voluntariado.bean.VolCargo" table="VOL_CARGO" schema="UINDECI" optimistic-lock="version">
+        <id name="ideCargo" type="big_decimal">
+            <column name="IDE_CARGO" precision="22" scale="0" />
+            <generator class="assigned" />
+        </id>
+        <property name="usumodificacion" type="string">
+            <column name="USUMODIFICACION" length="60" />
+        </property>
+        <property name="fecModificacion" type="date">
+            <column name="FEC_MODIFICACION" length="7" />
+        </property>
+        <property name="nombre" type="string">
+            <column name="NOMBRE" length="60" />
+        </property>
+        <property name="usucreacion" type="string">
+            <column name="USUCREACION" length="60" />
+        </property>
+        <property name="fecCreacion" type="date">
+            <column name="FEC_CREACION" length="7" />
+        </property>
+        <set name="volUsuarios" table="VOL_USUARIO" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="IDE_CARGO" precision="22" scale="0" />
+            </key>
+            <one-to-many class="com.tismart.voluntariado.bean.VolUsuario" />
+        </set>
+    </class>
+</hibernate-mapping>

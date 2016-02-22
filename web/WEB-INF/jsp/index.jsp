@@ -60,7 +60,7 @@
                             <div class="pull-right">
                                 <form class="form-group login-inputs" id="loginForm" method="post" action="index.htm" modelAttribute="usuarioBean">
                                     <div class="col-xs-5 nopadding rightinput">
-                                        <input type="text" class="form-control in-login" id="username" name="username"/>
+                                        <input type="text" class="form-control in-login" id="nombre" name="nombre"/>
                                         <font color="red">${message}</font>
                                     </div>
                                     <div class="col-xs-5 nopadding">

@@ -5,7 +5,7 @@
  */
 package com.tismart.voluntariado.controller;
 
-import com.tismart.voluntariado.bean.Usuario;
+import com.tismart.voluntariado.bean.VolUsuario;
 import com.tismart.voluntariado.service.UsuarioService;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -27,7 +27,7 @@ public class LoginController {
     UsuarioService usuarioService = new UsuarioService();
 
     @RequestMapping(value = "/index", method = RequestMethod.GET)
-    public ModelAndView desplegarLogin(HttpServletRequest request, HttpServletResponse response, Usuario usuario) {
+    public ModelAndView desplegarLogin(HttpServletRequest request, HttpServletResponse response, VolUsuario usuario) {
         ModelAndView model = new ModelAndView("index");
         model.addObject("usuarioBean", usuario);
         System.err.println("desplegarLogin");
@@ -35,12 +35,15 @@ public class LoginController {
     }
 
     @RequestMapping(value = "/index", method = RequestMethod.POST)
-    public ModelAndView ejecutarLogin(HttpServletRequest request, HttpServletResponse response, @ModelAttribute("usuarioBean") Usuario usuario) {
+    public ModelAndView ejecutarLogin(HttpServletRequest request, HttpServletResponse response, @ModelAttribute("usuarioBean") VolUsuario usuario) {
+
         ModelAndView model = null;
         //model.addObject("message", "Datos incorrectos");
         try {
+
             System.err.println("ejecutarLogin");
-            boolean isValidUser = usuarioService.validarUsuario(usuario.getUsername(), usuario.getPassword());
+            boolean isValidUser = usuarioService.validarUsuario(usuario.getNombre(), usuario.getPassword());
+
             if (isValidUser) {
                 //request.setAttribute("usuarioLog", usuario.getUsername());
                 model = new ModelAndView("web_home_ver");
@@ -56,7 +59,7 @@ public class LoginController {
     }
 
     @RequestMapping(value = "/web_home_ver", method = RequestMethod.GET)
-    public ModelAndView recargarHome(HttpServletRequest request, HttpServletResponse response, Usuario usuario) {
+    public ModelAndView recargarHome(HttpServletRequest request, HttpServletResponse response, VolUsuario usuario) {
         ModelAndView model = new ModelAndView("web_home_ver");
         //request.setAttribute("usuarioLog", usuario.getUsername());
         model.addObject("usuarioBean", usuario);
@@ -65,7 +68,7 @@ public class LoginController {
     }
 
     @RequestMapping(value = "/web_recuperar_contrasena", method = RequestMethod.GET)
-    public ModelAndView recuperarContrasenia(HttpServletRequest request, HttpServletResponse response, Usuario usuario) {
+    public ModelAndView recuperarContrasenia(HttpServletRequest request, HttpServletResponse response, VolUsuario usuario) {
         ModelAndView model = new ModelAndView("web_recuperar_contrasena");
         model.addObject("usuarioBean", usuario);
         System.err.println("recuperarContrasenia");

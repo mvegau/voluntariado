@@ -59,7 +59,7 @@
                                 <div class="pull-right login-ob">
                                     <div class="div-login">
                                         <div class="cont-login pull-right">
-                                            <span class="tit-login text-uppercase">${usuarioBean.username}</span>
+                                            <span class="tit-login text-uppercase">${usuarioBean.nombre}</span>
                                             <a href="index.htm"><span class="close-sesion text-right">Cerrar Sesión</span></a>
                                         </div>
                                     </div>
