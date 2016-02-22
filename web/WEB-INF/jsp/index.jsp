@@ -11,7 +11,7 @@
 
     <head>
         <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge ">
         <meta name="description" content="">
         <meta name="keywords" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -60,7 +60,7 @@
                             <div class="pull-right">
                                 <form class="form-group login-inputs" id="loginForm" method="post" action="web_home_ver.htm" modelAttribute="usuarioBean">
                                     <div class="col-xs-5 nopadding rightinput">
-                                        <input type="text" class="form-control in-login" id="username" name="username"/>
+                                        <input type="text" class="form-control in-login" id="nombre" name="nombre"/>
                                         <font color="red">${message}</font>
                                     </div>
                                     <div class="col-xs-5 nopadding">

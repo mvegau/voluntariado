@@ -6,6 +6,7 @@
 package com.tismart.voluntariado.controller;
 
 import com.tismart.voluntariado.bean.Usuario;
+import com.tismart.voluntariado.bean.VolUsuario;
 import com.tismart.voluntariado.service.UsuarioService;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -34,12 +35,11 @@ public class LoginController {
     }
 
     @RequestMapping(value = "/web_home_ver", method = RequestMethod.POST)
-    public ModelAndView ejecutarLogin(HttpServletRequest request, HttpServletResponse response, @ModelAttribute("usuarioBean") Usuario usuario) {
+    public ModelAndView ejecutarLogin(HttpServletRequest request, HttpServletResponse response, @ModelAttribute("usuarioBean") VolUsuario usuario) {
         ModelAndView model = null;
         //model.addObject("message", "Datos incorrectos");
         try {
-            
-            boolean isValidUser = usuarioService.validarUsuario(usuario.getUsername(), usuario.getPassword());
+            boolean isValidUser = usuarioService.validarUsuario(usuario.getNombre() , usuario.getPassword());
             if (isValidUser) {
                 //request.setAttribute("loggedInUser", loginBean.getUsername());
                 model = new ModelAndView("web_home_ver");
