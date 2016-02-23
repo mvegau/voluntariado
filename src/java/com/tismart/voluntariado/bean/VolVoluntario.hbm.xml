@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<!-- Generated 22-feb-2016 14:53:29 by Hibernate Tools 4.3.1 -->
+<!-- Generated 23-feb-2016 11:38:34 by Hibernate Tools 4.3.1 -->
 <hibernate-mapping>
     <class name="com.tismart.voluntariado.bean.VolVoluntario" table="VOL_VOLUNTARIO" schema="UINDECI" optimistic-lock="version">
         <id name="ideVoluntario" type="big_decimal">
@@ -16,6 +16,9 @@
         </many-to-one>
         <many-to-one name="volPais" class="com.tismart.voluntariado.bean.VolPais" fetch="select">
             <column name="COD_PAIS" precision="22" scale="0" />
+        </many-to-one>
+        <many-to-one name="volDepartamento" class="com.tismart.voluntariado.bean.VolDepartamento" fetch="select">
+            <column name="COD_DEPARTAMENTO" precision="22" scale="0" />
         </many-to-one>
         <many-to-one name="volTipvolun" class="com.tismart.voluntariado.bean.VolTipvolun" fetch="select">
             <column name="IDE_TIPOVOLUNTARIO" precision="22" scale="0" />
@@ -34,9 +37,6 @@
         </many-to-one>
         <many-to-one name="volDistrito" class="com.tismart.voluntariado.bean.VolDistrito" fetch="select">
             <column name="COD_DISTRITO" precision="22" scale="0" />
-        </many-to-one>
-        <many-to-one name="volDepartamento" class="com.tismart.voluntariado.bean.VolDepartamento" fetch="select">
-            <column name="COD_DEPARTAMENTO" precision="22" scale="0" />
         </many-to-one>
         <many-to-one name="volGrupo" class="com.tismart.voluntariado.bean.VolGrupo" fetch="select">
             <column name="IDE_GRUPO" precision="22" scale="0" />

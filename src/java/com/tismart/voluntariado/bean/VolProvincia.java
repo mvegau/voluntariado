@@ -1,5 +1,5 @@
 package com.tismart.voluntariado.bean;
-// Generated 22-feb-2016 14:53:29 by Hibernate Tools 4.3.1
+// Generated 23-feb-2016 11:38:34 by Hibernate Tools 4.3.1
 
 
 import java.math.BigDecimal;

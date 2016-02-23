@@ -1,5 +1,5 @@
 package com.tismart.voluntariado.bean;
-// Generated 22-feb-2016 14:53:29 by Hibernate Tools 4.3.1
+// Generated 23-feb-2016 11:38:34 by Hibernate Tools 4.3.1
 
 
 import java.math.BigDecimal;
@@ -15,13 +15,13 @@ public class VolVoluntario  implements java.io.Serializable {
      private VolTipdocum volTipdocum;
      private VolEstavolun volEstavolun;
      private VolPais volPais;
+     private VolDepartamento volDepartamento;
      private VolTipvolun volTipvolun;
      private VolProvincia volProvincia;
      private VolProfesion volProfesion;
      private VolGsanguineo volGsanguineo;
      private VolGradoacade volGradoacade;
      private VolDistrito volDistrito;
-     private VolDepartamento volDepartamento;
      private VolGrupo volGrupo;
      private String apreciacion;
      private BigDecimal esrepresentante;
@@ -61,18 +61,18 @@ public class VolVoluntario  implements java.io.Serializable {
         this.celular = celular;
         this.correo = correo;
     }
-    public VolVoluntario(BigDecimal ideVoluntario, VolTipdocum volTipdocum, VolEstavolun volEstavolun, VolPais volPais, VolTipvolun volTipvolun, VolProvincia volProvincia, VolProfesion volProfesion, VolGsanguineo volGsanguineo, VolGradoacade volGradoacade, VolDistrito volDistrito, VolDepartamento volDepartamento, VolGrupo volGrupo, String apreciacion, BigDecimal esrepresentante, BigDecimal indHabilitado, String nombres, String apellidos, String numDocumento, Date fecNacimiento, String rutaautorizacion, String domicilio, String telefono, String celular, String correo, String cskype, String motivacion, Date fecRegistro, Date fecValidacion, Character indPertenecegrupo, BigDecimal aceptaterminos) {
+    public VolVoluntario(BigDecimal ideVoluntario, VolTipdocum volTipdocum, VolEstavolun volEstavolun, VolPais volPais, VolDepartamento volDepartamento, VolTipvolun volTipvolun, VolProvincia volProvincia, VolProfesion volProfesion, VolGsanguineo volGsanguineo, VolGradoacade volGradoacade, VolDistrito volDistrito, VolGrupo volGrupo, String apreciacion, BigDecimal esrepresentante, BigDecimal indHabilitado, String nombres, String apellidos, String numDocumento, Date fecNacimiento, String rutaautorizacion, String domicilio, String telefono, String celular, String correo, String cskype, String motivacion, Date fecRegistro, Date fecValidacion, Character indPertenecegrupo, BigDecimal aceptaterminos) {
        this.ideVoluntario = ideVoluntario;
        this.volTipdocum = volTipdocum;
        this.volEstavolun = volEstavolun;
        this.volPais = volPais;
+       this.volDepartamento = volDepartamento;
        this.volTipvolun = volTipvolun;
        this.volProvincia = volProvincia;
        this.volProfesion = volProfesion;
        this.volGsanguineo = volGsanguineo;
        this.volGradoacade = volGradoacade;
        this.volDistrito = volDistrito;
-       this.volDepartamento = volDepartamento;
        this.volGrupo = volGrupo;
        this.apreciacion = apreciacion;
        this.esrepresentante = esrepresentante;
@@ -122,6 +122,13 @@ public class VolVoluntario  implements java.io.Serializable {
     public void setVolPais(VolPais volPais) {
         this.volPais = volPais;
     }
+    public VolDepartamento getVolDepartamento() {
+        return this.volDepartamento;
+    }
+    
+    public void setVolDepartamento(VolDepartamento volDepartamento) {
+        this.volDepartamento = volDepartamento;
+    }
     public VolTipvolun getVolTipvolun() {
         return this.volTipvolun;
     }
@@ -163,13 +170,6 @@ public class VolVoluntario  implements java.io.Serializable {
     
     public void setVolDistrito(VolDistrito volDistrito) {
         this.volDistrito = volDistrito;
-    }
-    public VolDepartamento getVolDepartamento() {
-        return this.volDepartamento;
-    }
-    
-    public void setVolDepartamento(VolDepartamento volDepartamento) {
-        this.volDepartamento = volDepartamento;
     }
     public VolGrupo getVolGrupo() {
         return this.volGrupo;

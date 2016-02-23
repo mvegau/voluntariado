@@ -14,6 +14,7 @@ import org.hibernate.SessionFactory;
  *
  * @author jean.ayvar
  */
+@SuppressWarnings("deprecation")
 public class HibernateUtil {
 
     private static final SessionFactory sessionFactory;
