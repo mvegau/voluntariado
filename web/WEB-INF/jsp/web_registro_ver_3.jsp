@@ -47,7 +47,7 @@
             <section class="header-login hei-top">
                 <div class="container">
                     <div class="logo">
-                        <a href="?web_inicio"><img src="images/logo.png"/></a>
+                        <a href="index.htm"><img src="images/logo.png"/></a>
                     </div>
                     <div class="row">
                         <div class="col-xs-12 logindiv">
@@ -62,7 +62,7 @@
             </section>
             <section class="cont-white">
                 <div class="container">
-                    <form>
+                    <form method="get" action="web_terminos_legales_ver.htm" modelAttribute="usuarioBean">
                         <div class="row">
                             <div class="col-xs-12 contenedor-input">
                                 <div class="row top-row">
@@ -92,7 +92,8 @@
                                     <div class="col-xs-12">
                                         <div class="col-xs-4"></div>
                                         <div class="col-xs-4 text-center">
-                                            <button class="btn btn-default btn-terminos" onclick="parent.location = '?web_terminos_legales_ver'" type="button">TERMINOS Y CONDICIONES LEGALES</button>
+                                            <!--button class="btn btn-default btn-terminos" onclick="parent.location = '?web_terminos_legales_ver'" type="button">TERMINOS Y CONDICIONES LEGALES</button-->
+                                            <button onClick="" class="btn btn-default btn-terminos"  type="submit">TERMINOS Y CONDICIONES LEGALES</button>
                                         </div>
                                         <div class="col-xs-4"></div>
                                     </div>
@@ -101,7 +102,7 @@
                                 <div class="row">
                                     <div class="col-xs-12 nopadding">
                                         <div class="pull-left top-right">
-                                            <a class="link-a" href="?web_registro_ver_2">  <span class="flecha"> <img src="images/slices2.png"><em>Anterior</em></span></a>
+                                            <a class="link-a" href="web_registro_ver_2.htm">  <span class="flecha"> <img src="images/slices2.png"><em>Anterior</em></span></a>
                                         </div>
 
                                     </div>

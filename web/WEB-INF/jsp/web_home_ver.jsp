@@ -47,30 +47,32 @@
             <section class="header-login-interno hei-top">
                 <div class="container">
                     <div class="logo">
-                        <a href="?web_inicio"><img src="images/logo.png" /></a>
+                        <a href="index.htm"><img src="images/logo.png" /></a>
                     </div>
                     <div class="row">
-                        <div class="col-xs-12">
-                            <div class="pull-left">
-                                <h2 class="titulo-principal-interno">LISTA DE VOLUNTARIOS</h2>
-                                <span class="text-span">VOLUNTARIO EN EMERGENCIAS Y REHABILITACIÓN</span>
-                            </div>
-                            <div class="pull-right login-ob">
-                                <div class="div-login">
-                                    <div class="cont-login pull-right">
-                                        <span class="tit-login text-uppercase">JORGE POMA GARCÉS</span>
-                                        <a href="?web_inicio"><span class="close-sesion text-right">Cerrar Sesión</span></a>
+                        <form method="get" action="web_home_ver.htm" modelAttribute="usuarioBean">
+                            <div class="col-xs-12">
+                                <div class="pull-left">
+                                    <h2 class="titulo-principal-interno">LISTA DE VOLUNTARIOS</h2>
+                                    <span class="text-span">VOLUNTARIO EN EMERGENCIAS Y REHABILITACIÓN</span>
+                                </div>
+                                <div class="pull-right login-ob">
+                                    <div class="div-login">
+                                        <div class="cont-login pull-right">
+                                            <span class="tit-login text-uppercase">${usuarioBean.nombre}</span>
+                                            <a href="index.htm"><span class="close-sesion text-right">Cerrar Sesión</span></a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="pull-right rlogin">
+                                    <div class="tit-derecha-1">
+                                        <a href="web_home_ver.htm" class="tab-a">
+                                            <span>VER</span>
+                                        </a>
                                     </div>
                                 </div>
                             </div>
-                            <div class="pull-right rlogin">
-                                <div class="tit-derecha-1">
-                                    <a href="?web_home_ver" class="tab-a">
-                                        <span>VER</span>
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
+                        </form>
                     </div>
             </section>
             <section class="cont-white">
@@ -345,135 +347,7 @@
                                             <td>Lima</td>
                                             <td>General</td>
                                             <td>
-                                                <a href="?web_detalles_ver_2" class="ver-detalle"></a>
-                                            </td>
-                                            <td class="op-deshabilitar"><span class="habilitado">Deshabilitar</span></td>
-                                        </tr>
-                                        <tr>
-                                            <td class="bs-checkbox-1 ">
-                                                <input type="checkbox" value="">
-                                            </td>
-                                            <td>Juan</td>
-                                            <td>Pérez Rivas</td>
-                                            <td>Alertado Sismo</td>
-                                            <td>02-10-80</td>
-                                            <td>Medicina</td>
-                                            <td>Lima</td>
-                                            <td>General</td>
-                                            <td>
-                                                <a href="?web_detalles_ver_2" class="ver-detalle"></a>
-                                            </td>
-                                            <td class="op-deshabilitar"><span class="habilitado">Deshabilitar</span></td>
-                                        </tr>
-                                        <tr>
-                                            <td class="bs-checkbox-1 ">
-                                                <input type="checkbox" value="">
-                                            </td>
-                                            <td>Juan</td>
-                                            <td>Pérez Rivas</td>
-                                            <td>Alertado Sismo</td>
-                                            <td>02-10-80</td>
-                                            <td>Medicina</td>
-                                            <td>Lima</td>
-                                            <td>General</td>
-                                            <td>
-                                                <a href="?web_detalles_ver_2" class="ver-detalle"></a>
-                                            </td>
-                                            <td class="op-deshabilitar"><span class="habilitado">Deshabilitar</span></td>
-                                        </tr>
-                                        <tr>
-                                            <td class="bs-checkbox-1 ">
-                                                <input type="checkbox" value="">
-                                            </td>
-                                            <td>Juan</td>
-                                            <td>Pérez Rivas</td>
-                                            <td>Alertado Sismo</td>
-                                            <td>02-10-80</td>
-                                            <td>Medicina</td>
-                                            <td>Lima</td>
-                                            <td>General</td>
-                                            <td>
-                                                <a href="?web_detalles_ver_2" class="ver-detalle"></a>
-                                            </td>
-                                            <td class="op-deshabilitar"><span class="habilitado">Deshabilitar</span></td>
-                                        </tr>
-                                        <tr>
-                                            <td class="bs-checkbox-1 ">
-                                                <input type="checkbox" value="">
-                                            </td>
-                                            <td>Juan</td>
-                                            <td>Pérez Rivas</td>
-                                            <td>Alertado Sismo</td>
-                                            <td>02-10-80</td>
-                                            <td>Medicina</td>
-                                            <td>Lima</td>
-                                            <td>General</td>
-                                            <td>
-                                                <a href="?web_detalles_ver_2" class="ver-detalle"></a>
-                                            </td>
-                                            <td class="op-deshabilitar"><span class="habilitado">Deshabilitar</span></td>
-                                        </tr>
-                                        <tr>
-                                            <td class="bs-checkbox-1 ">
-                                                <input type="checkbox" value="">
-                                            </td>
-                                            <td>Juan</td>
-                                            <td>Pérez Rivas</td>
-                                            <td>Alertado Sismo</td>
-                                            <td>02-10-80</td>
-                                            <td>Medicina</td>
-                                            <td>Lima</td>
-                                            <td>General</td>
-                                            <td>
-                                                <a href="?web_detalles_ver_2" class="ver-detalle"></a>
-                                            </td>
-                                            <td class="op-deshabilitar"><span class="habilitado">Deshabilitar</span></td>
-                                        </tr>
-                                        <tr>
-                                            <td class="bs-checkbox-1 ">
-                                                <input type="checkbox" value="">
-                                            </td>
-                                            <td>Juan</td>
-                                            <td>Pérez Rivas</td>
-                                            <td>Alertado Sismo</td>
-                                            <td>02-10-80</td>
-                                            <td>Medicina</td>
-                                            <td>Lima</td>
-                                            <td>General</td>
-                                            <td>
-                                                <a href="?web_detalles_ver_2" class="ver-detalle"></a>
-                                            </td>
-                                            <td class="op-deshabilitar"><span class="habilitado">Deshabilitar</span></td>
-                                        </tr>
-                                        <tr>
-                                            <td class="bs-checkbox-1 ">
-                                                <input type="checkbox" value="">
-                                            </td>
-                                            <td>Juan</td>
-                                            <td>Pérez Rivas</td>
-                                            <td>Alertado Sismo</td>
-                                            <td>02-10-80</td>
-                                            <td>Medicina</td>
-                                            <td>Lima</td>
-                                            <td>General</td>
-                                            <td>
-                                                <a href="?web_detalles_ver_2" class="ver-detalle"></a>
-                                            </td>
-                                            <td class="op-deshabilitar"><span class="habilitado">Deshabilitar</span></td>
-                                        </tr>
-                                        <tr>
-                                            <td class="bs-checkbox-1">
-                                                <input type="checkbox" value="">
-                                            </td>
-                                            <td>Juan</td>
-                                            <td>Pérez Rivas</td>
-                                            <td>Alertado Sismo</td>
-                                            <td>02-10-80</td>
-                                            <td>Medicina</td>
-                                            <td>Lima</td>
-                                            <td>General</td>
-                                            <td>
-                                                <a href="?web_detalles_ver_2" class="ver-detalle"></a>
+                                                <a href="web_detalles_ver_2.htm" class="ver-detalle"></a>
                                             </td>
                                             <td class="op-deshabilitar"><span class="habilitado">Deshabilitar</span></td>
                                         </tr>
@@ -485,7 +359,7 @@
                                 <div class="col-xs-12">
                                     <div class="pull-right top-right">
                                         <span class="paginado">
-                                            <em>1-20 de 50 </em><a href="?web_detalles_ver_2" class="link-a"><img src="images/slices1.png"></span></a>
+                                            <em>1-20 de 50 </em><a href="web_detalles_ver_2.htm" class="link-a"><img src="images/slices1.png"></span></a>
                                     </div>
                                 </div>
                             </div>

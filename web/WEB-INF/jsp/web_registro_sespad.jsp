@@ -47,7 +47,7 @@
             <section class="header-login hei-top">
                 <div class="container">
                     <div class="logo">
-                        <a href="?web_inicio"><img src="images/logo.png"/></a>
+                        <a href="index.htm"><img src="images/logo.png"/></a>
                     </div>
                     <div class="row">
                         <div class="col-xs-12 logindiv">

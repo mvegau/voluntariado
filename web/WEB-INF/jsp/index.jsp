@@ -58,9 +58,9 @@
                     <div class="row">
                         <div class="col-xs-12 logindiv">
                             <div class="pull-right">
-                                <form class="form-group login-inputs" id="loginForm" method="post" action="web_home_ver.htm" modelAttribute="usuarioBean">
+                                <form class="form-group login-inputs" id="loginForm" method="post" action="index.htm" modelAttribute="usuarioBean">
                                     <div class="col-xs-5 nopadding rightinput">
-                                        <input type="text" class="form-control in-login" id="nombre" name="nombre"/>
+                                        <input type="text" placeholder="Número de Documento" class="form-control in-login" id="nombre" name="nombre"/>
                                         <font color="red">${message}</font>
                                     </div>
                                     <div class="col-xs-5 nopadding">

@@ -11,6 +11,7 @@
 
     <bean class="org.springframework.web.servlet.mvc.support.ControllerClassNameHandlerMapping"/>
     <bean id="login" class="com.tismart.voluntariado.controller.LoginController"/>
+    <bean id="usuarios" class="com.tismart.voluntariado.controller.UsuarioController"/>
 
     <!--
     Most controllers will use the ControllerClassNameHandlerMapping above, but
@@ -23,6 +24,12 @@
                 <prop key="index.htm">indexController</prop>
                 <prop key="index.htm">login</prop>
                 <prop key="web_home_ver.htm">login</prop>
+                <prop key="web_recuperar_contrasena.htm">login</prop>
+                <prop key="web_registro_ver_1.htm">usuarios</prop>
+                <prop key="web_registro_ver_2.htm">usuarios</prop>
+                <prop key="web_registro_ver_3.htm">usuarios</prop>
+                <prop key="web_terminos_legales_ver.htm">usuarios</prop>
+                <prop key="web_detalles_ver_2.htm">usuarios</prop>
             </props>
         </property>
     </bean>
