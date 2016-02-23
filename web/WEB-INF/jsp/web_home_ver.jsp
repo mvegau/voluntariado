@@ -50,7 +50,7 @@
                         <a href="index.htm"><img src="images/logo.png" /></a>
                     </div>
                     <div class="row">
-                        <form method="" action="web_home_ver.htm" modelAttribute="usuarioBean" id="usuarioBean">
+                        <form method="get" action="web_home_ver.htm" modelAttribute="usuarioBean">
                             <div class="col-xs-12">
                                 <div class="pull-left">
                                     <h2 class="titulo-principal-interno">LISTA DE VOLUNTARIOS</h2>

@@ -62,7 +62,7 @@
             </section>
             <section class="cont-white">
                 <div class="container">
-                    <form>
+                    <form modelAttribute="voluntarioBean" commandName="voluntarioBean" method="get" action="web_registro_ver_2.htm">
                         <div class="row">
                             <div class="col-xs-12 contenedor-input register-container">
                                 <div class="row top-row">
@@ -145,7 +145,7 @@
                                     <div class="col-xs-4 nopadding">
                                         <div class="form-group winput">
                                             <label>Nombres</label>
-                                            <input type="text" class="form-control" placeholder="">
+                                            <input type="text" class="form-control" placeholder="" id="nombre" name="nombre">
                                         </div>
                                     </div>
                                     <div class="col-xs-8 nopadding">
@@ -278,9 +278,9 @@
 
                                 <div class="row btnform-2">
                                     <div class="col-xs-12 nopadding">
-                                        <div class="pull-right top-right">
-                                            <a href="web_registro_ver_2.htm" class="link-a"><span class="flecha-right"><em>Siguiente</em> <img src="images/slices1.png"></span></a>
-                                        </div>
+                                            <div class="pull-right top-right">
+                                            <a modelAttribute="voluntarioBean" commandName="voluntarioBean" method="get" action="web_registro_ver_2.htm" href="web_registro_ver_2.htm" class="link-a"><span class="flecha-right"><em>Siguiente</em> <img src="images/slices1.png"></span></a>
+                                            </div>
                                     </div>
                                 </div>
 

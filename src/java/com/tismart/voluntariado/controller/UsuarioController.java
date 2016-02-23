@@ -29,13 +29,13 @@ public class UsuarioController {
     @RequestMapping(value = "/web_registro_ver_1", method = RequestMethod.GET)
     public ModelAndView mostrarDetalle1(HttpServletRequest request, HttpServletResponse response, VolUsuario usuario) {
         ModelAndView model = new ModelAndView("web_registro_ver_1");
-        model.addObject("usuarioBean", usuario);
+        model.addObject("voluntarioBean", usuario);
         System.out.println("mostrarDetalle1");
         return model;
     }
 
     @RequestMapping(value = "/web_registro_ver_1", method = RequestMethod.POST)
-    public ModelAndView guardarDetalle1(HttpServletRequest request, HttpServletResponse response, @ModelAttribute("usuarioBean") VolUsuario usuario) {
+    public ModelAndView guardarDetalle1(HttpServletRequest request, HttpServletResponse response, @ModelAttribute("voluntarioBean") VolUsuario usuario) {
         ModelAndView model = null;
         System.out.println("guardarDetalle1");
         model = new ModelAndView("web_registro_ver_2");
@@ -44,10 +44,10 @@ public class UsuarioController {
     }
 
     @RequestMapping(value = "/web_registro_ver_2", method = RequestMethod.GET)
-    public ModelAndView mostrarDetalle2(HttpServletRequest request, HttpServletResponse response, VolUsuario usuario) {
+    public ModelAndView mostrarDetalle2(HttpServletRequest request, HttpServletResponse response, @ModelAttribute("voluntarioBean") VolUsuario usuario) {
         ModelAndView model = new ModelAndView("web_registro_ver_2");
-        model.addObject("usuarioBean", usuario);
-        System.out.println("mostrarDetalle2");
+        model.addObject("voluntarioBean", usuario);
+        System.out.println("mostrarDetalle2" + usuario.getNombre());
         return model;
     }
 
