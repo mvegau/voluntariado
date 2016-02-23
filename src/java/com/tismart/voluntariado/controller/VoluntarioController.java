@@ -5,10 +5,14 @@
  */
 package com.tismart.voluntariado.controller;
 
+import com.tismart.voluntariado.bean.VolDepartamento;
+import com.tismart.voluntariado.bean.VolDistrito;
 import com.tismart.voluntariado.bean.VolPais;
+import com.tismart.voluntariado.bean.VolProvincia;
 import com.tismart.voluntariado.bean.VolVoluntario;
 import com.tismart.voluntariado.service.UbigeoService;
 import com.tismart.voluntariado.service.VoluntarioService;
+import java.math.BigDecimal;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
@@ -37,6 +41,8 @@ public class VoluntarioController {
     public ModelAndView cargarDetalle1(HttpServletRequest request, HttpServletResponse response, VolVoluntario voluntario) {
         ModelAndView model = new ModelAndView("web_registro_ver_1");
         model.addObject("voluntarioBean", voluntario);
+        //VolPais volpais = new VolPais();
+        //model.addObject("paisBean", volpais);
         System.out.println("cargarDetalle1");
         volVoluntario = new VolVoluntario();
         return model;
@@ -46,7 +52,7 @@ public class VoluntarioController {
     public ModelAndView guardarDetalle1(HttpServletRequest request, HttpServletResponse response,
             @ModelAttribute("voluntarioBean") VolVoluntario voluntario) {
         ModelAndView model = new ModelAndView("web_registro_ver_2");
-        System.out.println("guardarDetalle1"+voluntario.getCelular());
+        System.out.println("guardarDetalle1" + voluntario.getVolPais().getCodPais());
         volVoluntario = voluntario;
         model.addObject("voluntarioBean", volVoluntario);
         return model;
@@ -132,10 +138,50 @@ public class VoluntarioController {
 
         Map<String, String> paises = new LinkedHashMap<String, String>();
         List listaPaises = ubigeoService.obtenerPaises();
-        //paises = (Map<String, String>) ubigeoService.obtenerPaises();
-        for(int i = 0; i < listaPaises.size();i++){
+        for (int i = 0; i < listaPaises.size(); i++) {
+            VolPais pais = (VolPais) listaPaises.get(i);
             //paises.put((VolPais) listaPaises.get(i).get);
+            paises.put(pais.getCodPais().toString(), pais.getNombrepa());
         }
         return paises;
+    }
+
+    //@ModelAttribute("departamentos")
+    public Map<String, String> listaDepartamentos(String codPais) {
+
+        Map<String, String> departamentos = new LinkedHashMap<String, String>();
+        List listaDepartamentos = ubigeoService.obtenerDepartamentos(codPais);
+        for (int i = 0; i < listaDepartamentos.size(); i++) {
+            VolDepartamento departamento = (VolDepartamento) listaDepartamentos.get(i);
+            //paises.put((VolPais) listaPaises.get(i).get);
+            departamentos.put(departamento.getCodDepartamento().toString(), departamento.getNombredep());
+        }
+        return departamentos;
+    }
+
+    //@ModelAttribute("provincias")
+    public Map<String, String> listaProvincias(String codDep) {
+
+        Map<String, String> provincias = new LinkedHashMap<String, String>();
+        List listaProvincias = ubigeoService.obtenerProvincias(codDep);
+        for (int i = 0; i < listaProvincias.size(); i++) {
+            VolProvincia provincia = (VolProvincia) listaProvincias.get(i);
+            //paises.put((VolPais) listaPaises.get(i).get);
+            provincias.put(provincia.getCodProvincia().toString(), provincia.getNombrepro());
+        }
+        return provincias;
+    }
+
+    //@ModelAttribute("distritos")
+    public Map<String, String> listaDistritos(String codProv) {
+
+        Map<String, String> distritos = new LinkedHashMap<String, String>();
+        List listaDistritos = ubigeoService.obtenerDistritos(codProv);
+        for (int i = 0; i < listaDistritos.size(); i++) {
+            VolDistrito distrito = (VolDistrito) listaDistritos.get(i);
+            //paises.put((VolPais) listaPaises.get(i).get);
+            distritos.put(distrito.getCodDistrito().toString(), distrito.getNombredis());
+        }
+        return distritos;
     }
 }

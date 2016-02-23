@@ -40,6 +40,19 @@
         <script src="js/enscroll-0.6.0.min.js"></script>
         <script src="js/bootstrap-datepicker.js"></script>
         <script src="js/funciones.js"></script>
+
+        <script language="JavaScript">
+
+            function cambiarPais()
+            {
+                var index = document.forms.formulario.paises.selectedIndex;
+                cargarDepartamentos(index);
+            }
+            function cargarDepartamentos() {
+
+            }
+
+        </script>
     </head>
 
     <body>
@@ -62,7 +75,7 @@
             </section>
             <section class="cont-white">
                 <div class="container">
-                    <form:form method="post" action="web_registro_ver_1.htm" modelAttribute="voluntarioBean" commandName="voluntarioBean">
+                    <form:form method="post" action="web_registro_ver_1.htm" modelAttribute="voluntarioBean" commandName="voluntarioBean" name="formulario">
                         <div class="row">
                             <div class="col-xs-12 contenedor-input register-container">
                                 <div class="row top-row">
@@ -87,7 +100,7 @@
                                         <div class="col-xs-12 nopadding">
                                             <div class="col-xs-4 nopadding shijo">
                                                 <div class="form-group winput">
-                                                    <form:select class="select2" path="celular" >
+                                                    <form:select class="select2" path="volPais.codPais" OnChange="cambiarPais()" name="paises">
                                                         <form:option value="NONE" label="País"/>
                                                         <form:options items="${paises}"/>
                                                     </form:select>		
@@ -99,40 +112,28 @@
                                         <div class="col-xs-4 nopadding shijo">
                                             <div class="form-group winput">
                                                 <label class="hiden">Departamento</label>
-                                                <select class="select2">
-                                                    <option>Departamento</option>
-                                                    <option>OPCION1</option>
-                                                    <option>OPCION2</option>
-                                                    <option>OPCION3</option>
-                                                    <option>OPCION4</option>
-                                                    <option>OPCION5</option>
-                                                </select>
+                                                <form:select class="select2" path="volDepartamento.codDepartamento" name="departamentos">
+                                                    <form:option value="NONE" label="Departamento"/>
+                                                    <form:options items="${departamentos}"/>
+                                                </form:select>	
                                             </div>
                                         </div>
                                         <div class="col-xs-4 nopadding shijo">
                                             <div class="form-group winput">
                                                 <label class="hiden">Provincia</label>
-                                                <select class="select2">
-                                                    <option>Provincia</option>
-                                                    <option>OPCION1</option>
-                                                    <option>OPCION2</option>
-                                                    <option>OPCION3</option>
-                                                    <option>OPCION4</option>
-                                                    <option>OPCION5</option>
-                                                </select>
+                                                <form:select class="select2" path="volProvincia.codProvincia" >
+                                                    <form:option value="NONE" label="Provincia"/>
+                                                    <form:options items="${provincias}"/>
+                                                </form:select>	
                                             </div>
                                         </div>
                                         <div class="col-xs-4 nopadding shijo">
                                             <div class="form-group winput">
                                                 <label class="hiden">Distrito</label>
-                                                <select class="select2">
-                                                    <option>Distrito</option>
-                                                    <option>OPCION1</option>
-                                                    <option>OPCION2</option>
-                                                    <option>OPCION3</option>
-                                                    <option>OPCION4</option>
-                                                    <option>OPCION5</option>
-                                                </select>
+                                                <form:select class="select2" path="volDistrito.codDistrito" >
+                                                    <form:option value="NONE" label="Distrito"/>
+                                                    <form:options items="${distritos}"/>
+                                                </form:select>	
                                             </div>
                                         </div>
                                     </div>
@@ -277,7 +278,8 @@
                                         <div class="pull-right top-right">
                                             <!--a class="link-a"><span class="flecha-right"><em>Siguiente</em> <img src="images/slices1.png"></span></a-->
                                             <form action="web_registro_ver_1.html" method="post">
-                                                <a href="#" onclick="document.forms[0].submit();return false;"><span class="flecha-right"><em>Siguiente</em> <img src="images/slices1.png"></span></a>
+                                                <a href="#" onclick="document.forms[0].submit();
+                                                        return false;"><span class="flecha-right"><em>Siguiente</em> <img src="images/slices1.png"></span></a>
                                             </form>
                                         </div>
                                     </div>
