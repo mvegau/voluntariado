@@ -1,0 +1,99 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 22-feb-2016 14:53:29 by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="com.tismart.voluntariado.bean.VolVoluntario" table="VOL_VOLUNTARIO" schema="UINDECI" optimistic-lock="version">
+        <id name="ideVoluntario" type="big_decimal">
+            <column name="IDE_VOLUNTARIO" precision="22" scale="0" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="volTipdocum" class="com.tismart.voluntariado.bean.VolTipdocum" fetch="select">
+            <column name="IDE_TIPODOCUMENTO" precision="22" scale="0" not-null="true" />
+        </many-to-one>
+        <many-to-one name="volEstavolun" class="com.tismart.voluntariado.bean.VolEstavolun" fetch="select">
+            <column name="IDE_ESTADOVOLUNTARIO" precision="22" scale="0" not-null="true" />
+        </many-to-one>
+        <many-to-one name="volPais" class="com.tismart.voluntariado.bean.VolPais" fetch="select">
+            <column name="COD_PAIS" precision="22" scale="0" />
+        </many-to-one>
+        <many-to-one name="volTipvolun" class="com.tismart.voluntariado.bean.VolTipvolun" fetch="select">
+            <column name="IDE_TIPOVOLUNTARIO" precision="22" scale="0" />
+        </many-to-one>
+        <many-to-one name="volProvincia" class="com.tismart.voluntariado.bean.VolProvincia" fetch="select">
+            <column name="COD_PROVINCIA" precision="22" scale="0" />
+        </many-to-one>
+        <many-to-one name="volProfesion" class="com.tismart.voluntariado.bean.VolProfesion" fetch="select">
+            <column name="IDE_PROFESION" precision="22" scale="0" not-null="true" />
+        </many-to-one>
+        <many-to-one name="volGsanguineo" class="com.tismart.voluntariado.bean.VolGsanguineo" fetch="select">
+            <column name="IDE_GRUPOSANGUI" precision="22" scale="0" not-null="true" />
+        </many-to-one>
+        <many-to-one name="volGradoacade" class="com.tismart.voluntariado.bean.VolGradoacade" fetch="select">
+            <column name="IDE_GRADOACADEMICO" precision="22" scale="0" not-null="true" />
+        </many-to-one>
+        <many-to-one name="volDistrito" class="com.tismart.voluntariado.bean.VolDistrito" fetch="select">
+            <column name="COD_DISTRITO" precision="22" scale="0" />
+        </many-to-one>
+        <many-to-one name="volDepartamento" class="com.tismart.voluntariado.bean.VolDepartamento" fetch="select">
+            <column name="COD_DEPARTAMENTO" precision="22" scale="0" />
+        </many-to-one>
+        <many-to-one name="volGrupo" class="com.tismart.voluntariado.bean.VolGrupo" fetch="select">
+            <column name="IDE_GRUPO" precision="22" scale="0" />
+        </many-to-one>
+        <property name="apreciacion" type="string">
+            <column name="APRECIACION" length="400" />
+        </property>
+        <property name="esrepresentante" type="big_decimal">
+            <column name="ESREPRESENTANTE" precision="22" scale="0" />
+        </property>
+        <property name="indHabilitado" type="big_decimal">
+            <column name="IND_HABILITADO" precision="22" scale="0" />
+        </property>
+        <property name="nombres" type="string">
+            <column name="NOMBRES" length="60" not-null="true" />
+        </property>
+        <property name="apellidos" type="string">
+            <column name="APELLIDOS" length="60" not-null="true" />
+        </property>
+        <property name="numDocumento" type="string">
+            <column name="NUM_DOCUMENTO" length="24" not-null="true" />
+        </property>
+        <property name="fecNacimiento" type="date">
+            <column name="FEC_NACIMIENTO" length="7" not-null="true" />
+        </property>
+        <property name="rutaautorizacion" type="string">
+            <column name="RUTAAUTORIZACION" length="0" />
+        </property>
+        <property name="domicilio" type="string">
+            <column name="DOMICILIO" length="400" />
+        </property>
+        <property name="telefono" type="string">
+            <column name="TELEFONO" length="40" not-null="true" />
+        </property>
+        <property name="celular" type="string">
+            <column name="CELULAR" length="24" not-null="true" />
+        </property>
+        <property name="correo" type="string">
+            <column name="CORREO" length="100" not-null="true" />
+        </property>
+        <property name="cskype" type="string">
+            <column name="CSKYPE" length="100" />
+        </property>
+        <property name="motivacion" type="string">
+            <column name="MOTIVACION" length="1000" />
+        </property>
+        <property name="fecRegistro" type="date">
+            <column name="FEC_REGISTRO" length="7" />
+        </property>
+        <property name="fecValidacion" type="date">
+            <column name="FEC_VALIDACION" length="7" />
+        </property>
+        <property name="indPertenecegrupo" type="java.lang.Character">
+            <column name="IND_PERTENECEGRUPO" length="1" />
+        </property>
+        <property name="aceptaterminos" type="big_decimal">
+            <column name="ACEPTATERMINOS" precision="22" scale="0" />
+        </property>
+    </class>
+</hibernate-mapping>

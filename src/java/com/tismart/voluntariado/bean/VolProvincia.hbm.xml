@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 22-feb-2016 14:53:29 by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="com.tismart.voluntariado.bean.VolProvincia" table="VOL_PROVINCIA" schema="UINDECI" optimistic-lock="version">
+        <id name="codProvincia" type="big_decimal">
+            <column name="COD_PROVINCIA" precision="22" scale="0" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="volDepartamento" class="com.tismart.voluntariado.bean.VolDepartamento" fetch="select">
+            <column name="COD_DEPARTAMENTO" precision="22" scale="0" />
+        </many-to-one>
+        <property name="nombrepro" type="string">
+            <column name="NOMBREPRO" length="60" />
+        </property>
+        <set name="volDistritos" table="VOL_DISTRITO" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="COD_PROVINCIA" precision="22" scale="0" />
+            </key>
+            <one-to-many class="com.tismart.voluntariado.bean.VolDistrito" />
+        </set>
+        <set name="volVoluntarios" table="VOL_VOLUNTARIO" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="COD_PROVINCIA" precision="22" scale="0" />
+            </key>
+            <one-to-many class="com.tismart.voluntariado.bean.VolVoluntario" />
+        </set>
+    </class>
+</hibernate-mapping>

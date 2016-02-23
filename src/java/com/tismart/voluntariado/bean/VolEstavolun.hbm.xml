@@ -3,9 +3,9 @@
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
 <!-- Generated 22-feb-2016 14:53:29 by Hibernate Tools 4.3.1 -->
 <hibernate-mapping>
-    <class name="com.tismart.voluntariado.bean.VolPerfil" table="VOL_PERFIL" schema="UINDECI" optimistic-lock="version">
-        <id name="idePerfil" type="big_decimal">
-            <column name="IDE_PERFIL" precision="22" scale="0" />
+    <class name="com.tismart.voluntariado.bean.VolEstavolun" table="VOL_ESTAVOLUN" schema="UINDECI" optimistic-lock="version">
+        <id name="ideEstadovoluntario" type="big_decimal">
+            <column name="IDE_ESTADOVOLUNTARIO" precision="22" scale="0" />
             <generator class="assigned" />
         </id>
         <property name="descripcion" type="string">
@@ -20,14 +20,14 @@
         <property name="usumodificacion" type="string">
             <column name="USUMODIFICACION" length="60" />
         </property>
-        <property name="fecModificacion" type="date">
-            <column name="FEC_MODIFICACION" length="7" />
+        <property name="fecMoficacion" type="date">
+            <column name="FEC_MOFICACION" length="7" />
         </property>
-        <set name="volUsuarios" table="VOL_USUARIO" inverse="true" lazy="true" fetch="select">
+        <set name="volVoluntarios" table="VOL_VOLUNTARIO" inverse="true" lazy="true" fetch="select">
             <key>
-                <column name="IDE_PERFIL" precision="22" scale="0" />
+                <column name="IDE_ESTADOVOLUNTARIO" precision="22" scale="0" not-null="true" />
             </key>
-            <one-to-many class="com.tismart.voluntariado.bean.VolUsuario" />
+            <one-to-many class="com.tismart.voluntariado.bean.VolVoluntario" />
         </set>
     </class>
 </hibernate-mapping>

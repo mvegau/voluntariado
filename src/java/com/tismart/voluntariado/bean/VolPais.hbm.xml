@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 22-feb-2016 14:53:29 by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="com.tismart.voluntariado.bean.VolPais" table="VOL_PAIS" schema="UINDECI" optimistic-lock="version">
+        <id name="codPais" type="big_decimal">
+            <column name="COD_PAIS" precision="22" scale="0" />
+            <generator class="assigned" />
+        </id>
+        <property name="nombrepa" type="string">
+            <column name="NOMBREPA" length="60" />
+        </property>
+        <set name="volDepartamentos" table="VOL_DEPARTAMENTO" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="COD_PAIS" precision="22" scale="0" />
+            </key>
+            <one-to-many class="com.tismart.voluntariado.bean.VolDepartamento" />
+        </set>
+        <set name="volVoluntarios" table="VOL_VOLUNTARIO" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="COD_PAIS" precision="22" scale="0" />
+            </key>
+            <one-to-many class="com.tismart.voluntariado.bean.VolVoluntario" />
+        </set>
+    </class>
+</hibernate-mapping>
