@@ -62,7 +62,7 @@
             </section>
             <section class="cont-white">
                 <div class="container">
-                    <form>
+                    <form method="post" action="web_registro_ver_2.htm" modelAttribute="voluntarioBean" commandName="voluntarioBean">
                         <div class="row">
                             <div class="col-xs-12 contenedor-input register-container">
                                 <div class="row top-row">
@@ -121,7 +121,7 @@
                                     </div>
                                     <div class="col-xs-4 nopadding">
                                         <div class="form-group winput">
-                                            <label>Año en que culmino</label>
+                                            <label>Año en que culminó</label>
                                             <input type="text" class="form-control" placeholder="">
                                         </div>
                                     </div>
@@ -316,10 +316,16 @@
                                 <div class="row btnform-2 div-actividades">
                                     <div class="col-xs-12 nopadding">
                                         <div class="pull-left top-right">
-                                            <a class="link-a" href="web_registro_ver_1.htm"> <span class="flecha"> <img src="images/slices2.png"><em>Anterior</em></span></a>
+                                            <!--a class="link-a" href="web_registro_ver_1.htm"> <span class="flecha"> <img src="images/slices2.png"><em>Anterior</em></span></a-->
+                                            <form action="web_registro_ver_2.html" method="get">
+                                                <a href="#" onclick="document.forms[0].submit();return false;"><span class="flecha"> <img src="images/slices2.png"><em>Anterior</em></span></a>
+                                            </form>
                                         </div>
                                         <div class="pull-right top-right">
-                                            <a class="link-a" href="web_registro_ver_3.htm"><span class="flecha-right"><em>Siguiente</em> <img src="images/slices1.png"></span></a>
+                                            <!--a class="link-a" href="web_registro_ver_3.htm"><span class="flecha-right"><em>Siguiente</em> <img src="images/slices1.png"></span></a-->
+                                            <form action="web_registro_ver_2.html" method="post">
+                                                <a href="#" onclick="document.forms[0].submit();return false;"><span class="flecha-right"><em>Siguiente</em> <img src="images/slices1.png"></span></a>
+                                            </form>
                                         </div>
                                     </div>
                                 </div>

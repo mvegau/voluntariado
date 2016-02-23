@@ -30,7 +30,7 @@ public class LoginController {
     public ModelAndView desplegarLogin(HttpServletRequest request, HttpServletResponse response, VolUsuario usuario) {
         ModelAndView model = new ModelAndView("index");
         model.addObject("usuarioBean", usuario);
-        System.err.println("desplegarLogin");
+        System.out.println("desplegarLogin");
         return model;
     }
 
@@ -41,7 +41,7 @@ public class LoginController {
         //model.addObject("message", "Datos incorrectos");
         try {
 
-            System.err.println("ejecutarLogin");
+            System.out.println("ejecutarLogin");
             boolean isValidUser = usuarioService.validarUsuario(usuario.getNombre(), usuario.getPassword());
 
             if (isValidUser) {
@@ -63,7 +63,7 @@ public class LoginController {
         ModelAndView model = new ModelAndView("web_home_ver");
         //request.setAttribute("usuarioLog", usuario.getUsername());
         model.addObject("usuarioBean", usuario);
-        System.err.println("recargarHome");
+        System.out.println("recargarHome");
         return model;
     }
 
@@ -71,7 +71,7 @@ public class LoginController {
     public ModelAndView recuperarContrasenia(HttpServletRequest request, HttpServletResponse response, VolUsuario usuario) {
         ModelAndView model = new ModelAndView("web_recuperar_contrasena");
         model.addObject("usuarioBean", usuario);
-        System.err.println("recuperarContrasenia");
+        System.out.println("recuperarContrasenia");
         return model;
     }
 }
