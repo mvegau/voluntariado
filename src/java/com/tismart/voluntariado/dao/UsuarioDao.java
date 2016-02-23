@@ -53,7 +53,7 @@ public class UsuarioDao {
             provincia.setVolDepartamento(departamento);
             distrito.setCodDistrito(BigDecimal.ZERO);
             distrito.setNombredis("Miraflores0");
-            distrito.setVolProvincia(vol);
+            //distrito.setVolProvincia(vol);
             /*pais.setCodPais(BigDecimal.valueOf(2));
         departamento.setVolPais(pais);
         departamento.setCodDepartamento(BigDecimal.valueOf(4));

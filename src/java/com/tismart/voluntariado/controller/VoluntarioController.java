@@ -5,8 +5,13 @@
  */
 package com.tismart.voluntariado.controller;
 
+import com.tismart.voluntariado.bean.VolPais;
 import com.tismart.voluntariado.bean.VolVoluntario;
+import com.tismart.voluntariado.service.UbigeoService;
 import com.tismart.voluntariado.service.VoluntarioService;
+import java.util.LinkedHashMap;
+import java.util.List;
+import java.util.Map;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,6 +30,7 @@ public class VoluntarioController {
 
     @Autowired
     VoluntarioService voluntarioService = new VoluntarioService();
+    UbigeoService ubigeoService = new UbigeoService();
     VolVoluntario volVoluntario;
 
     @RequestMapping(value = "/web_registro_ver_1", method = RequestMethod.GET)
@@ -40,7 +46,7 @@ public class VoluntarioController {
     public ModelAndView guardarDetalle1(HttpServletRequest request, HttpServletResponse response,
             @ModelAttribute("voluntarioBean") VolVoluntario voluntario) {
         ModelAndView model = new ModelAndView("web_registro_ver_2");
-        System.out.println("guardarDetalle1");
+        System.out.println("guardarDetalle1"+voluntario.getCelular());
         volVoluntario = voluntario;
         model.addObject("voluntarioBean", volVoluntario);
         return model;
@@ -119,5 +125,17 @@ public class VoluntarioController {
         }
 
         return model;
+    }
+
+    @ModelAttribute("paises")
+    public Map<String, String> listaPaises() {
+
+        Map<String, String> paises = new LinkedHashMap<String, String>();
+        List listaPaises = ubigeoService.obtenerPaises();
+        //paises = (Map<String, String>) ubigeoService.obtenerPaises();
+        for(int i = 0; i < listaPaises.size();i++){
+            //paises.put((VolPais) listaPaises.get(i).get);
+        }
+        return paises;
     }
 }

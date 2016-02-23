@@ -62,7 +62,7 @@
             </section>
             <section class="cont-white">
                 <div class="container">
-                    <form method="post" action="web_registro_ver_1.htm" modelAttribute="voluntarioBean" commandName="voluntarioBean">
+                    <form:form method="post" action="web_registro_ver_1.htm" modelAttribute="voluntarioBean" commandName="voluntarioBean">
                         <div class="row">
                             <div class="col-xs-12 contenedor-input register-container">
                                 <div class="row top-row">
@@ -87,14 +87,10 @@
                                         <div class="col-xs-12 nopadding">
                                             <div class="col-xs-4 nopadding shijo">
                                                 <div class="form-group winput">
-                                                    <select class="select2">
-                                                        <option>Pais</option>
-                                                        <option>OPCION1</option>
-                                                        <option>OPCION2</option>
-                                                        <option>OPCION3</option>
-                                                        <option>OPCION4</option>
-                                                        <option>OPCION5</option>
-                                                    </select>
+                                                    <form:select class="select2" path="celular" >
+                                                        <form:option value="NONE" label="País"/>
+                                                        <form:options items="${paises}"/>
+                                                    </form:select>		
                                                 </div>
                                             </div>
                                         </div>
@@ -289,7 +285,7 @@
 
                             </div>
                         </div>
-                    </form>
+                    </form:form>
                 </div>
 
                 <section class="footer-interno">
