@@ -62,7 +62,7 @@
             </section>
             <section class="cont-white">
                 <div class="container">
-                    <form method="get" action="web_terminos_legales_ver.htm" modelAttribute="usuarioBean">
+                    <form method="post" action="web_registro_ver_3.htm" modelAttribute="voluntarioBean" commandName="voluntarioBean">
                         <div class="row">
                             <div class="col-xs-12 contenedor-input">
                                 <div class="row top-row">
@@ -79,7 +79,7 @@
                                 <div class="row">
                                     <div class="col-xs-12 nopadding">
                                         <div class="form-group winputall">
-                                            <textarea class="form-control" rows="5" col="9"></textarea>
+                                            <textarea class="form-control" rows="5" col="9" value="${voluntarioBean.motivacion}" name="motivacion"></textarea>
                                         </div>
                                     </div>
                                     <div class="col-xs-12 nopadding">
@@ -102,7 +102,10 @@
                                 <div class="row">
                                     <div class="col-xs-12 nopadding">
                                         <div class="pull-left top-right">
-                                            <a class="link-a" href="web_registro_ver_2.htm">  <span class="flecha"> <img src="images/slices2.png"><em>Anterior</em></span></a>
+                                            <!--a class="link-a" href="web_registro_ver_2.htm">  <span class="flecha"> <img src="images/slices2.png"><em>Anterior</em></span></a-->
+                                            <form action="web_registro_ver_3.html" method="post">
+                                                <a href="#" onclick="document.forms[0].submit();return false;"><span class="flecha"> <img src="images/slices2.png"><em>Anterior</em></span></a>
+                                            </form>
                                         </div>
 
                                     </div>

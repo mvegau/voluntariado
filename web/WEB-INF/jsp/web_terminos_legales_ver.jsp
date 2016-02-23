@@ -62,7 +62,7 @@
             </section>
             <section class="cont-white">
                 <div class="container icheck-container">
-                    <form method="get" action="index.htm" modelAttribute="usuarioBean">
+                    <form method="post" action="web_terminos_legales_ver.htm" modelAttribute="voluntarioBean" commandName="voluntarioBean">
                         <div class="row">
                             <div class="col-xs-12 nopadding">
                                 <div class="contenido-de-terminos">
