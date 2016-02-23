@@ -8,7 +8,19 @@
     <property name="hibernate.connection.username">uindeci</property>
     <property name="hibernate.connection.password">uindeci</property>
     <mapping resource="com/tismart/voluntariado/bean/VolPerfil.hbm.xml"/>
+    <mapping resource="com/tismart/voluntariado/bean/VolGrupo.hbm.xml"/>
+    <mapping resource="com/tismart/voluntariado/bean/VolGsanguineo.hbm.xml"/>
+    <mapping resource="com/tismart/voluntariado/bean/VolVoluntario.hbm.xml"/>
+    <mapping resource="com/tismart/voluntariado/bean/VolProfesion.hbm.xml"/>
+    <mapping resource="com/tismart/voluntariado/bean/VolTipdocum.hbm.xml"/>
+    <mapping resource="com/tismart/voluntariado/bean/VolProvincia.hbm.xml"/>
+    <mapping resource="com/tismart/voluntariado/bean/VolDistrito.hbm.xml"/>
+    <mapping resource="com/tismart/voluntariado/bean/VolDepartamento.hbm.xml"/>
+    <mapping resource="com/tismart/voluntariado/bean/VolEstavolun.hbm.xml"/>
     <mapping resource="com/tismart/voluntariado/bean/VolCargo.hbm.xml"/>
+    <mapping resource="com/tismart/voluntariado/bean/VolPais.hbm.xml"/>
+    <mapping resource="com/tismart/voluntariado/bean/VolGradoacade.hbm.xml"/>
     <mapping resource="com/tismart/voluntariado/bean/VolUsuario.hbm.xml"/>
+    <mapping resource="com/tismart/voluntariado/bean/VolTipvolun.hbm.xml"/>
   </session-factory>
 </hibernate-configuration>
