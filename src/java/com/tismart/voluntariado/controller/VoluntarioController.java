@@ -12,7 +12,6 @@ import com.tismart.voluntariado.bean.VolProvincia;
 import com.tismart.voluntariado.bean.VolVoluntario;
 import com.tismart.voluntariado.service.UbigeoService;
 import com.tismart.voluntariado.service.VoluntarioService;
-import java.math.BigDecimal;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
@@ -146,7 +145,7 @@ public class VoluntarioController {
         return paises;
     }
 
-    //@ModelAttribute("departamentos")
+    @ModelAttribute("departamentos")
     public Map<String, String> listaDepartamentos(String codPais) {
 
         Map<String, String> departamentos = new LinkedHashMap<String, String>();
@@ -159,7 +158,7 @@ public class VoluntarioController {
         return departamentos;
     }
 
-    //@ModelAttribute("provincias")
+    @ModelAttribute("provincias")
     public Map<String, String> listaProvincias(String codDep) {
 
         Map<String, String> provincias = new LinkedHashMap<String, String>();
@@ -172,7 +171,7 @@ public class VoluntarioController {
         return provincias;
     }
 
-    //@ModelAttribute("distritos")
+    @ModelAttribute("distritos")
     public Map<String, String> listaDistritos(String codProv) {
 
         Map<String, String> distritos = new LinkedHashMap<String, String>();
