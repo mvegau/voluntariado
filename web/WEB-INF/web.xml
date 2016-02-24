@@ -8,6 +8,10 @@
         <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
     </listener>
     <servlet>
+        <servlet-name>DepartamentoServlet</servlet-name>
+        <servlet-class>com.tismart.voluntariado.servlet.DepartamentoServlet</servlet-class>
+    </servlet>
+    <servlet>
         <servlet-name>dispatcher</servlet-name>
         <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
         <load-on-startup>2</load-on-startup>
@@ -17,6 +21,10 @@
         <servlet-class>javax.faces.webapp.FacesServlet</servlet-class>
         <load-on-startup>1</load-on-startup>
     </servlet>
+    <servlet-mapping>
+        <servlet-name>DepartamentoServlet</servlet-name>
+        <url-pattern>/DepartamentoServlet</url-pattern>
+    </servlet-mapping>
     <servlet-mapping>
         <servlet-name>dispatcher</servlet-name>
         <url-pattern>*.htm</url-pattern>
