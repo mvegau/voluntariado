@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 24-feb-2016 11:24:27 by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="com.tismart.voluntariado.bean.VolActividadvoluntario" table="VOL_ACTIVIDADVOLUNTARIO" schema="UINDECI" optimistic-lock="version">
+        <id name="ideActivoluntario" type="big_decimal">
+            <column name="IDE_ACTIVOLUNTARIO" precision="22" scale="0" />
+            <generator class="assigned" />
+        </id>
+        <property name="descripcion" type="string">
+            <column name="DESCRIPCION" length="400" />
+        </property>
+        <property name="usucreacion" type="string">
+            <column name="USUCREACION" length="60" />
+        </property>
+        <property name="fecCreacion" type="date">
+            <column name="FEC_CREACION" length="7" />
+        </property>
+        <set name="volActivoluntDets" table="VOL_ACTIVOLUNT_DET" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="IDE_ACTIVOLUNTARIO" precision="22" scale="0" not-null="true" />
+            </key>
+            <one-to-many class="com.tismart.voluntariado.bean.VolActivoluntDet" />
+        </set>
+    </class>
+</hibernate-mapping>

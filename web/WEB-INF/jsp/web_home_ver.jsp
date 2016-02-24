@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <!DOCTYPE html>
@@ -40,6 +41,25 @@
         <script src="js/enscroll-0.6.0.min.js"></script>
         <script src="js/bootstrap-datepicker.js"></script>
         <script src="js/funciones.js"></script>
+        <script src="http://code.jquery.com/jquery-latest.min.js"></script> 
+<style>
+.resaltar{background-color:#FF0;}
+</style> 
+  <script type='text/javascript' >
+    $.expr[':'].icontains = function(obj, index, meta, stack){
+    return (obj.textContent || obj.innerText || jQuery(obj).text() || '').toLowerCase().indexOf(meta[3].toLowerCase()) >= 0;
+    };
+    $(document).ready(function(){   
+        $('#buscador').keyup(function(){
+                     buscar = $(this).val();
+                     $('#lista tr').removeClass('resaltar');
+                            if(jQuery.trim(buscar) != ''){
+                               $("#lista tr:icontains('" + buscar + "')").addClass('resaltar');
+                            }
+            });
+    });   
+ </script> 
+        
     </head>
 
     <body>
@@ -303,10 +323,10 @@
                                 <form class="row top-row">
                                     <div class="pull-left">
                                         <div class="fbusqueda">
-                                            <input type="text" class="form-control in-login in-filtro" placeholder="">
+                                            <input type="text" class="form-control in-login in-filtro" placeholder="" name="buscador" id="buscador"/>
                                         </div>
                                         <div class="alerta">
-                                            <input type="checkbox" class="check-all" data-check="1">
+                                            <input type="checkbox" class="check-all" data-check="1" name="buscador" id="buscador">
                                             <a><span>Seleccionar Todos</span></a>
                                         </div>
                                         <div class="alerta" data-target="#alerta" data-toggle="modal">
@@ -319,7 +339,7 @@
                                     </div>
                                 </form>
 
-                                <table class="table inde-tabla text-center">
+                                <table class="table inde-tabla text-center" id="lista">
                                     <thead>
                                         <tr>
                                             <th class="wthe"></th>
@@ -335,22 +355,25 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <tr>
-                                            <td class="bs-checkbox-1 ">
-                                                <input type="checkbox" value="">
-                                            </td>
-                                            <td>Juan</td>
-                                            <td>Pérez Rivas</td>
-                                            <td>Alertado Sismo</td>
-                                            <td>02-10-80</td>
-                                            <td>Medicina</td>
-                                            <td>Lima</td>
-                                            <td>General</td>
-                                            <td>
-                                                <a href="web_detalles_ver_2.htm" class="ver-detalle"></a>
-                                            </td>
-                                            <td class="op-deshabilitar"><span class="habilitado">Deshabilitar</span></td>
-                                        </tr>
+                                        <c:forEach items="${voluntariosBean}" var="ls">
+                                            <tr> 
+                                                <td class="bs-checkbox-1 "> <input type="checkbox" value=""></td>
+                                                <td>${ls.codProvincia}</td>
+                                                <td>${ls.nombrepro}</td>
+                                                <td>${ls.volDepartamento.codDepartamento}</td>
+                                                <td></td>
+                                                <td></td>
+                                                <td></td>
+                                                <td></td>
+                                                <td> <a href="web_detalles_ver_2.htm" class="ver-detalle"></a></td>
+                              
+                                               
+                                                </td>
+                                                <td class="op-deshabilitar"><span class="habilitado">Deshabilitar</span></td>
+                                                    
+                                            </tr>
+                                                
+                                        </c:forEach>
                                     </tbody>
                                 </table>
                             </div>

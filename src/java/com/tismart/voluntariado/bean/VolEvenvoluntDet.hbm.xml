@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 24-feb-2016 11:24:27 by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="com.tismart.voluntariado.bean.VolEvenvoluntDet" table="VOL_EVENVOLUNT_DET" schema="UINDECI" optimistic-lock="version">
+        <composite-id name="id" class="com.tismart.voluntariado.bean.VolEvenvoluntDetId">
+            <key-property name="ideVoluntario" type="big_decimal">
+                <column name="IDE_VOLUNTARIO" precision="22" scale="0" />
+            </key-property>
+            <key-property name="ideEvento" type="big_decimal">
+                <column name="IDE_EVENTO" precision="22" scale="0" />
+            </key-property>
+        </composite-id>
+        <many-to-one name="volVoluntario" class="com.tismart.voluntariado.bean.VolVoluntario" update="false" insert="false" fetch="select">
+            <column name="IDE_VOLUNTARIO" precision="22" scale="0" not-null="true" />
+        </many-to-one>
+        <many-to-one name="volEvento" class="com.tismart.voluntariado.bean.VolEvento" update="false" insert="false" fetch="select">
+            <column name="IDE_EVENTO" precision="22" scale="0" not-null="true" />
+        </many-to-one>
+        <property name="rutavacunas" type="string">
+            <column name="RUTAVACUNAS" length="0" />
+        </property>
+        <property name="indConformidadvacuna" type="java.lang.Character">
+            <column name="IND_CONFORMIDADVACUNA" length="1" />
+        </property>
+    </class>
+</hibernate-mapping>

@@ -1,0 +1,34 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 24-feb-2016 11:24:27 by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="com.tismart.voluntariado.bean.VolActivoluntDet" table="VOL_ACTIVOLUNT_DET" schema="UINDECI" optimistic-lock="version">
+        <composite-id name="id" class="com.tismart.voluntariado.bean.VolActivoluntDetId">
+            <key-property name="ideActivoluntario" type="big_decimal">
+                <column name="IDE_ACTIVOLUNTARIO" precision="22" scale="0" />
+            </key-property>
+            <key-property name="ideVoluntario" type="big_decimal">
+                <column name="IDE_VOLUNTARIO" precision="22" scale="0" />
+            </key-property>
+        </composite-id>
+        <many-to-one name="volVoluntario" class="com.tismart.voluntariado.bean.VolVoluntario" update="false" insert="false" fetch="select">
+            <column name="IDE_VOLUNTARIO" precision="22" scale="0" not-null="true" />
+        </many-to-one>
+        <many-to-one name="volActividadvoluntario" class="com.tismart.voluntariado.bean.VolActividadvoluntario" update="false" insert="false" fetch="select">
+            <column name="IDE_ACTIVOLUNTARIO" precision="22" scale="0" not-null="true" />
+        </many-to-one>
+        <property name="rutacertificado" type="string">
+            <column name="RUTACERTIFICADO" length="0" />
+        </property>
+        <property name="fecAprobacion" type="date">
+            <column name="FEC_APROBACION" length="7" />
+        </property>
+        <property name="usuaprobo" type="string">
+            <column name="USUAPROBO" length="60" />
+        </property>
+        <property name="indEstadoaprobado" type="java.lang.Character">
+            <column name="IND_ESTADOAPROBADO" length="1" />
+        </property>
+    </class>
+</hibernate-mapping>

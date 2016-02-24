@@ -5,8 +5,13 @@
  */
 package com.tismart.voluntariado.controller;
 
+import com.tismart.voluntariado.bean.VolProvincia;
 import com.tismart.voluntariado.bean.VolUsuario;
+import com.tismart.voluntariado.bean.VolVoluntario;
 import com.tismart.voluntariado.service.UsuarioService;
+import com.tismart.voluntariado.service.VoluntarioService;
+import java.util.ArrayList;
+import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,6 +30,7 @@ public class LoginController {
 
     @Autowired
     UsuarioService usuarioService = new UsuarioService();
+    VoluntarioService voluntarioService = new VoluntarioService();
 
     @RequestMapping(value = "/index", method = RequestMethod.GET)
     public ModelAndView desplegarLogin(HttpServletRequest request, HttpServletResponse response, VolUsuario usuario) {
@@ -47,6 +53,8 @@ public class LoginController {
             if (isValidUser) {
                 //request.setAttribute("usuarioLog", usuario.getUsername());
                 model = new ModelAndView("web_home_ver");
+                List<VolProvincia> listVoluntarios = voluntarioService.listarVoluntarios();
+                model.addObject("voluntariosBean",listVoluntarios);
             } else {
                 model = new ModelAndView("index");
                 request.setAttribute("message", "Datos incorrectos");

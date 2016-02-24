@@ -1,5 +1,5 @@
 package com.tismart.voluntariado.bean;
-// Generated 23-feb-2016 11:38:34 by Hibernate Tools 4.3.1
+// Generated 24-feb-2016 11:24:26 by Hibernate Tools 4.3.1
 
 
 import java.math.BigDecimal;
@@ -15,6 +15,8 @@ public class VolDepartamento  implements java.io.Serializable {
      private BigDecimal codDepartamento;
      private VolPais volPais;
      private String nombredep;
+     private Set volVolusespads = new HashSet(0);
+     private Set volUsuarios = new HashSet(0);
      private Set volProvincias = new HashSet(0);
      private Set volVoluntarios = new HashSet(0);
 
@@ -25,10 +27,12 @@ public class VolDepartamento  implements java.io.Serializable {
     public VolDepartamento(BigDecimal codDepartamento) {
         this.codDepartamento = codDepartamento;
     }
-    public VolDepartamento(BigDecimal codDepartamento, VolPais volPais, String nombredep, Set volProvincias, Set volVoluntarios) {
+    public VolDepartamento(BigDecimal codDepartamento, VolPais volPais, String nombredep, Set volVolusespads, Set volUsuarios, Set volProvincias, Set volVoluntarios) {
        this.codDepartamento = codDepartamento;
        this.volPais = volPais;
        this.nombredep = nombredep;
+       this.volVolusespads = volVolusespads;
+       this.volUsuarios = volUsuarios;
        this.volProvincias = volProvincias;
        this.volVoluntarios = volVoluntarios;
     }
@@ -53,6 +57,20 @@ public class VolDepartamento  implements java.io.Serializable {
     
     public void setNombredep(String nombredep) {
         this.nombredep = nombredep;
+    }
+    public Set getVolVolusespads() {
+        return this.volVolusespads;
+    }
+    
+    public void setVolVolusespads(Set volVolusespads) {
+        this.volVolusespads = volVolusespads;
+    }
+    public Set getVolUsuarios() {
+        return this.volUsuarios;
+    }
+    
+    public void setVolUsuarios(Set volUsuarios) {
+        this.volUsuarios = volUsuarios;
     }
     public Set getVolProvincias() {
         return this.volProvincias;

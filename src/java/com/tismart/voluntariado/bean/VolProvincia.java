@@ -1,5 +1,5 @@
 package com.tismart.voluntariado.bean;
-// Generated 23-feb-2016 11:38:34 by Hibernate Tools 4.3.1
+// Generated 24-feb-2016 11:24:26 by Hibernate Tools 4.3.1
 
 
 import java.math.BigDecimal;
@@ -15,6 +15,7 @@ public class VolProvincia  implements java.io.Serializable {
      private BigDecimal codProvincia;
      private VolDepartamento volDepartamento;
      private String nombrepro;
+     private Set volVolusespads = new HashSet(0);
      private Set volDistritos = new HashSet(0);
      private Set volVoluntarios = new HashSet(0);
 
@@ -25,10 +26,11 @@ public class VolProvincia  implements java.io.Serializable {
     public VolProvincia(BigDecimal codProvincia) {
         this.codProvincia = codProvincia;
     }
-    public VolProvincia(BigDecimal codProvincia, VolDepartamento volDepartamento, String nombrepro, Set volDistritos, Set volVoluntarios) {
+    public VolProvincia(BigDecimal codProvincia, VolDepartamento volDepartamento, String nombrepro, Set volVolusespads, Set volDistritos, Set volVoluntarios) {
        this.codProvincia = codProvincia;
        this.volDepartamento = volDepartamento;
        this.nombrepro = nombrepro;
+       this.volVolusespads = volVolusespads;
        this.volDistritos = volDistritos;
        this.volVoluntarios = volVoluntarios;
     }
@@ -53,6 +55,13 @@ public class VolProvincia  implements java.io.Serializable {
     
     public void setNombrepro(String nombrepro) {
         this.nombrepro = nombrepro;
+    }
+    public Set getVolVolusespads() {
+        return this.volVolusespads;
+    }
+    
+    public void setVolVolusespads(Set volVolusespads) {
+        this.volVolusespads = volVolusespads;
     }
     public Set getVolDistritos() {
         return this.volDistritos;

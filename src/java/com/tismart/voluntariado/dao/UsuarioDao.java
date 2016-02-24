@@ -43,39 +43,10 @@ public class UsuarioDao {
         Session session =  HibernateUtil.getSessionFactory().openSession();
        // session.beginTransaction();
         System.out.println("SAVE");
-        VolPais pais = new VolPais(BigDecimal.ONE);
-        VolDepartamento departamento = new VolDepartamento(BigDecimal.ONE);
-        VolDistrito distrito = new VolDistrito();
-        VolProvincia provincia = new VolProvincia();
-        try {
-            provincia.setCodProvincia(BigDecimal.ONE);
-            provincia.setNombrepro("lima");
-            provincia.setVolDepartamento(departamento);
-            distrito.setCodDistrito(BigDecimal.ZERO);
-            distrito.setNombredis("Miraflores0");
-            distrito.setVolProvincia(vol);
-            /*pais.setCodPais(BigDecimal.valueOf(2));
-        departamento.setVolPais(pais);
-        departamento.setCodDepartamento(BigDecimal.valueOf(4));
-        departamento.setNombredep("Arequipa");
-        
-        VolVoluntario vol = new VolVoluntario();
-        vol.setAceptaterminos(BigDecimal.ZERO);
-        vol.set
-        //voluntario.set("Granda");
-       /* voluntario.setIdeCargo(BigDecimal.valueOf(2));
-        voluntario.setNombre("cargo2");
-        voluntario.setUsucreacion("usuario2");*/
-        session.save(distrito);
-        session.beginTransaction().commit();
         boolean userFound = false;
-           } catch (Exception e) {
-               e.printStackTrace();
-        }finally{session.close();
-            System.out.println("Se cierra Conexion");
-        }
+          
         //Query using Hibernate Query Language
-        /*String SQL_QUERY = " from VolUsuario as o where o.nombre=? and o.password=?";
+        String SQL_QUERY = " from VolUsuario as o where o.nombre=? and o.password=?";
         Query query = session.createQuery(SQL_QUERY);
         query.setParameter(0, username);
         query.setParameter(1, password);
@@ -84,8 +55,8 @@ public class UsuarioDao {
             userFound = true;
         }
 
-        session.close();*/
-        return true;
+        session.close();
+        return userFound;
     }
 
 }

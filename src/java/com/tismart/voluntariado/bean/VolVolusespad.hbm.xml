@@ -1,0 +1,72 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 24-feb-2016 11:24:27 by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="com.tismart.voluntariado.bean.VolVolusespad" table="VOL_VOLUSESPAD" schema="UINDECI" optimistic-lock="version">
+        <id name="ideVoluntariosespad" type="big_decimal">
+            <column name="IDE_VOLUNTARIOSESPAD" precision="22" scale="0" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="volPais" class="com.tismart.voluntariado.bean.VolPais" fetch="select">
+            <column name="COD_PAIS" precision="22" scale="0" />
+        </many-to-one>
+        <many-to-one name="volDepartamento" class="com.tismart.voluntariado.bean.VolDepartamento" fetch="select">
+            <column name="COD_DEPARTAMENTO" precision="22" scale="0" />
+        </many-to-one>
+        <many-to-one name="volProvincia" class="com.tismart.voluntariado.bean.VolProvincia" fetch="select">
+            <column name="COD_PROVINCIA" precision="22" scale="0" />
+        </many-to-one>
+        <many-to-one name="volDistrito" class="com.tismart.voluntariado.bean.VolDistrito" fetch="select">
+            <column name="COD_DISTRITO" precision="22" scale="0" />
+        </many-to-one>
+        <many-to-one name="volGradoacade" class="com.tismart.voluntariado.bean.VolGradoacade" fetch="select">
+            <column name="IDE_GRADOACADEMICO" precision="22" scale="0" not-null="true" />
+        </many-to-one>
+        <property name="nombres" type="string">
+            <column name="NOMBRES" length="100" not-null="true" />
+        </property>
+        <property name="apellidos" type="string">
+            <column name="APELLIDOS" length="100" not-null="true" />
+        </property>
+        <property name="institucioneduca" type="string">
+            <column name="INSTITUCIONEDUCA" length="300" />
+        </property>
+        <property name="direccioniiee" type="string">
+            <column name="DIRECCIONIIEE" length="400" />
+        </property>
+        <property name="telefonoiiee" type="string">
+            <column name="TELEFONOIIEE" length="24" />
+        </property>
+        <property name="faxiiee" type="string">
+            <column name="FAXIIEE" length="24" />
+        </property>
+        <property name="directoriiee" type="string">
+            <column name="DIRECTORIIEE" length="100" />
+        </property>
+        <property name="rutaautorizacion" type="string">
+            <column name="RUTAAUTORIZACION" length="0" not-null="true" />
+        </property>
+        <property name="fecRegistro" type="date">
+            <column name="FEC_REGISTRO" length="7" />
+        </property>
+        <property name="nombresdocente" type="string">
+            <column name="NOMBRESDOCENTE" length="100" />
+        </property>
+        <property name="apellidosdocente" type="string">
+            <column name="APELLIDOSDOCENTE" length="100" />
+        </property>
+        <property name="telefonodocente" type="string">
+            <column name="TELEFONODOCENTE" length="24" />
+        </property>
+        <property name="correodocente" type="string">
+            <column name="CORREODOCENTE" length="60" />
+        </property>
+        <property name="direcciondocente" type="string">
+            <column name="DIRECCIONDOCENTE" length="400" />
+        </property>
+        <property name="fecValidacion" type="date">
+            <column name="FEC_VALIDACION" length="7" />
+        </property>
+    </class>
+</hibernate-mapping>

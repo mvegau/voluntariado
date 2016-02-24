@@ -5,8 +5,10 @@
  */
 package com.tismart.voluntariado.dao;
 
+import com.tismart.voluntariado.bean.VolProvincia;
 import com.tismart.voluntariado.bean.VolVoluntario;
 import com.tismart.voluntariado.util.HibernateUtil;
+import java.util.List;
 import javax.annotation.Resource;
 import org.hibernate.Query;
 import org.hibernate.Session;
@@ -40,6 +42,22 @@ public class VoluntarioDao {
         session.close();
         return true;
         //return voluntarioInsert;
+    }
+    
+    public List<VolProvincia> listarVoluntarios(){
+        List<VolProvincia> voluntarios = null;
+        Session session = HibernateUtil.getSessionFactory().openSession(); 
+
+        try {
+           voluntarios = session.createQuery(" from VolProvincia").list();
+           System.out.println("Cantidad de voluntarios encontrados :" + voluntarios.size());
+        } catch (Exception e) {
+            e.printStackTrace();
+        }finally{
+            session.close();
+        }
+         return voluntarios;
+        
     }
 
 }

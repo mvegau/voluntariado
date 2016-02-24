@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<!-- Generated 23-feb-2016 11:38:34 by Hibernate Tools 4.3.1 -->
+<!-- Generated 24-feb-2016 11:24:27 by Hibernate Tools 4.3.1 -->
 <hibernate-mapping>
     <class name="com.tismart.voluntariado.bean.VolPerfil" table="VOL_PERFIL" schema="UINDECI" optimistic-lock="version">
         <id name="idePerfil" type="big_decimal">
@@ -28,6 +28,14 @@
                 <column name="IDE_PERFIL" precision="22" scale="0" />
             </key>
             <one-to-many class="com.tismart.voluntariado.bean.VolUsuario" />
+        </set>
+        <set name="volOpcions" table="VOL_OPCIPERFIL_DET" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="IDE_PERFIL" precision="22" scale="0" not-null="true" />
+            </key>
+            <many-to-many entity-name="com.tismart.voluntariado.bean.VolOpcion">
+                <column name="IDE_OPCION" precision="22" scale="0" not-null="true" />
+            </many-to-many>
         </set>
     </class>
 </hibernate-mapping>

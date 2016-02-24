@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 24-feb-2016 11:24:27 by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="com.tismart.voluntariado.bean.VolConfirmacion" table="VOL_CONFIRMACION" schema="UINDECI" optimistic-lock="version">
+        <id name="ideConfirmacion" type="string">
+            <column name="IDE_CONFIRMACION" length="18" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="volVoluntario" class="com.tismart.voluntariado.bean.VolVoluntario" fetch="select">
+            <column name="IDE_VOLUNTARIO" precision="22" scale="0" />
+        </many-to-one>
+        <many-to-one name="volEvento" class="com.tismart.voluntariado.bean.VolEvento" fetch="select">
+            <column name="IDE_EVENTO" precision="22" scale="0" />
+        </many-to-one>
+        <property name="fechaconfirmacion" type="date">
+            <column name="FECHACONFIRMACION" length="7" />
+        </property>
+        <property name="indDisponibilidad" type="java.lang.Character">
+            <column name="IND_DISPONIBILIDAD" length="1" />
+        </property>
+        <property name="fechadisponibilidad" type="date">
+            <column name="FECHADISPONIBILIDAD" length="7" />
+        </property>
+    </class>
+</hibernate-mapping>

@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<!-- Generated 23-feb-2016 11:38:34 by Hibernate Tools 4.3.1 -->
+<!-- Generated 24-feb-2016 11:24:27 by Hibernate Tools 4.3.1 -->
 <hibernate-mapping>
     <class name="com.tismart.voluntariado.bean.VolUsuario" table="VOL_USUARIO" schema="UINDECI" optimistic-lock="version">
         <id name="ideUsuario" type="big_decimal">
@@ -44,5 +44,13 @@
         <property name="usumodificacion" type="string">
             <column name="USUMODIFICACION" length="18" />
         </property>
+        <set name="volDepartamentos" table="VOL_USUDEPA_DET" inverse="false" lazy="true" fetch="select">
+            <key>
+                <column name="IDE_USUARIO" precision="22" scale="0" not-null="true" />
+            </key>
+            <many-to-many entity-name="com.tismart.voluntariado.bean.VolDepartamento">
+                <column name="COD_DEPARTAMENTO" precision="22" scale="0" not-null="true" />
+            </many-to-many>
+        </set>
     </class>
 </hibernate-mapping>

@@ -5,8 +5,10 @@
  */
 package com.tismart.voluntariado.service;
 
+import com.tismart.voluntariado.bean.VolProvincia;
 import com.tismart.voluntariado.bean.VolVoluntario;
 import com.tismart.voluntariado.dao.VoluntarioDao;
+import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 
 /**
@@ -21,4 +23,10 @@ public class VoluntarioService {
     public boolean guardarVoluntario(VolVoluntario voluntario) {
         return voluntarioDao.guardarVoluntario(voluntario);
     }
+    
+    public List<VolProvincia> listarVoluntarios(){
+        return voluntarioDao.listarVoluntarios();
+    }
+    
+    
 }

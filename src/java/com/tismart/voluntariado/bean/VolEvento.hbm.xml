@@ -1,0 +1,60 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 24-feb-2016 11:24:27 by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="com.tismart.voluntariado.bean.VolEvento" table="VOL_EVENTO" schema="UINDECI" optimistic-lock="version">
+        <id name="ideEvento" type="big_decimal">
+            <column name="IDE_EVENTO" precision="22" scale="0" />
+            <generator class="assigned" />
+        </id>
+        <property name="usumodificacion" type="string">
+            <column name="USUMODIFICACION" length="60" />
+        </property>
+        <property name="fecModificacion" type="date">
+            <column name="FEC_MODIFICACION" length="7" />
+        </property>
+        <property name="nombre" type="string">
+            <column name="NOMBRE" length="100" />
+        </property>
+        <property name="ubicacion" type="string">
+            <column name="UBICACION" length="300" />
+        </property>
+        <property name="fecinicio" type="date">
+            <column name="FECINICIO" length="7" />
+        </property>
+        <property name="fecfin" type="date">
+            <column name="FECFIN" length="7" />
+        </property>
+        <property name="descripcion" type="string">
+            <column name="DESCRIPCION" length="800" />
+        </property>
+        <property name="indEstado" type="java.lang.Character">
+            <column name="IND_ESTADO" length="1" />
+        </property>
+        <property name="fecCreacion" type="date">
+            <column name="FEC_CREACION" length="7" />
+        </property>
+        <property name="usucreacion" type="string">
+            <column name="USUCREACION" length="60" />
+        </property>
+        <property name="materialapoyo" type="string">
+            <column name="MATERIALAPOYO" length="800" />
+        </property>
+        <property name="indSolicitavacuna" type="java.lang.Character">
+            <column name="IND_SOLICITAVACUNA" length="1" />
+        </property>
+        <set name="volConfirmacions" table="VOL_CONFIRMACION" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="IDE_EVENTO" precision="22" scale="0" />
+            </key>
+            <one-to-many class="com.tismart.voluntariado.bean.VolConfirmacion" />
+        </set>
+        <set name="volEvenvoluntDets" table="VOL_EVENVOLUNT_DET" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="IDE_EVENTO" precision="22" scale="0" not-null="true" />
+            </key>
+            <one-to-many class="com.tismart.voluntariado.bean.VolEvenvoluntDet" />
+        </set>
+    </class>
+</hibernate-mapping>

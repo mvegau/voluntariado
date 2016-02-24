@@ -1,5 +1,5 @@
 package com.tismart.voluntariado.bean;
-// Generated 23-feb-2016 11:38:34 by Hibernate Tools 4.3.1
+// Generated 24-feb-2016 11:24:26 by Hibernate Tools 4.3.1
 
 
 import java.math.BigDecimal;
@@ -20,6 +20,7 @@ public class VolPerfil  implements java.io.Serializable {
      private String usumodificacion;
      private Date fecModificacion;
      private Set volUsuarios = new HashSet(0);
+     private Set volOpcions = new HashSet(0);
 
     public VolPerfil() {
     }
@@ -29,7 +30,7 @@ public class VolPerfil  implements java.io.Serializable {
         this.idePerfil = idePerfil;
         this.descripcion = descripcion;
     }
-    public VolPerfil(BigDecimal idePerfil, String descripcion, String usucreacion, Date fecCreacion, String usumodificacion, Date fecModificacion, Set volUsuarios) {
+    public VolPerfil(BigDecimal idePerfil, String descripcion, String usucreacion, Date fecCreacion, String usumodificacion, Date fecModificacion, Set volUsuarios, Set volOpcions) {
        this.idePerfil = idePerfil;
        this.descripcion = descripcion;
        this.usucreacion = usucreacion;
@@ -37,6 +38,7 @@ public class VolPerfil  implements java.io.Serializable {
        this.usumodificacion = usumodificacion;
        this.fecModificacion = fecModificacion;
        this.volUsuarios = volUsuarios;
+       this.volOpcions = volOpcions;
     }
    
     public BigDecimal getIdePerfil() {
@@ -87,6 +89,13 @@ public class VolPerfil  implements java.io.Serializable {
     
     public void setVolUsuarios(Set volUsuarios) {
         this.volUsuarios = volUsuarios;
+    }
+    public Set getVolOpcions() {
+        return this.volOpcions;
+    }
+    
+    public void setVolOpcions(Set volOpcions) {
+        this.volOpcions = volOpcions;
     }
 
 

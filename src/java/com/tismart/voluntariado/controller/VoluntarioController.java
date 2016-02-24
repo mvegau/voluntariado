@@ -27,6 +27,14 @@ public class VoluntarioController {
     VoluntarioService voluntarioService = new VoluntarioService();
     VolVoluntario volVoluntario;
 
+    @RequestMapping(value = "/web_registro_ver_1", method = RequestMethod.POST)
+    public ModelAndView guardarDetalle1(HttpServletRequest request, HttpServletResponse response,@ModelAttribute("voluntarioBean") VolVoluntario voluntario) {
+        ModelAndView model = new ModelAndView("web_registro_ver_2");
+        System.out.println("guardarDetalle1");
+        volVoluntario = voluntario;
+        model.addObject("voluntarioBean", volVoluntario);
+        return model;
+    }
     @RequestMapping(value = "/web_registro_ver_1", method = RequestMethod.GET)
     public ModelAndView cargarDetalle1(HttpServletRequest request, HttpServletResponse response, VolVoluntario voluntario) {
         ModelAndView model = new ModelAndView("web_registro_ver_1");
@@ -36,15 +44,7 @@ public class VoluntarioController {
         return model;
     }
 
-    @RequestMapping(value = "/web_registro_ver_1", method = RequestMethod.POST)
-    public ModelAndView guardarDetalle1(HttpServletRequest request, HttpServletResponse response,
-            @ModelAttribute("voluntarioBean") VolVoluntario voluntario) {
-        ModelAndView model = new ModelAndView("web_registro_ver_2");
-        System.out.println("guardarDetalle1");
-        volVoluntario = voluntario;
-        model.addObject("voluntarioBean", volVoluntario);
-        return model;
-    }
+
 
     @RequestMapping(value = "/web_registro_ver_2", method = RequestMethod.GET)
     public ModelAndView volverDetalle1(HttpServletRequest request, HttpServletResponse response,
