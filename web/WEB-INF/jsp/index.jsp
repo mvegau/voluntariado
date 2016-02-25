@@ -60,7 +60,7 @@
                             <div class="pull-right">
                                 <form class="form-group login-inputs" id="loginForm" method="post" action="index.htm" modelAttribute="usuarioBean">
                                     <div class="col-xs-5 nopadding rightinput">
-                                        <input type="text" placeholder="Número de Documento" class="form-control in-login" id="nombre" name="nombre"/>
+                                        <input type="text" placeholder="Número de Documento" class="form-control in-login" id="nombre" name="numDocumento"/>
                                         <font color="red">${message}</font>
                                     </div>
                                     <div class="col-xs-5 nopadding">
@@ -98,7 +98,10 @@
                                         </ol>
                                     </div>
                                     <div class="cont-button">
-                                        <button class="btn-orange">Descargar base registro VER</button>
+                                        <!--button class="btn-orange" href="pdf/BasesVER.pdf" download>Descargar base registro VER</button-->
+                                        <a class="btn-orange" href="formatos_pdf/BasesVER.pdf" download>
+                                            Descargar base registro VER
+                                        </a>
                                     </div>
                                 </div>
                             </div>

@@ -40,17 +40,17 @@ public class VoluntarioService {
         return voluntarioDao.obtenerGruposSanguineos();
     }
 
-
-	
-	    public Integer damePosicionIdentificador(){
+    public Integer damePosicionIdentificador() {
         return voluntarioDao.damePosicionIdentificador();
-        
+
     }
-    
-    public List<VolVoluntario> listarVoluntarios(){
+
+    public List<VolVoluntario> listarVoluntarios() {
         return voluntarioDao.listarVoluntarios();
     }
-    public List<VolGradoacade> listarGradoAcademicos(){
-        return voluntarioDao.listarGradoAcademicos();}
+
+    public List<VolGradoacade> listarGradoAcademicos() {
+        return voluntarioDao.listarGradoAcademicos();
+    }
 
 }

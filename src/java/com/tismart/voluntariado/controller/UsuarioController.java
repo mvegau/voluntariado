@@ -30,16 +30,13 @@ public class UsuarioController {
     public ModelAndView mostrarDetalle(HttpServletRequest request, HttpServletResponse response, VolUsuario usuario) {
         ModelAndView model = new ModelAndView("web_detalles_ver_2");
         model.addObject("usuarioBean", usuario);
-        System.out.println("mostrarDetalle");
         return model;
     }
 
     @RequestMapping(value = "/web_detalles_ver_2", method = RequestMethod.POST)
     public ModelAndView modificarDetalle(HttpServletRequest request, HttpServletResponse response, @ModelAttribute("usuarioBean") VolUsuario usuario) {
         ModelAndView model = null;
-        System.out.println("modificarDetalle");
         model = new ModelAndView("index");
-
         return model;
     }
 }

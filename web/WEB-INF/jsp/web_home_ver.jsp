@@ -60,16 +60,16 @@
                                 <div class="pull-right login-ob">
                                     <div class="div-login">
                                         <div class="cont-login pull-right">
-                                            <span class="tit-login text-uppercase">${usuarioBean.nombre}</span>
+                                            <span class="tit-login text-uppercase">${nombreUsuario}</span>
                                             <a href="index.htm"><span class="close-sesion text-right">Cerrar Sesión</span></a>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="pull-right rlogin">
                                     <div class="tit-derecha-1">
-                                        <a href="web_home_ver.htm" class="tab-a">
+                                        <!--a href="web_home_ver.htm" class="tab-a"-->
                                             <span>VER</span>
-                                        </a>
+                                        <!--/a-->
                                     </div>
                                 </div>
                             </div>

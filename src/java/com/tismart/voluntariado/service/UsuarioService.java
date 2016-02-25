@@ -5,6 +5,7 @@
  */
 package com.tismart.voluntariado.service;
 
+import com.tismart.voluntariado.bean.VolUsuario;
 import com.tismart.voluntariado.dao.UsuarioDao;
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -17,7 +18,11 @@ public class UsuarioService {
     @Autowired
     UsuarioDao usuarioDao = new UsuarioDao();
 
-    public boolean validarUsuario(String username, String password) {
-        return usuarioDao.validarUsuario(username, password);
+    public boolean validarUsuario(String numDocumento, String password) {
+        return usuarioDao.validarUsuario(numDocumento, password);
+    }
+    
+    public VolUsuario getNombreUsuario(String numDocumento) {
+        return usuarioDao.getNombreUsuario(numDocumento);
     }
 }
