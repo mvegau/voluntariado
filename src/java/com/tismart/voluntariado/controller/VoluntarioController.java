@@ -287,4 +287,15 @@ public class VoluntarioController {
         }
         return gradacademicos;
     }
+
+    @RequestMapping(value = "/web_registro_sespad", method = RequestMethod.GET)
+    public ModelAndView cargarsespad(HttpServletRequest request, HttpServletResponse response) {
+        ModelAndView model = new ModelAndView("web_registro_sespad");
+        //model.addObject("voluntarioBean", voluntario);
+        //VolPais volpais = new VolPais();
+        //model.addObject("paisBean", volpais);
+        //System.out.println("cargarDetalle1");
+        //volVoluntario = new VolVoluntario();
+        return model;
+    }
 }
