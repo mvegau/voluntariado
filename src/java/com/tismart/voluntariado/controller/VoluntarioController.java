@@ -56,7 +56,7 @@ public class VoluntarioController {
     @RequestMapping(value = "/web_registro_ver_1", method = RequestMethod.POST)
     public ModelAndView guardarDetalle1(HttpServletRequest request, HttpServletResponse response,
             @ModelAttribute("voluntarioBean") VolVoluntario voluntario) {
-        ModelAndView model = new ModelAndView("web_registro_ver_3");
+        ModelAndView model = new ModelAndView("web_registro_ver_2");
         //System.out.println("guardarDetalle1" + voluntario.getVolPais().getCodPais());
         volVoluntario = voluntario;
 
@@ -90,10 +90,16 @@ public class VoluntarioController {
     @RequestMapping(value = "/web_registro_ver_3", method = RequestMethod.GET)
     public ModelAndView volverDetalle2(HttpServletRequest request, HttpServletResponse response,
             @ModelAttribute("voluntarioBean") VolVoluntario voluntario) {
-        ModelAndView model = new ModelAndView("web_registro_ver_2");
-        voluntario = volVoluntario;
-        model.addObject("voluntarioBean", voluntario);
-        System.out.println("volverDetalle2");
+//        ModelAndView model = new ModelAndView("web_registro_ver_2");
+//        voluntario = volVoluntario;
+//        model.addObject("voluntarioBean", voluntario);
+//        System.out.println("volverDetalle2");
+//        return model;
+        ModelAndView model = new ModelAndView("web_terminos_legales_ver");
+        System.out.println("guardarDetalle3");
+        //volVoluntario = voluntario;
+        volVoluntario.setApreciacion(voluntario.getApreciacion());
+        model.addObject("voluntarioBean", volVoluntario);
         return model;
     }
 
@@ -154,7 +160,7 @@ public class VoluntarioController {
             //volVoluntario.setVolProfesion(prof);
             //volVoluntario.setVolGsanguineo(san);
             volVoluntario.setVolEstavolun(stavol);
-            //volVoluntario.setCelular("123456789");
+            volVoluntario.setCelular("123456789");
             //volVoluntario.setNombres("Mario2");
             //volVoluntario.setApellidos("Soto2");
             //volVoluntario.setNumDocumento("56442");
