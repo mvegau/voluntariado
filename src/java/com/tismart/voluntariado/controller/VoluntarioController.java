@@ -7,11 +7,17 @@ package com.tismart.voluntariado.controller;
 
 import com.tismart.voluntariado.bean.VolDepartamento;
 import com.tismart.voluntariado.bean.VolDistrito;
+import com.tismart.voluntariado.bean.VolEstavolun;
+import com.tismart.voluntariado.bean.VolGradoacade;
+import com.tismart.voluntariado.bean.VolGsanguineo;
 import com.tismart.voluntariado.bean.VolPais;
+import com.tismart.voluntariado.bean.VolProfesion;
 import com.tismart.voluntariado.bean.VolProvincia;
+import com.tismart.voluntariado.bean.VolTipdocum;
 import com.tismart.voluntariado.bean.VolVoluntario;
 import com.tismart.voluntariado.service.UbigeoService;
 import com.tismart.voluntariado.service.VoluntarioService;
+import java.math.BigDecimal;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
@@ -36,14 +42,6 @@ public class VoluntarioController {
     UbigeoService ubigeoService = new UbigeoService();
     VolVoluntario volVoluntario;
 
-    @RequestMapping(value = "/web_registro_ver_1", method = RequestMethod.POST)
-    public ModelAndView guardarDetalle1(HttpServletRequest request, HttpServletResponse response,@ModelAttribute("voluntarioBean") VolVoluntario voluntario) {
-        ModelAndView model = new ModelAndView("web_registro_ver_2");
-        System.out.println("guardarDetalle1");
-        volVoluntario = voluntario;
-        model.addObject("voluntarioBean", volVoluntario);
-        return model;
-    }
     @RequestMapping(value = "/web_registro_ver_1", method = RequestMethod.GET)
     public ModelAndView cargarDetalle1(HttpServletRequest request, HttpServletResponse response, VolVoluntario voluntario) {
         ModelAndView model = new ModelAndView("web_registro_ver_1");
@@ -58,9 +56,10 @@ public class VoluntarioController {
     @RequestMapping(value = "/web_registro_ver_1", method = RequestMethod.POST)
     public ModelAndView guardarDetalle1(HttpServletRequest request, HttpServletResponse response,
             @ModelAttribute("voluntarioBean") VolVoluntario voluntario) {
-        ModelAndView model = new ModelAndView("web_registro_ver_2");
-        System.out.println("guardarDetalle1" + voluntario.getVolPais().getCodPais());
+        ModelAndView model = new ModelAndView("web_registro_ver_3");
+        //System.out.println("guardarDetalle1" + voluntario.getVolPais().getCodPais());
         volVoluntario = voluntario;
+
         model.addObject("voluntarioBean", volVoluntario);
         return model;
     }
@@ -123,20 +122,61 @@ public class VoluntarioController {
     public ModelAndView aceptarTerminosLegales(HttpServletRequest request, HttpServletResponse response,
             @ModelAttribute("usuarioBean") VolVoluntario voluntario) {
         ModelAndView model = new ModelAndView("index");
-        System.out.println("aceptarTerminosLegales" + voluntario.getNombres());
+        //System.out.println("aceptarTerminosLegales" + voluntario.getNombres());
         //volVoluntario = voluntario;
         //model.addObject("voluntarioBean", volVoluntario);
-        boolean isOk = voluntarioService.guardarVoluntario(volVoluntario);
+
+        VolGradoacade gra = new VolGradoacade();
+        gra.setIdeGradoacademico(BigDecimal.valueOf(1));
+        VolTipdocum tipd = new VolTipdocum();
+        tipd.setIdeTipodocumento(BigDecimal.valueOf(1));
+        VolProfesion prof = new VolProfesion();
+        prof.setIdeProfesion(BigDecimal.valueOf(1));
+        VolGsanguineo san = new VolGsanguineo();
+        san.setIdeGruposangui(BigDecimal.valueOf(1));
+        VolEstavolun stavol = new VolEstavolun();
+        stavol.setIdeEstadovoluntario(BigDecimal.valueOf(1));
+
         try {
-            if (isOk) {
-                model = new ModelAndView("index");
-            } else {
-                model = new ModelAndView("error");
-            }
+            /*  DateFormat ft = new SimpleDateFormat("yyyy-MM-dd");
+            Date fecha = null;
+            fecha = ft.parse("24/02/16");*/
+
+            java.util.Date myDate = new java.util.Date("10/10/2010");
+            java.sql.Date sqlDate = new java.sql.Date(myDate.getTime());
+
+            Integer identity = voluntarioService.damePosicionIdentificador();
+            Integer newidentity;
+            newidentity = identity + 1;
+            volVoluntario.setIdeVoluntario(BigDecimal.valueOf(newidentity));
+            volVoluntario.setVolGradoacade(gra);
+            //volVoluntario.setVolTipdocum(tipd);
+            //volVoluntario.setVolProfesion(prof);
+            //volVoluntario.setVolGsanguineo(san);
+            volVoluntario.setVolEstavolun(stavol);
+            //volVoluntario.setCelular("123456789");
+            //volVoluntario.setNombres("Mario2");
+            //volVoluntario.setApellidos("Soto2");
+            //volVoluntario.setNumDocumento("56442");
+            //volVoluntario.setTelefono("45656722");
+            //volVoluntario.setCorreo("Soto@gmail.com2");
+            volVoluntario.setFecNacimiento(sqlDate);
+            voluntarioService.guardarVoluntario(volVoluntario);
         } catch (Exception e) {
             e.printStackTrace();
         }
+        System.out.println("SE INSERTOOOO");
 
+//        boolean isOk = voluntarioService.guardarVoluntario(volVoluntario);
+//        try {
+//            if (isOk) {
+//                model = new ModelAndView("index");
+//            } else {
+//                model = new ModelAndView("error");
+//            }
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//        }
         return model;
     }
 
@@ -190,5 +230,55 @@ public class VoluntarioController {
             distritos.put(distrito.getCodDistrito().toString(), distrito.getNombredis());
         }
         return distritos;
+    }
+
+    @ModelAttribute("documentos")
+    public Map<String, String> listaDocumentos() {
+
+        Map<String, String> documentos = new LinkedHashMap<String, String>();
+        List listaDocumentos = voluntarioService.obtenerDocumentos();
+        for (int i = 0; i < listaDocumentos.size(); i++) {
+            VolTipdocum documento = (VolTipdocum) listaDocumentos.get(i);
+            //paises.put((VolPais) listaPaises.get(i).get);
+            documentos.put(documento.getIdeTipodocumento().toString(), documento.getDescripcion());
+        }
+        return documentos;
+    }
+
+    @ModelAttribute("profesiones")
+    public Map<String, String> listaProfesiones() {
+
+        Map<String, String> profesiones = new LinkedHashMap<String, String>();
+        List listaProfesiones = voluntarioService.obtenerProfesiones();
+        for (int i = 0; i < listaProfesiones.size(); i++) {
+            VolProfesion profesion = (VolProfesion) listaProfesiones.get(i);
+            //paises.put((VolPais) listaPaises.get(i).get);
+            profesiones.put(profesion.getIdeProfesion().toString(), profesion.getDescripcion());
+        }
+        return profesiones;
+    }
+
+    @ModelAttribute("sanguineo")
+    public Map<String, String> listaGrupoSanguineo() {
+
+        Map<String, String> grupos = new LinkedHashMap<String, String>();
+        List listaGrupo = voluntarioService.obtenerGruposSanguineos();
+        for (int i = 0; i < listaGrupo.size(); i++) {
+            VolGsanguineo grupo = (VolGsanguineo) listaGrupo.get(i);
+            //paises.put((VolPais) listaPaises.get(i).get);
+            grupos.put(grupo.getIdeGruposangui().toString(), grupo.getDescripcion());
+        }
+        return grupos;
+    }
+
+    @ModelAttribute("gradooacad")
+    public Map<String, String> listaGradAcad() {
+        Map<String, String> gradacademicos = new LinkedHashMap<String, String>();
+        List listaGradAcad = voluntarioService.listarGradoAcademicos();
+        for (int i = 0; i < listaGradAcad.size(); i++) {
+            VolGradoacade gradacademico = (VolGradoacade) listaGradAcad.get(i);
+            gradacademicos.put(gradacademico.getIdeGradoacademico().toString(), gradacademico.getDescripcion());
+        }
+        return gradacademicos;
     }
 }

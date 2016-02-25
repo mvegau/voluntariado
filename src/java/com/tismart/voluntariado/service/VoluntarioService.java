@@ -5,6 +5,10 @@
  */
 package com.tismart.voluntariado.service;
 
+import com.tismart.voluntariado.bean.VolGradoacade;
+import com.tismart.voluntariado.bean.VolGsanguineo;
+import com.tismart.voluntariado.bean.VolProfesion;
+import com.tismart.voluntariado.bean.VolTipdocum;
 import com.tismart.voluntariado.bean.VolProvincia;
 import com.tismart.voluntariado.bean.VolVoluntario;
 import com.tismart.voluntariado.dao.VoluntarioDao;
@@ -23,10 +27,30 @@ public class VoluntarioService {
     public boolean guardarVoluntario(VolVoluntario voluntario) {
         return voluntarioDao.guardarVoluntario(voluntario);
     }
-    
-    public List<VolProvincia> listarVoluntarios(){
-        return voluntarioDao.listarVoluntarios();
+
+    public List<VolTipdocum> obtenerDocumentos() {
+        return voluntarioDao.obtenerDocumentos();
+    }
+
+    public List<VolProfesion> obtenerProfesiones() {
+        return voluntarioDao.obtenerProfesiones();
+    }
+
+    public List<VolGsanguineo> obtenerGruposSanguineos() {
+        return voluntarioDao.obtenerGruposSanguineos();
+    }
+
+
+	
+	    public Integer damePosicionIdentificador(){
+        return voluntarioDao.damePosicionIdentificador();
+        
     }
     
-    
+    public List<VolVoluntario> listarVoluntarios(){
+        return voluntarioDao.listarVoluntarios();
+    }
+    public List<VolGradoacade> listarGradoAcademicos(){
+        return voluntarioDao.listarGradoAcademicos();}
+
 }

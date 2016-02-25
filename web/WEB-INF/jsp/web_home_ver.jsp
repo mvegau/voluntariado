@@ -41,25 +41,6 @@
         <script src="js/enscroll-0.6.0.min.js"></script>
         <script src="js/bootstrap-datepicker.js"></script>
         <script src="js/funciones.js"></script>
-        <script src="http://code.jquery.com/jquery-latest.min.js"></script> 
-<style>
-.resaltar{background-color:#FF0;}
-</style> 
-  <script type='text/javascript' >
-    $.expr[':'].icontains = function(obj, index, meta, stack){
-    return (obj.textContent || obj.innerText || jQuery(obj).text() || '').toLowerCase().indexOf(meta[3].toLowerCase()) >= 0;
-    };
-    $(document).ready(function(){   
-        $('#buscador').keyup(function(){
-                     buscar = $(this).val();
-                     $('#lista tr').removeClass('resaltar');
-                            if(jQuery.trim(buscar) != ''){
-                               $("#lista tr:icontains('" + buscar + "')").addClass('resaltar');
-                            }
-            });
-    });   
- </script> 
-        
     </head>
 
     <body>
@@ -323,10 +304,10 @@
                                 <form class="row top-row">
                                     <div class="pull-left">
                                         <div class="fbusqueda">
-                                            <input type="text" class="form-control in-login in-filtro" placeholder="" name="buscador" id="buscador"/>
+                                            <input type="text" class="form-control in-login in-filtro" placeholder="">
                                         </div>
                                         <div class="alerta">
-                                            <input type="checkbox" class="check-all" data-check="1" name="buscador" id="buscador">
+                                            <input type="checkbox" class="check-all" data-check="1">
                                             <a><span>Seleccionar Todos</span></a>
                                         </div>
                                         <div class="alerta" data-target="#alerta" data-toggle="modal">
@@ -339,7 +320,7 @@
                                     </div>
                                 </form>
 
-                                <table class="table inde-tabla text-center" id="lista">
+                                <table class="table inde-tabla text-center">
                                     <thead>
                                         <tr>
                                             <th class="wthe"></th>
@@ -358,16 +339,14 @@
                                         <c:forEach items="${voluntariosBean}" var="ls">
                                             <tr> 
                                                 <td class="bs-checkbox-1 "> <input type="checkbox" value=""></td>
-                                                <td>${ls.codProvincia}</td>
-                                                <td>${ls.nombrepro}</td>
-                                                <td>${ls.volDepartamento.codDepartamento}</td>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
+                                                <td>${ls.nombres}</td>
+                                                <td>${ls.apellidos}</td>
+                                                <td>${ls.indHabilitado}</td>
+                                                <td>${ls.fecNacimiento}</td>
+                                                <td>${ls.volProfesion.ideProfesion}</td>
+                                                <td>${ls.volProvincia.codProvincia}</td>
+                                                <td>${ls.volTipvolun.ideTipovoluntario}</td>
                                                 <td> <a href="web_detalles_ver_2.htm" class="ver-detalle"></a></td>
-                              
-                                               
                                                 </td>
                                                 <td class="op-deshabilitar"><span class="habilitado">Deshabilitar</span></td>
                                                     

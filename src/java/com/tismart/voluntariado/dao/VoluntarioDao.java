@@ -5,6 +5,10 @@
  */
 package com.tismart.voluntariado.dao;
 
+import com.tismart.voluntariado.bean.VolGradoacade;
+import com.tismart.voluntariado.bean.VolGsanguineo;
+import com.tismart.voluntariado.bean.VolProfesion;
+import com.tismart.voluntariado.bean.VolTipdocum;
 import com.tismart.voluntariado.bean.VolProvincia;
 import com.tismart.voluntariado.bean.VolVoluntario;
 import com.tismart.voluntariado.util.HibernateUtil;
@@ -44,12 +48,12 @@ public class VoluntarioDao {
         //return voluntarioInsert;
     }
     
-    public List<VolProvincia> listarVoluntarios(){
-        List<VolProvincia> voluntarios = null;
+    public List<VolVoluntario> listarVoluntarios(){
+        List<VolVoluntario> voluntarios = null;
         Session session = HibernateUtil.getSessionFactory().openSession(); 
 
         try {
-           voluntarios = session.createQuery(" from VolProvincia").list();
+           voluntarios = session.createQuery(" from VolVoluntario").list();
            System.out.println("Cantidad de voluntarios encontrados :" + voluntarios.size());
         } catch (Exception e) {
             e.printStackTrace();
@@ -60,4 +64,51 @@ public class VoluntarioDao {
         
     }
 
-}
+    public List<VolTipdocum> obtenerDocumentos() {
+        Session session = HibernateUtil.getSessionFactory().openSession();
+        String SQL_QUERY = " from VolTipdocum ";
+        Query query = session.createQuery(SQL_QUERY);
+        List<VolTipdocum> listaDocumentos = query.list();
+        session.close();
+        return listaDocumentos;
+    }
+
+    public List<VolProfesion> obtenerProfesiones() {
+        Session session = HibernateUtil.getSessionFactory().openSession();
+        String SQL_QUERY = " from VolProfesion ";
+        Query query = session.createQuery(SQL_QUERY);
+        List<VolProfesion> listaProfesiones = query.list();
+        session.close();
+        return listaProfesiones;
+    }
+
+    public List<VolGsanguineo> obtenerGruposSanguineos() {
+        Session session = HibernateUtil.getSessionFactory().openSession();
+        String SQL_QUERY = " from VolGsanguineo ";
+        Query query = session.createQuery(SQL_QUERY);
+        List<VolGsanguineo> listaGrupoSanguineo = query.list();
+        session.close();
+        return listaGrupoSanguineo;
+    }
+
+    public Integer damePosicionIdentificador(){
+                Session session = HibernateUtil.getSessionFactory().openSession(); 
+                List<VolVoluntario> list = session.createQuery(" from VolVoluntario").list();
+                System.out.println("posicion : "+ list.size());
+                return list.size();
+    }
+     public List<VolGradoacade> listarGradoAcademicos(){
+        List<VolGradoacade> listgrad = null;
+        Session session = HibernateUtil.getSessionFactory().openSession(); 
+
+        try {
+           listgrad = session.createQuery(" from VolGradoacade").list();
+           System.out.println("Cantidad de VolGradoacade encontrados :" + listgrad.size());
+        } catch (Exception e) {
+            e.printStackTrace();
+        }finally{
+            session.close();
+        }
+         return listgrad;
+        
+    }   }

@@ -92,7 +92,7 @@
                                     <div class="cont-mensaje-title">
                                         <h2>Pasos a seguir para ser voluntario:</h2>
                                         <ol class="indicaciones-lista">
-                                            <li>REGISTRASE COMO POTULANTE</li>
+                                            <li>REGISTRASE COMO POSTULANTE</li>
                                             <li>LLEVAR EL CURSO</li>
                                             <li>ACTUALIZAR INFORMACIÓN Y MANTENERSE ALERTA</li>
                                         </ol>

@@ -40,6 +40,10 @@ public class VolGradoacade  implements java.io.Serializable {
        this.volVolusespads = volVolusespads;
        this.volVoluntarios = volVoluntarios;
     }
+
+    public VolGradoacade(int i) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
    
     public BigDecimal getIdeGradoacademico() {
         return this.ideGradoacademico;

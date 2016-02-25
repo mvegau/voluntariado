@@ -53,7 +53,7 @@ public class LoginController {
             if (isValidUser) {
                 //request.setAttribute("usuarioLog", usuario.getUsername());
                 model = new ModelAndView("web_home_ver");
-                List<VolProvincia> listVoluntarios = voluntarioService.listarVoluntarios();
+                List<VolVoluntario> listVoluntarios = voluntarioService.listarVoluntarios();
                 model.addObject("voluntariosBean",listVoluntarios);
             } else {
                 model = new ModelAndView("index");

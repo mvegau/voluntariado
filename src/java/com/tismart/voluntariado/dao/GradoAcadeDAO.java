@@ -33,21 +33,21 @@ public class GradoAcadeDAO {
         return insertGradoAcade;
         //return voluntarioInsert;
     }
-         public List<VolGradoacade> listarGradoAcademicos(){
-        List<VolGradoacade> listgrad = null;
-        Session session = HibernateUtil.getSessionFactory().openSession(); 
-
-        try {
-           listgrad = session.createQuery(" from VolGradoacade").list();
-           System.out.println("Cantidad de VolGradoacade encontrados :" + listgrad.size());
-        } catch (Exception e) {
-            e.printStackTrace();
-        }finally{
-            session.close();
-        }
-         return listgrad;
-        
-    }   
+//         public List<VolGradoacade> listarGradoAcademicos(){
+//        List<VolGradoacade> listgrad = null;
+//        Session session = HibernateUtil.getSessionFactory().openSession(); 
+//
+//        try {
+//           listgrad = session.createQuery(" from VolGradoacade").list();
+//           System.out.println("Cantidad de VolGradoacade encontrados :" + listgrad.size());
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//        }finally{
+//            session.close();
+//        }
+//         return listgrad;
+//        
+//    }   
          
          
         
