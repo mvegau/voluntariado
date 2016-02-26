@@ -46,9 +46,6 @@ public class VoluntarioController {
     public ModelAndView cargarDetalle1(HttpServletRequest request, HttpServletResponse response, VolVoluntario voluntario) {
         ModelAndView model = new ModelAndView("web_registro_ver_1");
         model.addObject("voluntarioBean", voluntario);
-        //VolPais volpais = new VolPais();
-        //model.addObject("paisBean", volpais);
-        System.out.println("cargarDetalle1");
         volVoluntario = new VolVoluntario();
         return model;
     }
@@ -57,9 +54,7 @@ public class VoluntarioController {
     public ModelAndView guardarDetalle1(HttpServletRequest request, HttpServletResponse response,
             @ModelAttribute("voluntarioBean") VolVoluntario voluntario) {
         ModelAndView model = new ModelAndView("web_registro_ver_2");
-        //System.out.println("guardarDetalle1" + voluntario.getVolPais().getCodPais());
         volVoluntario = voluntario;
-
         model.addObject("voluntarioBean", volVoluntario);
         return model;
     }
@@ -70,7 +65,6 @@ public class VoluntarioController {
         ModelAndView model = new ModelAndView("web_registro_ver_1");
         voluntario = volVoluntario;
         model.addObject("voluntarioBean", voluntario);
-        System.out.println("volverDetalle1");
         return model;
     }
 
@@ -78,11 +72,6 @@ public class VoluntarioController {
     public ModelAndView guardarDetalle2(HttpServletRequest request, HttpServletResponse response,
             @ModelAttribute("usuarioBean") VolVoluntario voluntario) {
         ModelAndView model = new ModelAndView("web_registro_ver_3");
-        String enlace = null;
-        //request.setAttribute(enlace, "Datos incorrectos");
-        //enlace = (String) request.getAttribute(enlace);
-        System.out.println("guardarDetalle2" + enlace);
-        //volVoluntario = voluntario;
         model.addObject("voluntarioBean", volVoluntario);
         return model;
     }
@@ -90,26 +79,16 @@ public class VoluntarioController {
     @RequestMapping(value = "/web_registro_ver_3", method = RequestMethod.GET)
     public ModelAndView volverDetalle2(HttpServletRequest request, HttpServletResponse response,
             @ModelAttribute("voluntarioBean") VolVoluntario voluntario) {
-//        ModelAndView model = new ModelAndView("web_registro_ver_2");
-//        voluntario = volVoluntario;
-//        model.addObject("voluntarioBean", voluntario);
-//        System.out.println("volverDetalle2");
-//        return model;
-        ModelAndView model = new ModelAndView("web_terminos_legales_ver");
-        System.out.println("guardarDetalle3");
-        //volVoluntario = voluntario;
-        volVoluntario.setApreciacion(voluntario.getApreciacion());
+        ModelAndView model = new ModelAndView("web_registro_ver_3");
         model.addObject("voluntarioBean", volVoluntario);
         return model;
     }
 
     @RequestMapping(value = "/web_registro_ver_3", method = RequestMethod.POST)
     public ModelAndView guardarDetalle3(HttpServletRequest request, HttpServletResponse response,
-            @ModelAttribute("usuarioBean") VolVoluntario voluntario) {
+            @ModelAttribute("voluntarioBean") VolVoluntario voluntario) {
         ModelAndView model = new ModelAndView("web_terminos_legales_ver");
-        System.out.println("guardarDetalle3");
-        //volVoluntario = voluntario;
-        volVoluntario.setApreciacion(voluntario.getApreciacion());
+        volVoluntario.setMotivacion(voluntario.getMotivacion());
         model.addObject("voluntarioBean", volVoluntario);
         return model;
     }
@@ -126,12 +105,10 @@ public class VoluntarioController {
 
     @RequestMapping(value = "/web_terminos_legales_ver", method = RequestMethod.POST)
     public ModelAndView aceptarTerminosLegales(HttpServletRequest request, HttpServletResponse response,
-            @ModelAttribute("usuarioBean") VolVoluntario voluntario) {
+            @ModelAttribute("voluntarioBean") VolVoluntario voluntario) {
         ModelAndView model = new ModelAndView("index");
-        //System.out.println("aceptarTerminosLegales" + voluntario.getNombres());
-        //volVoluntario = voluntario;
-        //model.addObject("voluntarioBean", volVoluntario);
 
+        volVoluntario.setAceptaterminos(voluntario.getAceptaterminos());
         VolGradoacade gra = new VolGradoacade();
         gra.setIdeGradoacademico(BigDecimal.valueOf(1));
         VolTipdocum tipd = new VolTipdocum();
@@ -156,17 +133,12 @@ public class VoluntarioController {
             newidentity = identity + 1;
             volVoluntario.setIdeVoluntario(BigDecimal.valueOf(newidentity));
             volVoluntario.setVolGradoacade(gra);
-            //volVoluntario.setVolTipdocum(tipd);
-            //volVoluntario.setVolProfesion(prof);
-            //volVoluntario.setVolGsanguineo(san);
             volVoluntario.setVolEstavolun(stavol);
-            volVoluntario.setCelular("123456789");
-            //volVoluntario.setNombres("Mario2");
-            //volVoluntario.setApellidos("Soto2");
-            //volVoluntario.setNumDocumento("56442");
-            //volVoluntario.setTelefono("45656722");
-            //volVoluntario.setCorreo("Soto@gmail.com2");
+            volVoluntario.setCelular(volVoluntario.getTelefono());
             volVoluntario.setFecNacimiento(sqlDate);
+            VolEstavolun estado = new VolEstavolun();
+            estado.setIdeEstadovoluntario(BigDecimal.ONE);
+            volVoluntario.setVolEstavolun(estado);
             voluntarioService.guardarVoluntario(volVoluntario);
         } catch (Exception e) {
             e.printStackTrace();

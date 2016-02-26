@@ -40,6 +40,17 @@
         <script src="js/enscroll-0.6.0.min.js"></script>
         <script src="js/bootstrap-datepicker.js"></script>
         <script src="js/funciones.js"></script>
+
+        <script language="javascript">
+            function checkCheckBox() {
+                elemento = document.getElementById("campo");
+                if (!elemento.checked) {
+                    alert('Debe aceptar los términos y condiciones.');
+                    return false;
+                }
+            }
+        </script>
+
     </head>
 
     <body>
@@ -62,7 +73,7 @@
             </section>
             <section class="cont-white">
                 <div class="container icheck-container">
-                    <form method="post" action="web_terminos_legales_ver.htm" modelAttribute="voluntarioBean" commandName="voluntarioBean">
+                    <form onsubmit="return checkCheckBox()" method="post" action="web_terminos_legales_ver.htm" modelAttribute="voluntarioBean" commandName="voluntarioBean">
                         <div class="row">
                             <div class="col-xs-12 nopadding">
                                 <div class="contenido-de-terminos">
@@ -96,7 +107,7 @@
                                     <br>
                                     <div class="acepto-terminos">
                                         <div class="check-r">
-                                            <input type="checkbox" value="">
+                                            <input type="checkbox" value="${voluntarioBean.aceptaterminos}" name="elemento" id="elemento" value="1">
                                         </div>
                                     </div><span>Acepto los terminos y condiciones</span>
                                 </div>
@@ -118,10 +129,5 @@
                     </div>
                 </section>
         </div>
-
-
-
-
-
     </body>
 </html>

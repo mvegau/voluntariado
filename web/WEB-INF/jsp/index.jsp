@@ -99,7 +99,7 @@
                                     </div>
                                     <div class="cont-button">
                                         <!--button class="btn-orange" href="pdf/BasesVER.pdf" download>Descargar base registro VER</button-->
-                                        <a class="btn-orange" href="formatos_pdf/BasesVER.pdf" download>
+                                        <a class="btn-orange" href="pdf_cargado/BasesVER.pdf" download>
                                             Descargar base registro VER
                                         </a>
                                     </div>

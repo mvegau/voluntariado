@@ -9,10 +9,11 @@ import com.tismart.voluntariado.bean.VolGradoacade;
 import com.tismart.voluntariado.bean.VolGsanguineo;
 import com.tismart.voluntariado.bean.VolProfesion;
 import com.tismart.voluntariado.bean.VolTipdocum;
-import com.tismart.voluntariado.bean.VolProvincia;
+import com.tismart.voluntariado.bean.VolUsuario;
 import com.tismart.voluntariado.bean.VolVoluntario;
 import com.tismart.voluntariado.util.HibernateUtil;
 import java.util.List;
+import java.util.Random;
 import javax.annotation.Resource;
 import org.hibernate.Query;
 import org.hibernate.Session;
@@ -43,25 +44,43 @@ public class VoluntarioDao {
         Transaction transaccion = session.beginTransaction();
         session.save(voluntario);
         transaccion.commit();
+        /*INI insertar usuario*/
+        //Calendar fecha = new GregorianCalendar();
+        //java.util.Date myDate = new java.util.Date(fecha.get(Calendar.DAY_OF_MONTH) + fecha.get(Calendar.MONTH) + fecha.get(Calendar.YEAR));
+        //java.sql.Date sqlDate = new java.sql.Date(myDate.getTime());
+        VolUsuario volUsuario = new VolUsuario();
+        //volUsuario.setFecModificacion(sqlDate);
+        volUsuario.setNombre(voluntario.getNombres());
+        String contrasenia = generarContrasenia();
+        volUsuario.setPassword(contrasenia);
+        //volUsuario.setFecCreacion(myDate);
+        volUsuario.setApellidos(voluntario.getApellidos());
+        volUsuario.setCorreo(voluntario.getCorreo());
+        volUsuario.setTelefonos(voluntario.getTelefono());
+        volUsuario.setNumDocumento(voluntario.getNumDocumento());
+        //volUsuario.set
+        session.save(volUsuario);
+        transaccion.commit();
+        /*FIN*/
         session.close();
         return true;
         //return voluntarioInsert;
     }
-    
-    public List<VolVoluntario> listarVoluntarios(){
+
+    public List<VolVoluntario> listarVoluntarios() {
         List<VolVoluntario> voluntarios = null;
-        Session session = HibernateUtil.getSessionFactory().openSession(); 
+        Session session = HibernateUtil.getSessionFactory().openSession();
 
         try {
-           voluntarios = session.createQuery(" from VolVoluntario").list();
-           System.out.println("Cantidad de voluntarios encontrados :" + voluntarios.size());
+            voluntarios = session.createQuery(" from VolVoluntario").list();
+            System.out.println("Cantidad de voluntarios encontrados :" + voluntarios.size());
         } catch (Exception e) {
             e.printStackTrace();
-        }finally{
+        } finally {
             session.close();
         }
-         return voluntarios;
-        
+        return voluntarios;
+
     }
 
     public List<VolTipdocum> obtenerDocumentos() {
@@ -91,24 +110,42 @@ public class VoluntarioDao {
         return listaGrupoSanguineo;
     }
 
-    public Integer damePosicionIdentificador(){
-                Session session = HibernateUtil.getSessionFactory().openSession(); 
-                List<VolVoluntario> list = session.createQuery(" from VolVoluntario").list();
-                System.out.println("posicion : "+ list.size());
-                return list.size();
+    public Integer damePosicionIdentificador() {
+        Session session = HibernateUtil.getSessionFactory().openSession();
+        List<VolVoluntario> list = session.createQuery(" from VolVoluntario").list();
+        System.out.println("posicion : " + list.size());
+        return list.size();
     }
-     public List<VolGradoacade> listarGradoAcademicos(){
+
+    public List<VolGradoacade> listarGradoAcademicos() {
         List<VolGradoacade> listgrad = null;
-        Session session = HibernateUtil.getSessionFactory().openSession(); 
+        Session session = HibernateUtil.getSessionFactory().openSession();
 
         try {
-           listgrad = session.createQuery(" from VolGradoacade").list();
-           System.out.println("Cantidad de VolGradoacade encontrados :" + listgrad.size());
+            listgrad = session.createQuery(" from VolGradoacade").list();
+            System.out.println("Cantidad de VolGradoacade encontrados :" + listgrad.size());
         } catch (Exception e) {
             e.printStackTrace();
-        }finally{
+        } finally {
             session.close();
         }
-         return listgrad;
-        
-    }   }
+        return listgrad;
+
+    }
+
+    private String generarContrasenia() {
+
+        String cadenaAleatoria = "";
+        long milis = new java.util.GregorianCalendar().getTimeInMillis();
+        Random r = new Random(milis);
+        int i = 0;
+        while (cadenaAleatoria.length() < 8) {
+            char c = (char) r.nextInt(255);
+            if ((c >= '0' && c <= '9') || (c >= 'A' && c <= 'Z')) {
+                cadenaAleatoria += c;
+                i++;
+            }
+        }
+        return cadenaAleatoria;
+    }
+}

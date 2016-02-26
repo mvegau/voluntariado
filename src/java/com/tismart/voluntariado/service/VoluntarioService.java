@@ -9,7 +9,6 @@ import com.tismart.voluntariado.bean.VolGradoacade;
 import com.tismart.voluntariado.bean.VolGsanguineo;
 import com.tismart.voluntariado.bean.VolProfesion;
 import com.tismart.voluntariado.bean.VolTipdocum;
-import com.tismart.voluntariado.bean.VolProvincia;
 import com.tismart.voluntariado.bean.VolVoluntario;
 import com.tismart.voluntariado.dao.VoluntarioDao;
 import java.util.List;

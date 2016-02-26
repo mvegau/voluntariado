@@ -40,6 +40,18 @@
         <script src="js/enscroll-0.6.0.min.js"></script>
         <script src="js/bootstrap-datepicker.js"></script>
         <script src="js/funciones.js"></script>
+
+        <SCRIPT language=Javascript>
+
+            function isNumberKey(evt)
+            {
+                var charCode = (evt.which) ? evt.which : event.keyCode
+                if (charCode > 31 && (charCode < 48 || charCode > 57))
+                    return false;
+                return true;
+            }
+
+        </SCRIPT>
     </head>
 
     <body>
@@ -71,7 +83,10 @@
                                         <span class="titulo-top">PRIMER PASO</span>
                                     </div>
                                     <div class="pull-right sprincipal top-right stepbtn">
-                                        <button class="btn btn-default btn-orange" type="submit">ANEXO 5</button>
+                                        <!--button class="btn btn-default btn-orange" type="submit">ANEXO 5</button-->
+                                        <a class="btn btn-default btn-orange" href="pdf_cargado/Anexo5.pdf" download>
+                                            Descargar base registro VER
+                                        </a>
                                         <div class="div-subti min-letter">
                                             <a class="link-a" href="#"><span class="text-center">Descarge el anexo para adjuntarlo <br>(opcional, sólo para menores de edad)</span></a>
                                         </div>
@@ -164,7 +179,7 @@
                                     <div class="col-xs-4 nopadding">
                                         <div class="form-group winput">
                                             <label>Número de documento</label>
-                                            <input type="text" class="form-control" placeholder="" value="${voluntarioBean.numDocumento}" name="numDocumento">
+                                            <input type="text" class="form-control" placeholder="" maxlength="12" value="${voluntarioBean.numDocumento}" name="numDocumento">
                                         </div>
                                     </div>
                                 </div>
@@ -172,22 +187,22 @@
                                     <div class="col-xs-4 nopadding shijo">
                                         <div class="form-group winput">
                                             <label class="block-label">Profesión</label>
-                                                <form:select class="select2" path="VolProfesion.ideProfesion">
-                                                    <form:option value="NONE" label="Elegir especialidad"/>
-                                                    <form:options items="${profesiones}"/>
-                                                </form:select>
+                                            <form:select class="select2" path="VolProfesion.ideProfesion">
+                                                <form:option value="NONE" label="Elegir especialidad"/>
+                                                <form:options items="${profesiones}"/>
+                                            </form:select>
                                         </div>
                                     </div>
                                     <div class="col-xs-4 nopadding">
                                         <div class="form-group winput">
                                             <label>Domicilio</label>
-                                            <input type="text" class="form-control" placeholder="" value="${voluntarioBean.domicilio}" name="domicilio">
+                                            <input type="text" class="form-control" placeholder="" maxlength="100" value="${voluntarioBean.domicilio}" name="domicilio">
                                         </div>
                                     </div>
                                     <div class="col-xs-4 nopadding">
                                         <div class="form-group winput">
                                             <label>Teléfono</label>
-                                            <input type="text" class="form-control" placeholder="" value="${voluntarioBean.telefono}" name="telefono">
+                                            <input type="text" class="form-control" placeholder="" maxlength="12" value="${voluntarioBean.telefono}" name="telefono" onkeypress="return isNumberKey(event)">
                                         </div>
                                     </div>
                                 </div>
@@ -207,10 +222,10 @@
                                     <div class="col-xs-4 nopadding shijo">
                                         <div class="form-group winput">
                                             <label class="hiden">Texto Texto</label>
-                                                <form:select class="select2" path="VolGrupo.ideGrupo">
-                                                    <form:option value="NONE" label="Grupo sanguíneo"/>
-                                                    <form:options items="${sanguineo}"/>
-                                                </form:select>
+                                            <form:select class="select2" path="VolGrupo.ideGrupo">
+                                                <form:option value="NONE" label="Grupo sanguíneo"/>
+                                                <form:options items="${sanguineo}"/>
+                                            </form:select>
                                         </div>
                                     </div>
                                 </div>
