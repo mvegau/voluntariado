@@ -43,7 +43,7 @@
 
         <script language="javascript">
             function checkCheckBox() {
-                elemento = document.getElementById("campo");
+                elemento = document.getElementById("elemento");
                 if (!elemento.checked) {
                     alert('Debe aceptar los términos y condiciones.');
                     return false;
@@ -107,7 +107,7 @@
                                     <br>
                                     <div class="acepto-terminos">
                                         <div class="check-r">
-                                            <input type="checkbox" value="${voluntarioBean.aceptaterminos}" name="elemento" id="elemento" value="1">
+                                            <input type="checkbox" value="elemento" name="elemento" id="elemento">
                                         </div>
                                     </div><span>Acepto los terminos y condiciones</span>
                                 </div>

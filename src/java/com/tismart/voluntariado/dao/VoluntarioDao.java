@@ -44,33 +44,26 @@ public class VoluntarioDao {
         //session=HibernateUtil.getSessionFactory().openSession();
         String contrasenia = generarContrasenia();
         try {
-            //Transaction transaccion = session.beginTransaction();
-            //session.save(voluntario);
-            //transaccion.commit();
             session.beginTransaction();
             session.save(voluntario);
-            //session.getTransaction().commit();
 
             /*INI insertar usuario*/
-            //Calendar fecha = new GregorianCalendar();
-            //java.util.Date myDate = new java.util.Date(fecha.get(Calendar.DAY_OF_MONTH) + fecha.get(Calendar.MONTH) + fecha.get(Calendar.YEAR));
-            //java.sql.Date sqlDate = new java.sql.Date(myDate.getTime());
             VolUsuario volUsuario = new VolUsuario();
-            //volUsuario.setFecModificacion(sqlDate);
             volUsuario.setNombre(voluntario.getNombres());
             volUsuario.setPassword(contrasenia);
-            //volUsuario.setFecCreacion(myDate);
             volUsuario.setApellidos(voluntario.getApellidos());
             volUsuario.setCorreo(voluntario.getCorreo());
             volUsuario.setTelefonos(voluntario.getTelefono());
             volUsuario.setNumDocumento(voluntario.getNumDocumento());
             volUsuario.setIndDesactivo(voluntario.getIndHabilitado());
+            volUsuario.setUsucreacion("SISTEMA");
+            volUsuario.setUsumodificacion("SISTEMA");
+            volUsuario.setFecCreacion(voluntario.getFecRegistro());
+            volUsuario.setFecModificacion(voluntario.getFecRegistro());
             Integer id = obtenerUltimoIdUsuario();
             volUsuario.setIdeUsuario(BigDecimal.valueOf(id + 1));
             session.save(volUsuario);
             session.getTransaction().commit();
-            //session.save(volUsuario);
-            //transaccion.commit();
             /*FIN*/
         } catch (Exception e) {
             e.printStackTrace();

@@ -45,7 +45,7 @@ public class UbigeoDao {
     public List<VolDepartamento> obtenerDepartamentos(String codPais) {
         Session session = HibernateUtil.getSessionFactory().openSession();
         String SQL_QUERY = " from VolDepartamento ";
-        //String SQL_QUERY = " from VolDepartamento where VolPais = " + codPais + " ";
+        //String SQL_QUERY = " from VolDepartamento where VolPais.codPais = " + codPais + " ";
         Query query = session.createQuery(SQL_QUERY);
         List<VolDepartamento> listaDepartamentos = query.list();
         session.close();

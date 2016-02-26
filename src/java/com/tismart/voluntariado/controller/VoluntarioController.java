@@ -18,6 +18,9 @@ import com.tismart.voluntariado.bean.VolVoluntario;
 import com.tismart.voluntariado.service.UbigeoService;
 import com.tismart.voluntariado.service.VoluntarioService;
 import java.math.BigDecimal;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.GregorianCalendar;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
@@ -29,6 +32,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
+import sun.util.calendar.Gregorian;
 
 /**
  *
@@ -107,18 +111,24 @@ public class VoluntarioController {
     public ModelAndView aceptarTerminosLegales(HttpServletRequest request, HttpServletResponse response,
             @ModelAttribute("voluntarioBean") VolVoluntario voluntario) {
         ModelAndView model = new ModelAndView("web_confirmacion_ver");
-        volVoluntario.setAceptaterminos(voluntario.getAceptaterminos());
         String contrasenia = "";
 
         try {
-            /*  DateFormat ft = new SimpleDateFormat("yyyy-MM-dd");
-            Date fecha = null;
-            fecha = ft.parse("24/02/16");*/
+            String fechaNac = volVoluntario.getFecNacimiento().toString();
+            String diaNac = fechaNac.substring(8, 10);
+            int dia = Integer.parseInt(diaNac);
+            String mesNac = fechaNac.substring(4, 7);
+            int mes = obtenerMes(mesNac);
+            String anioNac = fechaNac.substring(24, 28);
+            int anio = Integer.parseInt(anioNac);
 
-            System.out.println("AAAAAAAAAAAAAAAA" + volVoluntario.getFecNacimiento());
-            java.util.Date myDate = new java.util.Date("10/10/2010");
-            java.sql.Date sqlDate = new java.sql.Date(myDate.getTime());
-            System.out.println("AAAAAAAAAAAAAAAA" + sqlDate);
+            Calendar cal = new GregorianCalendar(anio, mes, dia);
+            Date fecha = cal.getTime();// aumenta en uno el mes que se ingreso
+            java.sql.Date fecNacimiento = new java.sql.Date(fecha.getTime());
+
+            Date fechaActual = new Date();
+            java.sql.Date sqlDate = new java.sql.Date(fechaActual.getTime());
+            System.out.println("BBBBBBBBBBBBBB" + sqlDate);
 
             Integer identity = voluntarioService.damePosicionIdentificador();
             Integer newidentity;
@@ -130,12 +140,15 @@ public class VoluntarioController {
             volVoluntario.setVolGradoacade(grado);
 
             volVoluntario.setCelular(volVoluntario.getTelefono());
-            volVoluntario.setFecNacimiento(sqlDate);
+            volVoluntario.setFecNacimiento(fecNacimiento);
+            volVoluntario.setFecRegistro(sqlDate);
             volVoluntario.setIndHabilitado(BigDecimal.valueOf(1));// 1 activo - 0 desactivo
 
             VolEstavolun estado = new VolEstavolun();
             estado.setIdeEstadovoluntario(BigDecimal.valueOf(1));//Postulante
             volVoluntario.setVolEstavolun(estado);
+
+            volVoluntario.setAceptaterminos(BigDecimal.valueOf(1));
 
             contrasenia = voluntarioService.guardarVoluntario(volVoluntario);
         } catch (Exception e) {
@@ -153,7 +166,6 @@ public class VoluntarioController {
         List listaPaises = ubigeoService.obtenerPaises();
         for (int i = 0; i < listaPaises.size(); i++) {
             VolPais pais = (VolPais) listaPaises.get(i);
-            //paises.put((VolPais) listaPaises.get(i).get);
             paises.put(pais.getCodPais().toString(), pais.getNombrepa());
         }
         return paises;
@@ -166,7 +178,6 @@ public class VoluntarioController {
         List listaDepartamentos = ubigeoService.obtenerDepartamentos(codPais);
         for (int i = 0; i < listaDepartamentos.size(); i++) {
             VolDepartamento departamento = (VolDepartamento) listaDepartamentos.get(i);
-            //paises.put((VolPais) listaPaises.get(i).get);
             departamentos.put(departamento.getCodDepartamento().toString(), departamento.getNombredep());
         }
         return departamentos;
@@ -179,7 +190,6 @@ public class VoluntarioController {
         List listaProvincias = ubigeoService.obtenerProvincias(codDep);
         for (int i = 0; i < listaProvincias.size(); i++) {
             VolProvincia provincia = (VolProvincia) listaProvincias.get(i);
-            //paises.put((VolPais) listaPaises.get(i).get);
             provincias.put(provincia.getCodProvincia().toString(), provincia.getNombrepro());
         }
         return provincias;
@@ -192,7 +202,6 @@ public class VoluntarioController {
         List listaDistritos = ubigeoService.obtenerDistritos(codProv);
         for (int i = 0; i < listaDistritos.size(); i++) {
             VolDistrito distrito = (VolDistrito) listaDistritos.get(i);
-            //paises.put((VolPais) listaPaises.get(i).get);
             distritos.put(distrito.getCodDistrito().toString(), distrito.getNombredis());
         }
         return distritos;
@@ -205,7 +214,6 @@ public class VoluntarioController {
         List listaDocumentos = voluntarioService.obtenerDocumentos();
         for (int i = 0; i < listaDocumentos.size(); i++) {
             VolTipdocum documento = (VolTipdocum) listaDocumentos.get(i);
-            //paises.put((VolPais) listaPaises.get(i).get);
             documentos.put(documento.getIdeTipodocumento().toString(), documento.getDescripcion());
         }
         return documentos;
@@ -218,7 +226,6 @@ public class VoluntarioController {
         List listaProfesiones = voluntarioService.obtenerProfesiones();
         for (int i = 0; i < listaProfesiones.size(); i++) {
             VolProfesion profesion = (VolProfesion) listaProfesiones.get(i);
-            //paises.put((VolPais) listaPaises.get(i).get);
             profesiones.put(profesion.getIdeProfesion().toString(), profesion.getDescripcion());
         }
         return profesiones;
@@ -231,7 +238,6 @@ public class VoluntarioController {
         List listaGrupo = voluntarioService.obtenerGruposSanguineos();
         for (int i = 0; i < listaGrupo.size(); i++) {
             VolGsanguineo grupo = (VolGsanguineo) listaGrupo.get(i);
-            //paises.put((VolPais) listaPaises.get(i).get);
             grupos.put(grupo.getIdeGruposangui().toString(), grupo.getDescripcion());
         }
         return grupos;
@@ -251,11 +257,6 @@ public class VoluntarioController {
     @RequestMapping(value = "/web_registro_sespad", method = RequestMethod.GET)
     public ModelAndView cargarsespad(HttpServletRequest request, HttpServletResponse response) {
         ModelAndView model = new ModelAndView("web_registro_sespad");
-        //model.addObject("voluntarioBean", voluntario);
-        //VolPais volpais = new VolPais();
-        //model.addObject("paisBean", volpais);
-        //System.out.println("cargarDetalle1");
-        //volVoluntario = new VolVoluntario();
         return model;
     }
 
@@ -263,5 +264,47 @@ public class VoluntarioController {
     public ModelAndView confirmacion(HttpServletRequest request, HttpServletResponse response) {
         ModelAndView model = new ModelAndView("index");
         return model;
+    }
+
+    private int obtenerMes(String mesNac) {
+        int mes = 0;
+
+        if (mesNac.equals("Jan")) {
+            mes = 0;
+        }
+        if (mesNac.equals("Feb")) {
+            mes = 1;
+        }
+        if (mesNac.equals("Mar")) {
+            mes = 2;
+        }
+        if (mesNac.equals("Apr")) {
+            mes = 3;
+        }
+        if (mesNac.equals("May")) {
+            mes = 4;
+        }
+        if (mesNac.equals("Jun")) {
+            mes = 5;
+        }
+        if (mesNac.equals("Jul")) {
+            mes = 6;
+        }
+        if (mesNac.equals("Aug")) {
+            mes = 7;
+        }
+        if (mesNac.equals("Sep")) {
+            mes = 8;
+        }
+        if (mesNac.equals("Oct")) {
+            mes = 9;
+        }
+        if (mesNac.equals("Nov")) {
+            mes = 10;
+        }
+        if (mesNac.equals("Dec")) {
+            mes = 11;
+        }
+        return mes;
     }
 }

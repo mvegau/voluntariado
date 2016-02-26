@@ -121,8 +121,8 @@
                                         <div class="col-xs-12 nopadding">
                                             <div class="col-xs-4 nopadding shijo">
                                                 <div class="form-group winput">
-                                                    <form:select class="select2" path="volPais.codPais"> <!--onchange="cambiarPais()" id="codPais"-->
-                                                        <form:option value="NONE" label="País"/>
+                                                    <form:select class="select2" path="volPais.codPais"><!--onchange="cambiarPais()" id="codPais"-->
+                                                        <form:option value="0" label="País"/>
                                                         <form:options items="${paises}"/>
                                                     </form:select>		
                                                 </div>
@@ -134,7 +134,7 @@
                                             <div class="form-group winput">
                                                 <label class="hiden">Departamento</label>
                                                 <form:select class="select2" path="volDepartamento.codDepartamento">
-                                                    <form:option value="NONE" label="Departamento"/>
+                                                    <form:option value="0" label="Departamento"/>
                                                     <form:options items="${departamentos}"/>
                                                 </form:select>	
                                             </div>
@@ -143,7 +143,7 @@
                                             <div class="form-group winput">
                                                 <label class="hiden">Provincia</label>
                                                 <form:select class="select2" path="volProvincia.codProvincia" >
-                                                    <form:option value="NONE" label="Provincia"/>
+                                                    <form:option value="0" label="Provincia"/>
                                                     <form:options items="${provincias}"/>
                                                 </form:select>	
                                             </div>
@@ -152,7 +152,7 @@
                                             <div class="form-group winput">
                                                 <label class="hiden">Distrito</label>
                                                 <form:select class="select2" path="volDistrito.codDistrito" >
-                                                    <form:option value="NONE" label="Distrito"/>
+                                                    <form:option value="0" label="Distrito"/>
                                                     <form:options items="${distritos}"/>
                                                 </form:select>	
                                             </div>
@@ -188,7 +188,7 @@
                                             <div class="col-xs-4 nopadding shijo">
                                                 <div class="form-group winput">
                                                     <form:select class="select2" path="VolTipdocum.ideTipodocumento">
-                                                        <form:option value="NONE" label="Documento"/>
+                                                        <form:option value="0" label="Documento"/>
                                                         <form:options items="${documentos}"/>
                                                     </form:select>
                                                 </div>
@@ -198,7 +198,7 @@
                                     <div class="col-xs-4 nopadding">
                                         <div class="form-group winput">
                                             <label>Número de documento</label>
-                                            <input type="text" class="form-control" placeholder="" maxlength="12" value="${voluntarioBean.numDocumento}" name="numDocumento">
+                                            <input type="text" class="form-control" placeholder="" minlength="8" maxlength="12" value="${voluntarioBean.numDocumento}" name="numDocumento">
                                         </div>
                                     </div>
                                 </div>
@@ -207,7 +207,7 @@
                                         <div class="form-group winput">
                                             <label class="block-label">Profesión</label>
                                             <form:select class="select2" path="VolProfesion.ideProfesion">
-                                                <form:option value="NONE" label="Elegir especialidad"/>
+                                                <form:option value="0" label="Elegir especialidad"/>
                                                 <form:options items="${profesiones}"/>
                                             </form:select>
                                         </div>
@@ -242,7 +242,7 @@
                                         <div class="form-group winput">
                                             <label class="hiden">Texto Texto</label>
                                             <form:select class="select2" path="VolGsanguineo.ideGruposangui">
-                                                <form:option value="NONE" label="Grupo sanguíneo"/>
+                                                <form:option value="0" label="Grupo sanguíneo"/>
                                                 <form:options items="${sanguineo}"/>
                                             </form:select>
                                         </div>
