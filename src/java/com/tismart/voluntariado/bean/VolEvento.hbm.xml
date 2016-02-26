@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<!-- Generated 24-feb-2016 11:24:27 by Hibernate Tools 4.3.1 -->
+<!-- Generated 26-feb-2016 9:56:43 by Hibernate Tools 4.3.1 -->
 <hibernate-mapping>
     <class name="com.tismart.voluntariado.bean.VolEvento" table="VOL_EVENTO" schema="UINDECI" optimistic-lock="version">
         <id name="ideEvento" type="big_decimal">
@@ -44,17 +44,17 @@
         <property name="indSolicitavacuna" type="java.lang.Character">
             <column name="IND_SOLICITAVACUNA" length="1" />
         </property>
-        <set name="volConfirmacions" table="VOL_CONFIRMACION" inverse="true" lazy="true" fetch="select">
-            <key>
-                <column name="IDE_EVENTO" precision="22" scale="0" />
-            </key>
-            <one-to-many class="com.tismart.voluntariado.bean.VolConfirmacion" />
-        </set>
         <set name="volEvenvoluntDets" table="VOL_EVENVOLUNT_DET" inverse="true" lazy="true" fetch="select">
             <key>
                 <column name="IDE_EVENTO" precision="22" scale="0" not-null="true" />
             </key>
             <one-to-many class="com.tismart.voluntariado.bean.VolEvenvoluntDet" />
+        </set>
+        <set name="volConfirmacions" table="VOL_CONFIRMACION" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="IDE_EVENTO" precision="22" scale="0" />
+            </key>
+            <one-to-many class="com.tismart.voluntariado.bean.VolConfirmacion" />
         </set>
     </class>
 </hibernate-mapping>

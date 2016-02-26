@@ -1,5 +1,5 @@
 package com.tismart.voluntariado.bean;
-// Generated 24-feb-2016 11:24:26 by Hibernate Tools 4.3.1
+// Generated 26-feb-2016 9:56:41 by Hibernate Tools 4.3.1
 
 
 import java.math.BigDecimal;
@@ -26,6 +26,7 @@ public class VolUsuario  implements java.io.Serializable {
      private String usucreacion;
      private String numDocumento;
      private String usumodificacion;
+     private BigDecimal indDesactivo;
      private Set volDepartamentos = new HashSet(0);
 
     public VolUsuario() {
@@ -35,7 +36,7 @@ public class VolUsuario  implements java.io.Serializable {
     public VolUsuario(BigDecimal ideUsuario) {
         this.ideUsuario = ideUsuario;
     }
-    public VolUsuario(BigDecimal ideUsuario, VolPerfil volPerfil, VolCargo volCargo, Date fecModificacion, String nombre, String password, Date fecCreacion, String apellidos, String correo, String telefonos, String usucreacion, String numDocumento, String usumodificacion, Set volDepartamentos) {
+    public VolUsuario(BigDecimal ideUsuario, VolPerfil volPerfil, VolCargo volCargo, Date fecModificacion, String nombre, String password, Date fecCreacion, String apellidos, String correo, String telefonos, String usucreacion, String numDocumento, String usumodificacion, BigDecimal indDesactivo, Set volDepartamentos) {
        this.ideUsuario = ideUsuario;
        this.volPerfil = volPerfil;
        this.volCargo = volCargo;
@@ -49,6 +50,7 @@ public class VolUsuario  implements java.io.Serializable {
        this.usucreacion = usucreacion;
        this.numDocumento = numDocumento;
        this.usumodificacion = usumodificacion;
+       this.indDesactivo = indDesactivo;
        this.volDepartamentos = volDepartamentos;
     }
    
@@ -142,6 +144,13 @@ public class VolUsuario  implements java.io.Serializable {
     
     public void setUsumodificacion(String usumodificacion) {
         this.usumodificacion = usumodificacion;
+    }
+    public BigDecimal getIndDesactivo() {
+        return this.indDesactivo;
+    }
+    
+    public void setIndDesactivo(BigDecimal indDesactivo) {
+        this.indDesactivo = indDesactivo;
     }
     public Set getVolDepartamentos() {
         return this.volDepartamentos;

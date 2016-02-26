@@ -1,5 +1,5 @@
 package com.tismart.voluntariado.bean;
-// Generated 24-feb-2016 11:24:26 by Hibernate Tools 4.3.1
+// Generated 26-feb-2016 9:56:41 by Hibernate Tools 4.3.1
 
 
 import java.math.BigDecimal;
@@ -14,7 +14,7 @@ public class VolCapacitacion  implements java.io.Serializable {
      private BigDecimal ideCapacitacion;
      private VolVoluntario volVoluntario;
      private String curso;
-     private String institucion;
+     private BigDecimal ideInstitucion;
      private Date fecInicio;
      private BigDecimal horas;
      private Date fecRegistro;
@@ -26,11 +26,11 @@ public class VolCapacitacion  implements java.io.Serializable {
     public VolCapacitacion(BigDecimal ideCapacitacion) {
         this.ideCapacitacion = ideCapacitacion;
     }
-    public VolCapacitacion(BigDecimal ideCapacitacion, VolVoluntario volVoluntario, String curso, String institucion, Date fecInicio, BigDecimal horas, Date fecRegistro) {
+    public VolCapacitacion(BigDecimal ideCapacitacion, VolVoluntario volVoluntario, String curso, BigDecimal ideInstitucion, Date fecInicio, BigDecimal horas, Date fecRegistro) {
        this.ideCapacitacion = ideCapacitacion;
        this.volVoluntario = volVoluntario;
        this.curso = curso;
-       this.institucion = institucion;
+       this.ideInstitucion = ideInstitucion;
        this.fecInicio = fecInicio;
        this.horas = horas;
        this.fecRegistro = fecRegistro;
@@ -57,12 +57,12 @@ public class VolCapacitacion  implements java.io.Serializable {
     public void setCurso(String curso) {
         this.curso = curso;
     }
-    public String getInstitucion() {
-        return this.institucion;
+    public BigDecimal getIdeInstitucion() {
+        return this.ideInstitucion;
     }
     
-    public void setInstitucion(String institucion) {
-        this.institucion = institucion;
+    public void setIdeInstitucion(BigDecimal ideInstitucion) {
+        this.ideInstitucion = ideInstitucion;
     }
     public Date getFecInicio() {
         return this.fecInicio;

@@ -52,7 +52,20 @@ $(document).ready(function() {
       $(this).parent('.row').remove();
     });
 
+//------------------------------------------------------------------------------------------//
 
+$('#tipo-voluntario').select2().on('change', function(){
+    var selectedOption = $(this).val();
+    if (selectedOption == 'uno') {
+      $('.select-container-first').fadeIn(0);
+      $('.select-container').fadeOut(0);
+    } else {
+      $('.select-container-first').fadeOut(0);
+      $('.select-container').fadeIn(0);
+    }
+  });
+
+//------------------------------------------------------------------------------------------//
     $(".btn-add-especialidad-a").on("click", function() {
       $("#especialidad").before("<div class=\"row padre\"><div class=\"elim-x-5\"><img src=\"images/slices_borrar.png\"></div><div class=\"elim\"></div><div class=\"col-xs-4 nopadding shijo\"><div class=\"form-group winput\"><label>Grado académico</label><select class=\"select2\"><option></option><option>Opcion1</option><option>Opcion2</option><option>Opcion3</option><option>Opcion4</option><option>Opcion5</option></select></div></div><div class=\"col-xs-4 nopadding shijo\"><div class=\"form-group winput\"><label>Institución</label><select class=\"select2\"><option>UNIVERSIDAD CATOLICA</option><option>IPP</option><option>SAN MARCOS</option><option>IPAD</option><option>IDAD</option><option>OPCION5</option></select></div></div><div class=\"col-xs-4 nopadding\"><div class=\"form-group winput\"><label class=\"hiden\">Otros</label><input type=\"text\" class=\"form-control\" placeholder=\"otros\"></div></div><div class=\"clearfix\"></div><div class=\"col-xs-4 nopadding\"><div class=\"form-group winput\"><label>Año en que culmino</label><input type=\"text\" class=\"form-control\" placeholder=\"\"></div></div><div class=\"col-xs-4 nopadding\"><div class=\"form-group winput\"><label class=\"hiden\">Adjuntar</label><div><span class=\"nombre-archivo\"></span><div class=\"btn btn-modalsmall plomo btn-uploader-container\"><input type=\"file\" class=\"btn-upload-product-picture one-in\"><span class=\"btn-uploader-text\"><em>Adjuntar certificado de especialización</em></span></div></div></div></div></div>");
       $(".select2").select2({

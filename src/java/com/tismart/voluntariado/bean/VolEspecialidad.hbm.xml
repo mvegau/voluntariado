@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<!-- Generated 24-feb-2016 11:24:27 by Hibernate Tools 4.3.1 -->
+<!-- Generated 26-feb-2016 9:56:43 by Hibernate Tools 4.3.1 -->
 <hibernate-mapping>
     <class name="com.tismart.voluntariado.bean.VolEspecialidad" table="VOL_ESPECIALIDAD" schema="UINDECI" optimistic-lock="version">
         <id name="ideEspecialidad" type="big_decimal">
@@ -11,8 +11,8 @@
         <many-to-one name="volVoluntario" class="com.tismart.voluntariado.bean.VolVoluntario" fetch="select">
             <column name="IDE_VOLUNTARIO" precision="22" scale="0" />
         </many-to-one>
-        <property name="institucion" type="string">
-            <column name="INSTITUCION" length="200" />
+        <property name="ideInstitucion" type="big_decimal">
+            <column name="IDE_INSTITUCION" precision="22" scale="0" />
         </property>
         <property name="aniofinalizacion" type="big_decimal">
             <column name="ANIOFINALIZACION" precision="22" scale="0" />

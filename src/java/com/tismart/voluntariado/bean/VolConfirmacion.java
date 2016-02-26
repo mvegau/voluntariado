@@ -1,5 +1,5 @@
 package com.tismart.voluntariado.bean;
-// Generated 24-feb-2016 11:24:26 by Hibernate Tools 4.3.1
+// Generated 26-feb-2016 9:56:41 by Hibernate Tools 4.3.1
 
 
 import java.util.Date;

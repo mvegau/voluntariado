@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<!-- Generated 24-feb-2016 11:24:27 by Hibernate Tools 4.3.1 -->
+<!-- Generated 26-feb-2016 9:56:43 by Hibernate Tools 4.3.1 -->
 <hibernate-mapping>
     <class name="com.tismart.voluntariado.bean.VolUsuario" table="VOL_USUARIO" schema="UINDECI" optimistic-lock="version">
         <id name="ideUsuario" type="big_decimal">
@@ -43,6 +43,9 @@
         </property>
         <property name="usumodificacion" type="string">
             <column name="USUMODIFICACION" length="18" />
+        </property>
+        <property name="indDesactivo" type="big_decimal">
+            <column name="IND_DESACTIVO" precision="22" scale="0" />
         </property>
         <set name="volDepartamentos" table="VOL_USUDEPA_DET" inverse="false" lazy="true" fetch="select">
             <key>

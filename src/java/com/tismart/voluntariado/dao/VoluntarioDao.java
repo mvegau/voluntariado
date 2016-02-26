@@ -12,6 +12,7 @@ import com.tismart.voluntariado.bean.VolTipdocum;
 import com.tismart.voluntariado.bean.VolUsuario;
 import com.tismart.voluntariado.bean.VolVoluntario;
 import com.tismart.voluntariado.util.HibernateUtil;
+import java.math.BigDecimal;
 import java.util.List;
 import java.util.Random;
 import javax.annotation.Resource;
@@ -37,34 +38,48 @@ public class VoluntarioDao {
         return sessionFactory.openSession();
     }
 
-    public boolean guardarVoluntario(VolVoluntario voluntario) {
+    public String guardarVoluntario(VolVoluntario voluntario) {
         Session session = HibernateUtil.getSessionFactory().openSession();
         //boolean voluntarioInsert = false;
         //session=HibernateUtil.getSessionFactory().openSession();
-        Transaction transaccion = session.beginTransaction();
-        session.save(voluntario);
-        transaccion.commit();
-        /*INI insertar usuario*/
-        //Calendar fecha = new GregorianCalendar();
-        //java.util.Date myDate = new java.util.Date(fecha.get(Calendar.DAY_OF_MONTH) + fecha.get(Calendar.MONTH) + fecha.get(Calendar.YEAR));
-        //java.sql.Date sqlDate = new java.sql.Date(myDate.getTime());
-        VolUsuario volUsuario = new VolUsuario();
-        //volUsuario.setFecModificacion(sqlDate);
-        volUsuario.setNombre(voluntario.getNombres());
         String contrasenia = generarContrasenia();
-        volUsuario.setPassword(contrasenia);
-        //volUsuario.setFecCreacion(myDate);
-        volUsuario.setApellidos(voluntario.getApellidos());
-        volUsuario.setCorreo(voluntario.getCorreo());
-        volUsuario.setTelefonos(voluntario.getTelefono());
-        volUsuario.setNumDocumento(voluntario.getNumDocumento());
-        //volUsuario.set
-        session.save(volUsuario);
-        transaccion.commit();
-        /*FIN*/
-        session.close();
-        return true;
-        //return voluntarioInsert;
+        try {
+            //Transaction transaccion = session.beginTransaction();
+            //session.save(voluntario);
+            //transaccion.commit();
+            session.beginTransaction();
+            session.save(voluntario);
+            //session.getTransaction().commit();
+
+            /*INI insertar usuario*/
+            //Calendar fecha = new GregorianCalendar();
+            //java.util.Date myDate = new java.util.Date(fecha.get(Calendar.DAY_OF_MONTH) + fecha.get(Calendar.MONTH) + fecha.get(Calendar.YEAR));
+            //java.sql.Date sqlDate = new java.sql.Date(myDate.getTime());
+            VolUsuario volUsuario = new VolUsuario();
+            //volUsuario.setFecModificacion(sqlDate);
+            volUsuario.setNombre(voluntario.getNombres());
+            volUsuario.setPassword(contrasenia);
+            //volUsuario.setFecCreacion(myDate);
+            volUsuario.setApellidos(voluntario.getApellidos());
+            volUsuario.setCorreo(voluntario.getCorreo());
+            volUsuario.setTelefonos(voluntario.getTelefono());
+            volUsuario.setNumDocumento(voluntario.getNumDocumento());
+            volUsuario.setIndDesactivo(voluntario.getIndHabilitado());
+            Integer id = obtenerUltimoIdUsuario();
+            volUsuario.setIdeUsuario(BigDecimal.valueOf(id + 1));
+            session.save(volUsuario);
+            session.getTransaction().commit();
+            //session.save(volUsuario);
+            //transaccion.commit();
+            /*FIN*/
+        } catch (Exception e) {
+            e.printStackTrace();
+            session.getTransaction().rollback();
+        } finally {
+            session.close();
+        }
+
+        return contrasenia;
     }
 
     public List<VolVoluntario> listarVoluntarios() {
@@ -147,5 +162,11 @@ public class VoluntarioDao {
             }
         }
         return cadenaAleatoria;
+    }
+
+    private Integer obtenerUltimoIdUsuario() {
+        Session session = HibernateUtil.getSessionFactory().openSession();
+        List<VolUsuario> list = session.createQuery(" from VolUsuario").list();
+        return list.size();
     }
 }

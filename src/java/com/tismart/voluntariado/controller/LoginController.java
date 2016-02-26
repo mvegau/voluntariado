@@ -47,15 +47,18 @@ public class LoginController {
             if (isValidUser) {
                 model = new ModelAndView("web_home_ver");
                 List<VolVoluntario> listVoluntarios = voluntarioService.listarVoluntarios();
-                model.addObject("voluntariosBean",listVoluntarios);
+                model.addObject("voluntariosBean", listVoluntarios);
                 VolUsuario usuarioBd = usuarioService.getNombreUsuario(usuario.getNumDocumento());
                 String nombreUsuario = usuarioBd.getNombre() + " " + usuarioBd.getApellidos();
-                model.addObject("nombreUsuario",nombreUsuario);
-                model.addObject("usuarioBean",usuario);
+                model.addObject("nombreUsuario", nombreUsuario);
+                model.addObject("usuarioBean", usuario);
                 //aqui la parte de usuario inhabilitado 
-                //model = new ModelAndView("index");
-                //request.setAttribute("message", "El usuario se encuentra desactivado");
-                //request.setAttribute("message", "Usuario desactivado");
+                String indHabilitado = usuarioBd.getIndDesactivo().toString();
+                if (indHabilitado.equals("0")) {
+                    model = new ModelAndView("index");
+                    //request.setAttribute("message", "El usuario se encuentra desactivado");
+                    request.setAttribute("message", "Usuario desactivado");
+                }
             } else {
                 model = new ModelAndView("index");
                 request.setAttribute("message", "Datos incorrectos");

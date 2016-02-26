@@ -1,5 +1,5 @@
 package com.tismart.voluntariado.bean;
-// Generated 24-feb-2016 11:24:26 by Hibernate Tools 4.3.1
+// Generated 26-feb-2016 9:56:41 by Hibernate Tools 4.3.1
 
 
 import java.math.BigDecimal;
@@ -14,9 +14,9 @@ public class VolPais  implements java.io.Serializable {
 
      private BigDecimal codPais;
      private String nombrepa;
+     private Set volVoluntarios = new HashSet(0);
      private Set volDepartamentos = new HashSet(0);
      private Set volVolusespads = new HashSet(0);
-     private Set volVoluntarios = new HashSet(0);
 
     public VolPais() {
     }
@@ -25,12 +25,12 @@ public class VolPais  implements java.io.Serializable {
     public VolPais(BigDecimal codPais) {
         this.codPais = codPais;
     }
-    public VolPais(BigDecimal codPais, String nombrepa, Set volDepartamentos, Set volVolusespads, Set volVoluntarios) {
+    public VolPais(BigDecimal codPais, String nombrepa, Set volVoluntarios, Set volDepartamentos, Set volVolusespads) {
        this.codPais = codPais;
        this.nombrepa = nombrepa;
+       this.volVoluntarios = volVoluntarios;
        this.volDepartamentos = volDepartamentos;
        this.volVolusespads = volVolusespads;
-       this.volVoluntarios = volVoluntarios;
     }
    
     public BigDecimal getCodPais() {
@@ -47,6 +47,13 @@ public class VolPais  implements java.io.Serializable {
     public void setNombrepa(String nombrepa) {
         this.nombrepa = nombrepa;
     }
+    public Set getVolVoluntarios() {
+        return this.volVoluntarios;
+    }
+    
+    public void setVolVoluntarios(Set volVoluntarios) {
+        this.volVoluntarios = volVoluntarios;
+    }
     public Set getVolDepartamentos() {
         return this.volDepartamentos;
     }
@@ -60,13 +67,6 @@ public class VolPais  implements java.io.Serializable {
     
     public void setVolVolusespads(Set volVolusespads) {
         this.volVolusespads = volVolusespads;
-    }
-    public Set getVolVoluntarios() {
-        return this.volVoluntarios;
-    }
-    
-    public void setVolVoluntarios(Set volVoluntarios) {
-        this.volVoluntarios = volVoluntarios;
     }
 
 

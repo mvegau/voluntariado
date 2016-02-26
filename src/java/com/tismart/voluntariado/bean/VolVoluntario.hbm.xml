@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<!-- Generated 24-feb-2016 11:24:27 by Hibernate Tools 4.3.1 -->
+<!-- Generated 26-feb-2016 9:56:43 by Hibernate Tools 4.3.1 -->
 <hibernate-mapping>
     <class name="com.tismart.voluntariado.bean.VolVoluntario" table="VOL_VOLUNTARIO" schema="UINDECI" optimistic-lock="version">
         <id name="ideVoluntario" type="big_decimal">
@@ -28,9 +28,6 @@
         </many-to-one>
         <many-to-one name="volGradoacade" class="com.tismart.voluntariado.bean.VolGradoacade" fetch="select">
             <column name="IDE_GRADOACADEMICO" precision="22" scale="0" not-null="true" />
-        </many-to-one>
-        <many-to-one name="volGrupo" class="com.tismart.voluntariado.bean.VolGrupo" fetch="select">
-            <column name="IDE_GRUPO" precision="22" scale="0" />
         </many-to-one>
         <many-to-one name="volGsanguineo" class="com.tismart.voluntariado.bean.VolGsanguineo" fetch="select">
             <column name="IDE_GRUPOSANGUI" precision="22" scale="0" not-null="true" />
@@ -92,14 +89,17 @@
         <property name="indPertenecegrupo" type="java.lang.Character">
             <column name="IND_PERTENECEGRUPO" length="1" />
         </property>
+        <property name="ideGrupo" type="big_decimal">
+            <column name="IDE_GRUPO" precision="22" scale="0" />
+        </property>
         <property name="aceptaterminos" type="big_decimal">
             <column name="ACEPTATERMINOS" precision="22" scale="0" />
         </property>
-        <set name="volActifisicas" table="VOL_ACTIFISICA" inverse="true" lazy="true" fetch="select">
+        <set name="volEvenvoluntDets" table="VOL_EVENVOLUNT_DET" inverse="true" lazy="true" fetch="select">
             <key>
-                <column name="IDE_VOLUNTARIO" precision="22" scale="0" />
+                <column name="IDE_VOLUNTARIO" precision="22" scale="0" not-null="true" />
             </key>
-            <one-to-many class="com.tismart.voluntariado.bean.VolActifisica" />
+            <one-to-many class="com.tismart.voluntariado.bean.VolEvenvoluntDet" />
         </set>
         <set name="volCapacitacions" table="VOL_CAPACITACION" inverse="true" lazy="true" fetch="select">
             <key>
@@ -113,17 +113,11 @@
             </key>
             <one-to-many class="com.tismart.voluntariado.bean.VolEspecialidad" />
         </set>
-        <set name="volCerificacions" table="VOL_CERIFICACION" inverse="true" lazy="true" fetch="select">
-            <key>
-                <column name="IDE_VOLUNTARIO" precision="22" scale="0" />
-            </key>
-            <one-to-many class="com.tismart.voluntariado.bean.VolCerificacion" />
-        </set>
-        <set name="volEvenvoluntDets" table="VOL_EVENVOLUNT_DET" inverse="true" lazy="true" fetch="select">
+        <set name="volActivoluntDets" table="VOL_ACTIVOLUNT_DET" inverse="true" lazy="true" fetch="select">
             <key>
                 <column name="IDE_VOLUNTARIO" precision="22" scale="0" not-null="true" />
             </key>
-            <one-to-many class="com.tismart.voluntariado.bean.VolEvenvoluntDet" />
+            <one-to-many class="com.tismart.voluntariado.bean.VolActivoluntDet" />
         </set>
         <set name="volConfirmacions" table="VOL_CONFIRMACION" inverse="true" lazy="true" fetch="select">
             <key>
@@ -131,11 +125,11 @@
             </key>
             <one-to-many class="com.tismart.voluntariado.bean.VolConfirmacion" />
         </set>
-        <set name="volActivoluntDets" table="VOL_ACTIVOLUNT_DET" inverse="true" lazy="true" fetch="select">
+        <set name="volCerificacions" table="VOL_CERIFICACION" inverse="true" lazy="true" fetch="select">
             <key>
-                <column name="IDE_VOLUNTARIO" precision="22" scale="0" not-null="true" />
+                <column name="IDE_VOLUNTARIO" precision="22" scale="0" />
             </key>
-            <one-to-many class="com.tismart.voluntariado.bean.VolActivoluntDet" />
+            <one-to-many class="com.tismart.voluntariado.bean.VolCerificacion" />
         </set>
     </class>
 </hibernate-mapping>

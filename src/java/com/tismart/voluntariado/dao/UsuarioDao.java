@@ -48,7 +48,7 @@ public class UsuarioDao {
 
     public VolUsuario getNombreUsuario(String numDocumento) {
         Session session = HibernateUtil.getSessionFactory().openSession();
-        String SQL_QUERY = " from VolUsuario ";
+        String SQL_QUERY = " from VolUsuario where numDocumento = '"+numDocumento+"' ";
         Query query = session.createQuery(SQL_QUERY);
         List<VolUsuario> listaUsuario = query.list();
         session.close();

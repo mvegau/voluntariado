@@ -1,5 +1,5 @@
 package com.tismart.voluntariado.bean;
-// Generated 24-feb-2016 11:24:26 by Hibernate Tools 4.3.1
+// Generated 26-feb-2016 9:56:41 by Hibernate Tools 4.3.1
 
 
 import java.math.BigDecimal;
@@ -15,9 +15,9 @@ public class VolProvincia  implements java.io.Serializable {
      private BigDecimal codProvincia;
      private VolDepartamento volDepartamento;
      private String nombrepro;
-     private Set volVolusespads = new HashSet(0);
-     private Set volDistritos = new HashSet(0);
      private Set volVoluntarios = new HashSet(0);
+     private Set volDistritos = new HashSet(0);
+     private Set volVolusespads = new HashSet(0);
 
     public VolProvincia() {
     }
@@ -26,13 +26,13 @@ public class VolProvincia  implements java.io.Serializable {
     public VolProvincia(BigDecimal codProvincia) {
         this.codProvincia = codProvincia;
     }
-    public VolProvincia(BigDecimal codProvincia, VolDepartamento volDepartamento, String nombrepro, Set volVolusespads, Set volDistritos, Set volVoluntarios) {
+    public VolProvincia(BigDecimal codProvincia, VolDepartamento volDepartamento, String nombrepro, Set volVoluntarios, Set volDistritos, Set volVolusespads) {
        this.codProvincia = codProvincia;
        this.volDepartamento = volDepartamento;
        this.nombrepro = nombrepro;
-       this.volVolusespads = volVolusespads;
-       this.volDistritos = volDistritos;
        this.volVoluntarios = volVoluntarios;
+       this.volDistritos = volDistritos;
+       this.volVolusespads = volVolusespads;
     }
    
     public BigDecimal getCodProvincia() {
@@ -56,12 +56,12 @@ public class VolProvincia  implements java.io.Serializable {
     public void setNombrepro(String nombrepro) {
         this.nombrepro = nombrepro;
     }
-    public Set getVolVolusespads() {
-        return this.volVolusespads;
+    public Set getVolVoluntarios() {
+        return this.volVoluntarios;
     }
     
-    public void setVolVolusespads(Set volVolusespads) {
-        this.volVolusespads = volVolusespads;
+    public void setVolVoluntarios(Set volVoluntarios) {
+        this.volVoluntarios = volVoluntarios;
     }
     public Set getVolDistritos() {
         return this.volDistritos;
@@ -70,12 +70,12 @@ public class VolProvincia  implements java.io.Serializable {
     public void setVolDistritos(Set volDistritos) {
         this.volDistritos = volDistritos;
     }
-    public Set getVolVoluntarios() {
-        return this.volVoluntarios;
+    public Set getVolVolusespads() {
+        return this.volVolusespads;
     }
     
-    public void setVolVoluntarios(Set volVoluntarios) {
-        this.volVoluntarios = volVoluntarios;
+    public void setVolVolusespads(Set volVolusespads) {
+        this.volVolusespads = volVolusespads;
     }
 
 

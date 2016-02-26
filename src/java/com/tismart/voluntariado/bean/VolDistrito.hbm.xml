@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<!-- Generated 24-feb-2016 11:24:27 by Hibernate Tools 4.3.1 -->
+<!-- Generated 26-feb-2016 9:56:43 by Hibernate Tools 4.3.1 -->
 <hibernate-mapping>
     <class name="com.tismart.voluntariado.bean.VolDistrito" table="VOL_DISTRITO" schema="UINDECI" optimistic-lock="version">
         <id name="codDistrito" type="big_decimal">
@@ -14,17 +14,17 @@
         <property name="nombredis" type="string">
             <column name="NOMBREDIS" length="60" />
         </property>
-        <set name="volVolusespads" table="VOL_VOLUSESPAD" inverse="true" lazy="true" fetch="select">
-            <key>
-                <column name="COD_DISTRITO" precision="22" scale="0" />
-            </key>
-            <one-to-many class="com.tismart.voluntariado.bean.VolVolusespad" />
-        </set>
         <set name="volVoluntarios" table="VOL_VOLUNTARIO" inverse="true" lazy="true" fetch="select">
             <key>
                 <column name="COD_DISTRITO" precision="22" scale="0" />
             </key>
             <one-to-many class="com.tismart.voluntariado.bean.VolVoluntario" />
+        </set>
+        <set name="volVolusespads" table="VOL_VOLUSESPAD" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="COD_DISTRITO" precision="22" scale="0" />
+            </key>
+            <one-to-many class="com.tismart.voluntariado.bean.VolVolusespad" />
         </set>
     </class>
 </hibernate-mapping>

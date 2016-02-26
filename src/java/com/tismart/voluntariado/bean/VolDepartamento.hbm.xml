@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<!-- Generated 24-feb-2016 11:24:27 by Hibernate Tools 4.3.1 -->
+<!-- Generated 26-feb-2016 9:56:43 by Hibernate Tools 4.3.1 -->
 <hibernate-mapping>
     <class name="com.tismart.voluntariado.bean.VolDepartamento" table="VOL_DEPARTAMENTO" schema="UINDECI" optimistic-lock="version">
         <id name="codDepartamento" type="big_decimal">
@@ -14,12 +14,6 @@
         <property name="nombredep" type="string">
             <column name="NOMBREDEP" length="60" />
         </property>
-        <set name="volVolusespads" table="VOL_VOLUSESPAD" inverse="true" lazy="true" fetch="select">
-            <key>
-                <column name="COD_DEPARTAMENTO" precision="22" scale="0" />
-            </key>
-            <one-to-many class="com.tismart.voluntariado.bean.VolVolusespad" />
-        </set>
         <set name="volUsuarios" table="VOL_USUDEPA_DET" inverse="true" lazy="true" fetch="select">
             <key>
                 <column name="COD_DEPARTAMENTO" precision="22" scale="0" not-null="true" />
@@ -28,17 +22,23 @@
                 <column name="IDE_USUARIO" precision="22" scale="0" not-null="true" />
             </many-to-many>
         </set>
+        <set name="volVoluntarios" table="VOL_VOLUNTARIO" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="COD_DEPARTAMENTO" precision="22" scale="0" />
+            </key>
+            <one-to-many class="com.tismart.voluntariado.bean.VolVoluntario" />
+        </set>
         <set name="volProvincias" table="VOL_PROVINCIA" inverse="true" lazy="true" fetch="select">
             <key>
                 <column name="COD_DEPARTAMENTO" precision="22" scale="0" />
             </key>
             <one-to-many class="com.tismart.voluntariado.bean.VolProvincia" />
         </set>
-        <set name="volVoluntarios" table="VOL_VOLUNTARIO" inverse="true" lazy="true" fetch="select">
+        <set name="volVolusespads" table="VOL_VOLUSESPAD" inverse="true" lazy="true" fetch="select">
             <key>
                 <column name="COD_DEPARTAMENTO" precision="22" scale="0" />
             </key>
-            <one-to-many class="com.tismart.voluntariado.bean.VolVoluntario" />
+            <one-to-many class="com.tismart.voluntariado.bean.VolVolusespad" />
         </set>
     </class>
 </hibernate-mapping>

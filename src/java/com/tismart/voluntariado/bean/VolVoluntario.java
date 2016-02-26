@@ -1,5 +1,5 @@
 package com.tismart.voluntariado.bean;
-// Generated 24-feb-2016 11:24:26 by Hibernate Tools 4.3.1
+// Generated 26-feb-2016 9:56:41 by Hibernate Tools 4.3.1
 
 
 import java.math.BigDecimal;
@@ -21,7 +21,6 @@ public class VolVoluntario  implements java.io.Serializable {
      private VolProvincia volProvincia;
      private VolDistrito volDistrito;
      private VolGradoacade volGradoacade;
-     private VolGrupo volGrupo;
      private VolGsanguineo volGsanguineo;
      private VolProfesion volProfesion;
      private VolTipvolun volTipvolun;
@@ -42,14 +41,14 @@ public class VolVoluntario  implements java.io.Serializable {
      private Date fecRegistro;
      private Date fecValidacion;
      private Character indPertenecegrupo;
+     private BigDecimal ideGrupo;
      private BigDecimal aceptaterminos;
-     private Set volActifisicas = new HashSet(0);
+     private Set volEvenvoluntDets = new HashSet(0);
      private Set volCapacitacions = new HashSet(0);
      private Set volEspecialidads = new HashSet(0);
-     private Set volCerificacions = new HashSet(0);
-     private Set volEvenvoluntDets = new HashSet(0);
-     private Set volConfirmacions = new HashSet(0);
      private Set volActivoluntDets = new HashSet(0);
+     private Set volConfirmacions = new HashSet(0);
+     private Set volCerificacions = new HashSet(0);
 
     public VolVoluntario() {
     }
@@ -70,7 +69,7 @@ public class VolVoluntario  implements java.io.Serializable {
         this.celular = celular;
         this.correo = correo;
     }
-    public VolVoluntario(BigDecimal ideVoluntario, VolTipdocum volTipdocum, VolEstavolun volEstavolun, VolPais volPais, VolDepartamento volDepartamento, VolProvincia volProvincia, VolDistrito volDistrito, VolGradoacade volGradoacade, VolGrupo volGrupo, VolGsanguineo volGsanguineo, VolProfesion volProfesion, VolTipvolun volTipvolun, String apreciacion, BigDecimal esrepresentante, BigDecimal indHabilitado, String nombres, String apellidos, String numDocumento, Date fecNacimiento, String rutaautorizacion, String domicilio, String telefono, String celular, String correo, String cskype, String motivacion, Date fecRegistro, Date fecValidacion, Character indPertenecegrupo, BigDecimal aceptaterminos, Set volActifisicas, Set volCapacitacions, Set volEspecialidads, Set volCerificacions, Set volEvenvoluntDets, Set volConfirmacions, Set volActivoluntDets) {
+    public VolVoluntario(BigDecimal ideVoluntario, VolTipdocum volTipdocum, VolEstavolun volEstavolun, VolPais volPais, VolDepartamento volDepartamento, VolProvincia volProvincia, VolDistrito volDistrito, VolGradoacade volGradoacade, VolGsanguineo volGsanguineo, VolProfesion volProfesion, VolTipvolun volTipvolun, String apreciacion, BigDecimal esrepresentante, BigDecimal indHabilitado, String nombres, String apellidos, String numDocumento, Date fecNacimiento, String rutaautorizacion, String domicilio, String telefono, String celular, String correo, String cskype, String motivacion, Date fecRegistro, Date fecValidacion, Character indPertenecegrupo, BigDecimal ideGrupo, BigDecimal aceptaterminos, Set volEvenvoluntDets, Set volCapacitacions, Set volEspecialidads, Set volActivoluntDets, Set volConfirmacions, Set volCerificacions) {
        this.ideVoluntario = ideVoluntario;
        this.volTipdocum = volTipdocum;
        this.volEstavolun = volEstavolun;
@@ -79,7 +78,6 @@ public class VolVoluntario  implements java.io.Serializable {
        this.volProvincia = volProvincia;
        this.volDistrito = volDistrito;
        this.volGradoacade = volGradoacade;
-       this.volGrupo = volGrupo;
        this.volGsanguineo = volGsanguineo;
        this.volProfesion = volProfesion;
        this.volTipvolun = volTipvolun;
@@ -100,14 +98,14 @@ public class VolVoluntario  implements java.io.Serializable {
        this.fecRegistro = fecRegistro;
        this.fecValidacion = fecValidacion;
        this.indPertenecegrupo = indPertenecegrupo;
+       this.ideGrupo = ideGrupo;
        this.aceptaterminos = aceptaterminos;
-       this.volActifisicas = volActifisicas;
+       this.volEvenvoluntDets = volEvenvoluntDets;
        this.volCapacitacions = volCapacitacions;
        this.volEspecialidads = volEspecialidads;
-       this.volCerificacions = volCerificacions;
-       this.volEvenvoluntDets = volEvenvoluntDets;
-       this.volConfirmacions = volConfirmacions;
        this.volActivoluntDets = volActivoluntDets;
+       this.volConfirmacions = volConfirmacions;
+       this.volCerificacions = volCerificacions;
     }
    
     public BigDecimal getIdeVoluntario() {
@@ -165,13 +163,6 @@ public class VolVoluntario  implements java.io.Serializable {
     
     public void setVolGradoacade(VolGradoacade volGradoacade) {
         this.volGradoacade = volGradoacade;
-    }
-    public VolGrupo getVolGrupo() {
-        return this.volGrupo;
-    }
-    
-    public void setVolGrupo(VolGrupo volGrupo) {
-        this.volGrupo = volGrupo;
     }
     public VolGsanguineo getVolGsanguineo() {
         return this.volGsanguineo;
@@ -313,6 +304,13 @@ public class VolVoluntario  implements java.io.Serializable {
     public void setIndPertenecegrupo(Character indPertenecegrupo) {
         this.indPertenecegrupo = indPertenecegrupo;
     }
+    public BigDecimal getIdeGrupo() {
+        return this.ideGrupo;
+    }
+    
+    public void setIdeGrupo(BigDecimal ideGrupo) {
+        this.ideGrupo = ideGrupo;
+    }
     public BigDecimal getAceptaterminos() {
         return this.aceptaterminos;
     }
@@ -320,12 +318,12 @@ public class VolVoluntario  implements java.io.Serializable {
     public void setAceptaterminos(BigDecimal aceptaterminos) {
         this.aceptaterminos = aceptaterminos;
     }
-    public Set getVolActifisicas() {
-        return this.volActifisicas;
+    public Set getVolEvenvoluntDets() {
+        return this.volEvenvoluntDets;
     }
     
-    public void setVolActifisicas(Set volActifisicas) {
-        this.volActifisicas = volActifisicas;
+    public void setVolEvenvoluntDets(Set volEvenvoluntDets) {
+        this.volEvenvoluntDets = volEvenvoluntDets;
     }
     public Set getVolCapacitacions() {
         return this.volCapacitacions;
@@ -341,19 +339,12 @@ public class VolVoluntario  implements java.io.Serializable {
     public void setVolEspecialidads(Set volEspecialidads) {
         this.volEspecialidads = volEspecialidads;
     }
-    public Set getVolCerificacions() {
-        return this.volCerificacions;
+    public Set getVolActivoluntDets() {
+        return this.volActivoluntDets;
     }
     
-    public void setVolCerificacions(Set volCerificacions) {
-        this.volCerificacions = volCerificacions;
-    }
-    public Set getVolEvenvoluntDets() {
-        return this.volEvenvoluntDets;
-    }
-    
-    public void setVolEvenvoluntDets(Set volEvenvoluntDets) {
-        this.volEvenvoluntDets = volEvenvoluntDets;
+    public void setVolActivoluntDets(Set volActivoluntDets) {
+        this.volActivoluntDets = volActivoluntDets;
     }
     public Set getVolConfirmacions() {
         return this.volConfirmacions;
@@ -362,12 +353,12 @@ public class VolVoluntario  implements java.io.Serializable {
     public void setVolConfirmacions(Set volConfirmacions) {
         this.volConfirmacions = volConfirmacions;
     }
-    public Set getVolActivoluntDets() {
-        return this.volActivoluntDets;
+    public Set getVolCerificacions() {
+        return this.volCerificacions;
     }
     
-    public void setVolActivoluntDets(Set volActivoluntDets) {
-        this.volActivoluntDets = volActivoluntDets;
+    public void setVolCerificacions(Set volCerificacions) {
+        this.volCerificacions = volCerificacions;
     }
 
 

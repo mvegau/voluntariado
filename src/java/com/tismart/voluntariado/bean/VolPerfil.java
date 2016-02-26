@@ -1,5 +1,5 @@
 package com.tismart.voluntariado.bean;
-// Generated 24-feb-2016 11:24:26 by Hibernate Tools 4.3.1
+// Generated 26-feb-2016 9:56:41 by Hibernate Tools 4.3.1
 
 
 import java.math.BigDecimal;
@@ -19,8 +19,8 @@ public class VolPerfil  implements java.io.Serializable {
      private Date fecCreacion;
      private String usumodificacion;
      private Date fecModificacion;
-     private Set volUsuarios = new HashSet(0);
      private Set volOpcions = new HashSet(0);
+     private Set volUsuarios = new HashSet(0);
 
     public VolPerfil() {
     }
@@ -30,15 +30,15 @@ public class VolPerfil  implements java.io.Serializable {
         this.idePerfil = idePerfil;
         this.descripcion = descripcion;
     }
-    public VolPerfil(BigDecimal idePerfil, String descripcion, String usucreacion, Date fecCreacion, String usumodificacion, Date fecModificacion, Set volUsuarios, Set volOpcions) {
+    public VolPerfil(BigDecimal idePerfil, String descripcion, String usucreacion, Date fecCreacion, String usumodificacion, Date fecModificacion, Set volOpcions, Set volUsuarios) {
        this.idePerfil = idePerfil;
        this.descripcion = descripcion;
        this.usucreacion = usucreacion;
        this.fecCreacion = fecCreacion;
        this.usumodificacion = usumodificacion;
        this.fecModificacion = fecModificacion;
-       this.volUsuarios = volUsuarios;
        this.volOpcions = volOpcions;
+       this.volUsuarios = volUsuarios;
     }
    
     public BigDecimal getIdePerfil() {
@@ -83,19 +83,19 @@ public class VolPerfil  implements java.io.Serializable {
     public void setFecModificacion(Date fecModificacion) {
         this.fecModificacion = fecModificacion;
     }
-    public Set getVolUsuarios() {
-        return this.volUsuarios;
-    }
-    
-    public void setVolUsuarios(Set volUsuarios) {
-        this.volUsuarios = volUsuarios;
-    }
     public Set getVolOpcions() {
         return this.volOpcions;
     }
     
     public void setVolOpcions(Set volOpcions) {
         this.volOpcions = volOpcions;
+    }
+    public Set getVolUsuarios() {
+        return this.volUsuarios;
+    }
+    
+    public void setVolUsuarios(Set volUsuarios) {
+        this.volUsuarios = volUsuarios;
     }
 
 

@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<!-- Generated 24-feb-2016 11:24:27 by Hibernate Tools 4.3.1 -->
+<!-- Generated 26-feb-2016 9:56:43 by Hibernate Tools 4.3.1 -->
 <hibernate-mapping>
     <class name="com.tismart.voluntariado.bean.VolCapacitacion" table="VOL_CAPACITACION" schema="UINDECI" optimistic-lock="version">
         <id name="ideCapacitacion" type="big_decimal">
@@ -14,8 +14,8 @@
         <property name="curso" type="string">
             <column name="CURSO" length="100" />
         </property>
-        <property name="institucion" type="string">
-            <column name="INSTITUCION" length="200" />
+        <property name="ideInstitucion" type="big_decimal">
+            <column name="IDE_INSTITUCION" precision="22" scale="0" />
         </property>
         <property name="fecInicio" type="date">
             <column name="FEC_INICIO" length="7" />

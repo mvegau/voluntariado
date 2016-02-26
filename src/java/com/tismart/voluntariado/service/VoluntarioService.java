@@ -23,7 +23,7 @@ public class VoluntarioService {
     @Autowired
     VoluntarioDao voluntarioDao = new VoluntarioDao();
 
-    public boolean guardarVoluntario(VolVoluntario voluntario) {
+    public String guardarVoluntario(VolVoluntario voluntario) {
         return voluntarioDao.guardarVoluntario(voluntario);
     }
 

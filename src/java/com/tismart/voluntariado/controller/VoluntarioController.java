@@ -106,55 +106,43 @@ public class VoluntarioController {
     @RequestMapping(value = "/web_terminos_legales_ver", method = RequestMethod.POST)
     public ModelAndView aceptarTerminosLegales(HttpServletRequest request, HttpServletResponse response,
             @ModelAttribute("voluntarioBean") VolVoluntario voluntario) {
-        ModelAndView model = new ModelAndView("index");
-
+        ModelAndView model = new ModelAndView("web_confirmacion_ver");
         volVoluntario.setAceptaterminos(voluntario.getAceptaterminos());
-        VolGradoacade gra = new VolGradoacade();
-        gra.setIdeGradoacademico(BigDecimal.valueOf(1));
-        VolTipdocum tipd = new VolTipdocum();
-        tipd.setIdeTipodocumento(BigDecimal.valueOf(1));
-        VolProfesion prof = new VolProfesion();
-        prof.setIdeProfesion(BigDecimal.valueOf(1));
-        VolGsanguineo san = new VolGsanguineo();
-        san.setIdeGruposangui(BigDecimal.valueOf(1));
-        VolEstavolun stavol = new VolEstavolun();
-        stavol.setIdeEstadovoluntario(BigDecimal.valueOf(1));
+        String contrasenia = "";
 
         try {
             /*  DateFormat ft = new SimpleDateFormat("yyyy-MM-dd");
             Date fecha = null;
             fecha = ft.parse("24/02/16");*/
 
+            System.out.println("AAAAAAAAAAAAAAAA" + volVoluntario.getFecNacimiento());
             java.util.Date myDate = new java.util.Date("10/10/2010");
             java.sql.Date sqlDate = new java.sql.Date(myDate.getTime());
+            System.out.println("AAAAAAAAAAAAAAAA" + sqlDate);
 
             Integer identity = voluntarioService.damePosicionIdentificador();
             Integer newidentity;
             newidentity = identity + 1;
             volVoluntario.setIdeVoluntario(BigDecimal.valueOf(newidentity));
-            volVoluntario.setVolGradoacade(gra);
-            volVoluntario.setVolEstavolun(stavol);
+
+            VolGradoacade grado = new VolGradoacade();
+            grado.setIdeGradoacademico(BigDecimal.valueOf(1));
+            volVoluntario.setVolGradoacade(grado);
+
             volVoluntario.setCelular(volVoluntario.getTelefono());
             volVoluntario.setFecNacimiento(sqlDate);
+            volVoluntario.setIndHabilitado(BigDecimal.valueOf(1));// 1 activo - 0 desactivo
+
             VolEstavolun estado = new VolEstavolun();
-            estado.setIdeEstadovoluntario(BigDecimal.ONE);
+            estado.setIdeEstadovoluntario(BigDecimal.valueOf(1));//Postulante
             volVoluntario.setVolEstavolun(estado);
-            voluntarioService.guardarVoluntario(volVoluntario);
+
+            contrasenia = voluntarioService.guardarVoluntario(volVoluntario);
         } catch (Exception e) {
             e.printStackTrace();
         }
-        System.out.println("SE INSERTOOOO");
-
-//        boolean isOk = voluntarioService.guardarVoluntario(volVoluntario);
-//        try {
-//            if (isOk) {
-//                model = new ModelAndView("index");
-//            } else {
-//                model = new ModelAndView("error");
-//            }
-//        } catch (Exception e) {
-//            e.printStackTrace();
-//        }
+        request.setAttribute("documento", volVoluntario.getNumDocumento());
+        request.setAttribute("clave", contrasenia);
         return model;
     }
 
@@ -268,6 +256,12 @@ public class VoluntarioController {
         //model.addObject("paisBean", volpais);
         //System.out.println("cargarDetalle1");
         //volVoluntario = new VolVoluntario();
+        return model;
+    }
+
+    @RequestMapping(value = "/web_confirmacion_ver", method = RequestMethod.GET)
+    public ModelAndView confirmacion(HttpServletRequest request, HttpServletResponse response) {
+        ModelAndView model = new ModelAndView("index");
         return model;
     }
 }

@@ -30,6 +30,7 @@
                 <prop key="web_registro_ver_2.htm">voluntario</prop>
                 <prop key="web_registro_ver_3.htm">voluntario</prop>
                 <prop key="web_terminos_legales_ver.htm">voluntario</prop>
+                <prop key="web_confirmacion_ver.htm">voluntario</prop>
                 <prop key="web_detalles_ver_2.htm">usuario</prop>
                 <prop key="web_registro_sespad.htm">voluntario</prop>
             </props>
