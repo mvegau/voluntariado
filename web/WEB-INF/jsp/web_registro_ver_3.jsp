@@ -74,6 +74,7 @@
                                 <div class="row">
                                     <div class="sub-tit-3">
                                         Motivos por los que deseo ser brigadista en voluntariado en emergencias y rehabilitación
+                                        <font color="red">${msgMotivacion}</font>
                                     </div>
                                 </div>
                                 <div class="row">

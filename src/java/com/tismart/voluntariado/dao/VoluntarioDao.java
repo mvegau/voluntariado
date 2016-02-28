@@ -19,7 +19,6 @@ import javax.annotation.Resource;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
-import org.hibernate.Transaction;
 
 /**
  *
@@ -81,14 +80,12 @@ public class VoluntarioDao {
 
         try {
             voluntarios = session.createQuery(" from VolVoluntario").list();
-            System.out.println("Cantidad de voluntarios encontrados :" + voluntarios.size());
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
             session.close();
         }
         return voluntarios;
-
     }
 
     public List<VolTipdocum> obtenerDocumentos() {
@@ -121,7 +118,6 @@ public class VoluntarioDao {
     public Integer damePosicionIdentificador() {
         Session session = HibernateUtil.getSessionFactory().openSession();
         List<VolVoluntario> list = session.createQuery(" from VolVoluntario").list();
-        System.out.println("posicion : " + list.size());
         return list.size();
     }
 
@@ -146,12 +142,10 @@ public class VoluntarioDao {
         String cadenaAleatoria = "";
         long milis = new java.util.GregorianCalendar().getTimeInMillis();
         Random r = new Random(milis);
-        int i = 0;
         while (cadenaAleatoria.length() < 8) {
             char c = (char) r.nextInt(255);
             if ((c >= '0' && c <= '9') || (c >= 'A' && c <= 'Z')) {
                 cadenaAleatoria += c;
-                i++;
             }
         }
         return cadenaAleatoria;
@@ -161,5 +155,20 @@ public class VoluntarioDao {
         Session session = HibernateUtil.getSessionFactory().openSession();
         List<VolUsuario> list = session.createQuery(" from VolUsuario").list();
         return list.size();
+    }
+
+    public boolean existeVoluntario(String numDocumento) {
+        Session session = HibernateUtil.getSessionFactory().openSession();
+        boolean voluntarioFound = false;
+        String SQL_QUERY = " from VolVoluntario as vol where vol.numDocumento=? ";
+        Query query = session.createQuery(SQL_QUERY);
+        query.setParameter(0, numDocumento);
+        List list = query.list();
+        if ((list != null) && (list.size() > 0)) {
+            voluntarioFound = true;
+        }
+
+        session.close();
+        return voluntarioFound;
     }
 }

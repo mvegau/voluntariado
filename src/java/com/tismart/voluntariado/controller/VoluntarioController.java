@@ -10,8 +10,10 @@ import com.tismart.voluntariado.bean.VolGradoacade;
 import com.tismart.voluntariado.bean.VolGsanguineo;
 import com.tismart.voluntariado.bean.VolPais;
 import com.tismart.voluntariado.bean.VolProfesion;
+import com.tismart.voluntariado.bean.VolTermlegal;
 import com.tismart.voluntariado.bean.VolTipdocum;
 import com.tismart.voluntariado.bean.VolVoluntario;
+import com.tismart.voluntariado.service.TerminoLegalService;
 import com.tismart.voluntariado.service.UbigeoService;
 import com.tismart.voluntariado.service.VoluntarioService;
 import java.math.BigDecimal;
@@ -125,11 +127,17 @@ public class VoluntarioController {
         } else {
             request.setAttribute("msgApellido", "");
         }
-        if (volVoluntario.getNumDocumento().equals("")) {
+        if (volVoluntario.getNumDocumento().equals("") || volVoluntario.getNumDocumento().length() < 8) {
             model = new ModelAndView("web_registro_ver_1");
             request.setAttribute("msgNumDoc", "(*)");
         } else {
-            request.setAttribute("msgNumDoc", "");
+            boolean docExiste = voluntarioService.existeVoluntario(volVoluntario.getNumDocumento());
+            if (docExiste) {
+                model = new ModelAndView("web_registro_ver_1");
+                request.setAttribute("msgNumDoc", "(Documento existente)");
+            } else {
+                request.setAttribute("msgNumDoc", "");
+            }
         }
         if (volVoluntario.getDomicilio().equals("")) {
             model = new ModelAndView("web_registro_ver_1");
@@ -211,6 +219,20 @@ public class VoluntarioController {
             @ModelAttribute("voluntarioBean") VolVoluntario voluntario) {
         ModelAndView model = new ModelAndView("web_terminos_legales_ver");
         volVoluntario.setMotivacion(voluntario.getMotivacion());
+
+        if (volVoluntario.getMotivacion().equals("")) {
+            model = new ModelAndView("web_registro_ver_3");
+            request.setAttribute("msgMotivacion", "(*)");
+        } else {
+            TerminoLegalService termService = new TerminoLegalService();
+            List<VolTermlegal> listaTerm = termService.obtenerTerminosLegales();
+            String msgTermLeg = "";
+            for (int i = 0; i < listaTerm.size(); i++) {
+                msgTermLeg = msgTermLeg + listaTerm.get(i).getIdeTerminolegal() + ". " + listaTerm.get(i).getDescripcion() + " </br> ";
+            }
+            request.setAttribute("msgTermLeg", msgTermLeg);
+        }
+
         model.addObject("voluntarioBean", volVoluntario);
         return model;
     }

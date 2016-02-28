@@ -41,7 +41,6 @@ public class VoluntarioService {
 
     public Integer damePosicionIdentificador() {
         return voluntarioDao.damePosicionIdentificador();
-
     }
 
     public List<VolVoluntario> listarVoluntarios() {
@@ -50,6 +49,10 @@ public class VoluntarioService {
 
     public List<VolGradoacade> listarGradoAcademicos() {
         return voluntarioDao.listarGradoAcademicos();
+    }
+
+    public boolean existeVoluntario(String numDocumento) {
+        return voluntarioDao.existeVoluntario(numDocumento);
     }
 
 }
