@@ -35,7 +35,7 @@ public class UbigeoDao {
 
     public List<VolPais> obtenerPaises() {
         Session session = HibernateUtil.getSessionFactory().openSession();
-        String SQL_QUERY = " from VolPais ";
+        String SQL_QUERY = " from VolPais where codPais is not 0 ";
         Query query = session.createQuery(SQL_QUERY);
         List<VolPais> listaPais = query.list();
         session.close();
@@ -44,8 +44,11 @@ public class UbigeoDao {
 
     public List<VolDepartamento> obtenerDepartamentos(String codPais) {
         Session session = HibernateUtil.getSessionFactory().openSession();
-        String SQL_QUERY = " from VolDepartamento ";
+        String SQL_QUERY = " from VolDepartamento order by codDepartamento ";
+        //String SQL_QUERY = " from VolDepartamento as dep, VolPais as pa where dep.VolPais.codPais = pa.codPais and pa.codPais = " + codPais + " order by dep.codDepartamento ";
+        //String SQL_QUERY = " from VolDepartamento as dep order by dep.codDepartamento ";
         //String SQL_QUERY = " from VolDepartamento where VolPais.codPais = " + codPais + " ";
+        //String SQL_QUERY = " from VolDepartamento as dep where dep.VolPais.codPais = " + codPais + " ";
         Query query = session.createQuery(SQL_QUERY);
         List<VolDepartamento> listaDepartamentos = query.list();
         session.close();
@@ -54,7 +57,7 @@ public class UbigeoDao {
 
     public List<VolProvincia> obtenerProvincias(String codDep) {
         Session session = HibernateUtil.getSessionFactory().openSession();
-        String SQL_QUERY = " from VolProvincia ";
+        String SQL_QUERY = " from VolProvincia order by codProvincia ";
         //String SQL_QUERY = " from VolProvincia where codDepartamento = " + codDep + " ";
         Query query = session.createQuery(SQL_QUERY);
         List<VolProvincia> listaProvincias = query.list();
@@ -64,7 +67,7 @@ public class UbigeoDao {
 
     public List<VolDistrito> obtenerDistritos(String codProv) {
         Session session = HibernateUtil.getSessionFactory().openSession();
-        String SQL_QUERY = " from VolDistrito ";
+        String SQL_QUERY = " from VolDistrito order by codDistrito ";
         //String SQL_QUERY = " from VolDistrito where codProvincia = " + codProv + " ";
         Query query = session.createQuery(SQL_QUERY);
         List<VolDistrito> listaDistritos = query.list();

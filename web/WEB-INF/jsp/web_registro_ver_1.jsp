@@ -40,9 +40,8 @@
         <script src="js/enscroll-0.6.0.min.js"></script>
         <script src="js/bootstrap-datepicker.js"></script>
         <script src="js/funciones.js"></script>
-        <!--script src="js/jquery-1.2.6.js"></script-->
 
-        <SCRIPT language=Javascript>
+        <script language="javascript">
 
             function isNumberKey(evt)
             {
@@ -55,22 +54,22 @@
             function cambiarPais()
             {
                 var code = $("#codPais").val();
-                $("#departamentos").load("DepartamentoServlet", {codPais: code});
+                $("#codDepartamento").load("DepartamentoServlet", {codPais: code});
             }
 
             function cambiarDepartamento()
             {
                 var code = $("#departamentos").val();
-                $("#provincias").load("ProvinciaServlet", {codDepartamento: code});
+                $("#codProvincia").load("ProvinciaServlet", {codDepartamento: code});
             }
 
             function cambiarProvincia()
             {
                 var code = $("#provincias").val();
-                $("#distritos").load("DistritoServlet", {codProvincia: code});
+                $("#codDistrito").load("DistritoServlet", {codProvincia: code});
             }
 
-        </SCRIPT>
+        </script>
     </head>
 
     <body>
@@ -121,7 +120,7 @@
                                         <div class="col-xs-12 nopadding">
                                             <div class="col-xs-4 nopadding shijo">
                                                 <div class="form-group winput">
-                                                    <form:select class="select2" path="volPais.codPais"><!--onchange="cambiarPais()" id="codPais"-->
+                                                    <form:select class="select2" path="volPais.codPais" onchange="cambiarPais()" id="codPais">
                                                         <form:option value="0" label="País"/>
                                                         <form:options items="${paises}"/>
                                                     </form:select>		
@@ -133,7 +132,7 @@
                                         <div class="col-xs-4 nopadding shijo">
                                             <div class="form-group winput">
                                                 <label class="hiden">Departamento</label>
-                                                <form:select class="select2" path="volDepartamento.codDepartamento">
+                                                <form:select class="select2" path="volDepartamento.codDepartamento" onchange="cambiarDepartamento()" id="codDepartamento">
                                                     <form:option value="0" label="Departamento"/>
                                                     <form:options items="${departamentos}"/>
                                                 </form:select>	
@@ -142,7 +141,7 @@
                                         <div class="col-xs-4 nopadding shijo">
                                             <div class="form-group winput">
                                                 <label class="hiden">Provincia</label>
-                                                <form:select class="select2" path="volProvincia.codProvincia" >
+                                                <form:select class="select2" path="volProvincia.codProvincia" onchange="cambiarProvincia()" id="codProvincia">
                                                     <form:option value="0" label="Provincia"/>
                                                     <form:options items="${provincias}"/>
                                                 </form:select>	
@@ -151,7 +150,7 @@
                                         <div class="col-xs-4 nopadding shijo">
                                             <div class="form-group winput">
                                                 <label class="hiden">Distrito</label>
-                                                <form:select class="select2" path="volDistrito.codDistrito" >
+                                                <form:select class="select2" path="volDistrito.codDistrito" id="codDistrito">
                                                     <form:option value="0" label="Distrito"/>
                                                     <form:options items="${distritos}"/>
                                                 </form:select>	
