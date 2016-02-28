@@ -5,19 +5,18 @@
  */
 package com.tismart.voluntariado.controller;
 
-import com.tismart.voluntariado.bean.VolDepartamento;
-import com.tismart.voluntariado.bean.VolDistrito;
 import com.tismart.voluntariado.bean.VolEstavolun;
 import com.tismart.voluntariado.bean.VolGradoacade;
 import com.tismart.voluntariado.bean.VolGsanguineo;
 import com.tismart.voluntariado.bean.VolPais;
 import com.tismart.voluntariado.bean.VolProfesion;
-import com.tismart.voluntariado.bean.VolProvincia;
 import com.tismart.voluntariado.bean.VolTipdocum;
 import com.tismart.voluntariado.bean.VolVoluntario;
 import com.tismart.voluntariado.service.UbigeoService;
 import com.tismart.voluntariado.service.VoluntarioService;
 import java.math.BigDecimal;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
@@ -44,6 +43,7 @@ public class VoluntarioController {
     VoluntarioService voluntarioService = new VoluntarioService();
     UbigeoService ubigeoService = new UbigeoService();
     VolVoluntario volVoluntario;
+    java.sql.Date fecNacimiento;
 
     @RequestMapping(value = "/web_registro_ver_1", method = RequestMethod.GET)
     public ModelAndView cargarDetalle1(HttpServletRequest request, HttpServletResponse response, VolVoluntario voluntario) {
@@ -60,6 +60,123 @@ public class VoluntarioController {
             @ModelAttribute("voluntarioBean") VolVoluntario voluntario) {
         ModelAndView model = new ModelAndView("web_registro_ver_2");
         volVoluntario = voluntario;
+
+        int res1, res2, res3, res4, res5, res6, res7;
+        res1 = volVoluntario.getVolPais().getCodPais().compareTo(BigDecimal.valueOf(0));
+        res2 = volVoluntario.getVolDepartamento().getCodDepartamento().compareTo(BigDecimal.valueOf(0));
+        res3 = volVoluntario.getVolProvincia().getCodProvincia().compareTo(BigDecimal.valueOf(0));
+        res4 = volVoluntario.getVolDistrito().getCodDistrito().compareTo(BigDecimal.valueOf(0));
+        res5 = volVoluntario.getVolTipdocum().getIdeTipodocumento().compareTo(BigDecimal.valueOf(0));
+        res6 = volVoluntario.getVolProfesion().getIdeProfesion().compareTo(BigDecimal.valueOf(0));
+        res7 = volVoluntario.getVolGsanguineo().getIdeGruposangui().compareTo(BigDecimal.valueOf(0));
+
+        if (res1 == 0) {
+            model = new ModelAndView("web_registro_ver_1");
+            request.setAttribute("msgPais", "(*)");
+        } else {
+            request.setAttribute("msgPais", "");
+        }
+        if (res2 == 0) {
+            model = new ModelAndView("web_registro_ver_1");
+            request.setAttribute("msgDepartamento", "(*)");
+        } else {
+            request.setAttribute("msgDepartamento", "");
+        }
+        if (res3 == 0) {
+            model = new ModelAndView("web_registro_ver_1");
+            request.setAttribute("msgProvincia", "(*)");
+        } else {
+            request.setAttribute("msgProvincia", "");
+        }
+        if (res4 == 0) {
+            model = new ModelAndView("web_registro_ver_1");
+            request.setAttribute("msgDistrito", "(*)");
+        } else {
+            request.setAttribute("msgDistrito", "");
+        }
+        if (res5 == 0) {
+            model = new ModelAndView("web_registro_ver_1");
+            request.setAttribute("msgTipDoc", "(*)");
+        } else {
+            request.setAttribute("msgTipDoc", "");
+        }
+        if (res6 == 0) {
+            model = new ModelAndView("web_registro_ver_1");
+            request.setAttribute("msgProfesion", "(*)");
+        } else {
+            request.setAttribute("msgProfesion", "");
+        }
+        if (res7 == 0) {
+            model = new ModelAndView("web_registro_ver_1");
+            request.setAttribute("msgSanguineo", "(*)");
+        } else {
+            request.setAttribute("msgSanguineo", "");
+        }
+
+        if (volVoluntario.getNombres().equals("")) {
+            model = new ModelAndView("web_registro_ver_1");
+            request.setAttribute("msgNombre", "(*)");
+        } else {
+            request.setAttribute("msgNombre", "");
+        }
+        if (volVoluntario.getApellidos().equals("")) {
+            model = new ModelAndView("web_registro_ver_1");
+            request.setAttribute("msgApellido", "(*)");
+        } else {
+            request.setAttribute("msgApellido", "");
+        }
+        if (volVoluntario.getNumDocumento().equals("")) {
+            model = new ModelAndView("web_registro_ver_1");
+            request.setAttribute("msgNumDoc", "(*)");
+        } else {
+            request.setAttribute("msgNumDoc", "");
+        }
+        if (volVoluntario.getDomicilio().equals("")) {
+            model = new ModelAndView("web_registro_ver_1");
+            request.setAttribute("msgDomicilio", "(*)");
+        } else {
+            request.setAttribute("msgDomicilio", "");
+        }
+        if (volVoluntario.getTelefono().equals("")) {
+            model = new ModelAndView("web_registro_ver_1");
+            request.setAttribute("msgTelefono", "(*)");
+        } else {
+            request.setAttribute("msgTelefono", "");
+        }
+        if (volVoluntario.getCorreo().equals("")) {
+            model = new ModelAndView("web_registro_ver_1");
+            request.setAttribute("msgCorreo", "(*)");
+        } else {
+            request.setAttribute("msgCorreo", "");
+        }
+        if (volVoluntario.getCskype().equals("")) {
+            model = new ModelAndView("web_registro_ver_1");
+            request.setAttribute("msgSkype", "(*)");
+        } else {
+            request.setAttribute("msgSkype", "");
+        }
+
+        request.setAttribute("msgFecha", "(*)");
+        String fechaNac = volVoluntario.getFecNacimiento().toString();
+        String diaNac = fechaNac.substring(8, 10);
+        int dia = Integer.parseInt(diaNac);
+        String mesNac = fechaNac.substring(4, 7);
+        int mes = obtenerMes(mesNac);
+        String anioNac = fechaNac.substring(24, 28);
+        int anio = Integer.parseInt(anioNac);
+
+        Calendar cal = new GregorianCalendar(anio, mes, dia);
+        Date fecha = cal.getTime();// aumenta en uno el mes que se ingreso
+        fecNacimiento = new java.sql.Date(fecha.getTime());
+
+        mes = mes + 1;
+        String aux = dia + "-" + mes + "-" + anio;
+        int edad = calcularEdad(aux);
+
+        if (edad < 16 || edad > 60) {
+            request.setAttribute("msgFecha", "Edad permitida de 16 a 60 años.");
+        }
+
         model.addObject("voluntarioBean", volVoluntario);
         return model;
     }
@@ -115,17 +232,6 @@ public class VoluntarioController {
         String contrasenia = "";
 
         try {
-            String fechaNac = volVoluntario.getFecNacimiento().toString();
-            String diaNac = fechaNac.substring(8, 10);
-            int dia = Integer.parseInt(diaNac);
-            String mesNac = fechaNac.substring(4, 7);
-            int mes = obtenerMes(mesNac);
-            String anioNac = fechaNac.substring(24, 28);
-            int anio = Integer.parseInt(anioNac);
-
-            Calendar cal = new GregorianCalendar(anio, mes, dia);
-            Date fecha = cal.getTime();// aumenta en uno el mes que se ingreso
-            java.sql.Date fecNacimiento = new java.sql.Date(fecha.getTime());
 
             Date fechaActual = new Date();
             java.sql.Date sqlDate = new java.sql.Date(fechaActual.getTime());
@@ -182,7 +288,6 @@ public class VoluntarioController {
 //        }
 //        return departamentos;
 //    }
-
 //    @ModelAttribute("provincias")
 //    public Map<String, String> listaProvincias(String codDep) {
 //
@@ -194,7 +299,6 @@ public class VoluntarioController {
 //        }
 //        return provincias;
 //    }
-
 //    @ModelAttribute("distritos")
 //    public Map<String, String> listaDistritos(String codProv) {
 //
@@ -206,7 +310,6 @@ public class VoluntarioController {
 //        }
 //        return distritos;
 //    }
-
     @ModelAttribute("documentos")
     public Map<String, String> listaDocumentos() {
 
@@ -306,5 +409,33 @@ public class VoluntarioController {
             mes = 11;
         }
         return mes;
+    }
+
+    private int calcularEdad(String fecha) {
+        String datetext = fecha;
+        try {
+            Calendar birth = new GregorianCalendar();
+            Calendar today = new GregorianCalendar();
+            int age = 0;
+            int factor = 0;
+            Date birthDate = new SimpleDateFormat("dd-MM-yyyy").parse(datetext);
+            Date currentDate = new Date(); //current date
+            birth.setTime(birthDate);
+            today.setTime(currentDate);
+            if (today.get(Calendar.MONTH) <= birth.get(Calendar.MONTH)) {
+                if (today.get(Calendar.MONTH) == birth.get(Calendar.MONTH)) {
+                    if (today.get(Calendar.DATE) > birth.get(Calendar.DATE)) {
+                        factor = -1; //Aun no celebra su cumpleanios
+                    }
+                } else {
+                    factor = -1; //Aun no celebra su cumpleanios
+                }
+            }
+            age = (today.get(Calendar.YEAR) - birth.get(Calendar.YEAR)) + factor;
+            return age;
+        } catch (ParseException e) {
+            return -1;
+        }
+
     }
 }

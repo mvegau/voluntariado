@@ -123,7 +123,8 @@
                                                     <form:select class="select2" path="volPais.codPais" onchange="cambiarPais()" id="codPais">
                                                         <form:option value="0" label="País"/>
                                                         <form:options items="${paises}"/>
-                                                    </form:select>		
+                                                    </form:select>
+                                                    <font color="red">${msgPais}</font>
                                                 </div>
                                             </div>
                                         </div>
@@ -135,7 +136,8 @@
                                                 <form:select class="select2" path="volDepartamento.codDepartamento" onchange="cambiarDepartamento()" id="codDepartamento">
                                                     <form:option value="0" label="Departamento"/>
                                                     <form:options items="${departamentos}"/>
-                                                </form:select>	
+                                                </form:select>
+                                                <font color="red">${msgDepartamento}</font>
                                             </div>
                                         </div>
                                         <div class="col-xs-4 nopadding shijo">
@@ -144,7 +146,8 @@
                                                 <form:select class="select2" path="volProvincia.codProvincia" onchange="cambiarProvincia()" id="codProvincia">
                                                     <form:option value="0" label="Provincia"/>
                                                     <form:options items="${provincias}"/>
-                                                </form:select>	
+                                                </form:select>
+                                                <font color="red">${msgProvincia}</font>
                                             </div>
                                         </div>
                                         <div class="col-xs-4 nopadding shijo">
@@ -153,7 +156,8 @@
                                                 <form:select class="select2" path="volDistrito.codDistrito" id="codDistrito">
                                                     <form:option value="0" label="Distrito"/>
                                                     <form:options items="${distritos}"/>
-                                                </form:select>	
+                                                </form:select>
+                                                <font color="red">${msgDistrito}</font>
                                             </div>
                                         </div>
                                     </div>
@@ -162,12 +166,14 @@
                                     <div class="col-xs-4 nopadding">
                                         <div class="form-group winput">
                                             <label>Nombres</label>
+                                            <font color="red">${msgNombre}</font>
                                             <input type="text" class="form-control" placeholder="" maxlength="30" value="${voluntarioBean.nombres}" name="nombres">
                                         </div>
                                     </div>
                                     <div class="col-xs-8 nopadding">
                                         <div class="form-group winputall">
                                             <label>Apellidos</label>
+                                            <font color="red">${msgApellido}</font>
                                             <input type="text" class="form-control" placeholder="" maxlength="30" value="${voluntarioBean.apellidos}" name="apellidos">
                                         </div>
                                     </div>
@@ -177,26 +183,25 @@
                                         <div class="form-group winput">
                                             <label class="block-label">Fecha de nacimiento</label>
                                             <div class="col-xs-4 nopadding wauto">
-                                                <input type="text" placeholder="" class="form-control datepicker" value="${voluntarioBean.fecNacimiento}" name="fecNacimiento">
+                                                <input type="text" placeholder="" class="form-control datepicker" value="" name="fecNacimiento" onkeypress="return isNumberKey(event)" maxlength="10">
+                                                <font color="red">${msgFecha}</font>
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="col-xs-4 nopadding">
+                                    <div class="col-xs-4 nopadding shijo">
                                         <div class="form-group winput">
                                             <label class="block-label">Tipo de documento</label>
-                                            <div class="col-xs-4 nopadding shijo">
-                                                <div class="form-group winput">
-                                                    <form:select class="select2" path="VolTipdocum.ideTipodocumento">
-                                                        <form:option value="0" label="Documento"/>
-                                                        <form:options items="${documentos}"/>
-                                                    </form:select>
-                                                </div>
-                                            </div>
+                                            <form:select class="select2" path="VolTipdocum.ideTipodocumento">
+                                                <form:option value="0" label="Documento"/>
+                                                <form:options items="${documentos}"/>
+                                            </form:select>
+                                            <font color="red">${msgTipDoc}</font>
                                         </div>
                                     </div>
                                     <div class="col-xs-4 nopadding">
                                         <div class="form-group winput">
                                             <label>Número de documento</label>
+                                            <font color="red">${msgNumDoc}</font>
                                             <input type="text" class="form-control" placeholder="" minlength="8" maxlength="12" value="${voluntarioBean.numDocumento}" name="numDocumento">
                                         </div>
                                     </div>
@@ -209,17 +214,20 @@
                                                 <form:option value="0" label="Elegir especialidad"/>
                                                 <form:options items="${profesiones}"/>
                                             </form:select>
+                                            <font color="red">${msgProfesion}</font>
                                         </div>
                                     </div>
                                     <div class="col-xs-4 nopadding">
                                         <div class="form-group winput">
                                             <label>Domicilio</label>
+                                            <font color="red">${msgDomicilio}</font>
                                             <input type="text" class="form-control" placeholder="" maxlength="100" value="${voluntarioBean.domicilio}" name="domicilio">
                                         </div>
                                     </div>
                                     <div class="col-xs-4 nopadding">
                                         <div class="form-group winput">
                                             <label>Teléfono</label>
+                                            <font color="red">${msgTelefono}</font>
                                             <input type="text" class="form-control" placeholder="" maxlength="12" value="${voluntarioBean.telefono}" name="telefono" onkeypress="return isNumberKey(event)">
                                         </div>
                                     </div>
@@ -228,22 +236,25 @@
                                     <div class="col-xs-4 nopadding">
                                         <div class="form-group winput">
                                             <label>Email</label>
+                                            <font color="red">${msgCorreo}</font>
                                             <input type="email" class="form-control" placeholder="" value="${voluntarioBean.correo}" name="correo">
                                         </div>
                                     </div>
                                     <div class="col-xs-4 nopadding">
                                         <div class="form-group winput">
                                             <label>Skype</label>
+                                            <font color="red">${msgSkype}</font>
                                             <input type="text" class="form-control" placeholder="" value="${voluntarioBean.cskype}" name="cskype">
                                         </div>
                                     </div>
                                     <div class="col-xs-4 nopadding shijo">
                                         <div class="form-group winput">
-                                            <label class="hiden">Texto Texto</label>
+                                            <label class="block-label">Grupo sanguíneo</label>
                                             <form:select class="select2" path="VolGsanguineo.ideGruposangui">
                                                 <form:option value="0" label="Grupo sanguíneo"/>
                                                 <form:options items="${sanguineo}"/>
                                             </form:select>
+                                            <font color="red">${msgSanguineo}</font>
                                         </div>
                                     </div>
                                 </div>
