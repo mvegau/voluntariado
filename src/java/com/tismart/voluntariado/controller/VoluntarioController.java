@@ -16,6 +16,7 @@ import com.tismart.voluntariado.bean.VolVoluntario;
 import com.tismart.voluntariado.service.TerminoLegalService;
 import com.tismart.voluntariado.service.UbigeoService;
 import com.tismart.voluntariado.service.VoluntarioService;
+import com.tismart.voluntariado.util.ValidatorUtil;
 import java.math.BigDecimal;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -134,7 +135,7 @@ public class VoluntarioController {
             boolean docExiste = voluntarioService.existeVoluntario(volVoluntario.getNumDocumento());
             if (docExiste) {
                 model = new ModelAndView("web_registro_ver_1");
-                request.setAttribute("msgNumDoc", "(Documento existente)");
+                request.setAttribute("msgNumDoc", "(Existente)");
             } else {
                 request.setAttribute("msgNumDoc", "");
             }
@@ -155,7 +156,14 @@ public class VoluntarioController {
             model = new ModelAndView("web_registro_ver_1");
             request.setAttribute("msgCorreo", "(*)");
         } else {
-            request.setAttribute("msgCorreo", "");
+            ValidatorUtil validarEmail = new ValidatorUtil();
+            boolean correoOk = validarEmail.validateEmail(volVoluntario.getCorreo());
+            if (correoOk) {
+                request.setAttribute("msgCorreo", "");
+            } else {
+                model = new ModelAndView("web_registro_ver_1");
+                request.setAttribute("msgCorreo", "(Incorrecto)");
+            }
         }
         if (volVoluntario.getCskype().equals("")) {
             model = new ModelAndView("web_registro_ver_1");

@@ -105,7 +105,10 @@
                                         <div class="pull-left top-right">
                                             <!--a class="link-a" href="web_registro_ver_2.htm">  <span class="flecha"> <img src="images/slices2.png"><em>Anterior</em></span></a-->
                                             <form action="web_registro_ver_3.html" method="post">
-                                                <a href="#" onclick="document.forms[0].submit();return false;"><span class="flecha"> <img src="images/slices2.png"><em>Anterior</em></span></a>
+                                                <a href="?page=anterior" onclick="document.forms[0].submit();return false;"><span class="flecha"> <img src="images/slices2.png"><em>Anterior</em></span></a>
+                                                <!--input type="hidden" name="anterior" value="anterior"-->
+                                                <!--%String anterior; %-->
+                                                <!--% anterior = request.getParameter("anterior");%-->
                                             </form>
                                         </div>
 
